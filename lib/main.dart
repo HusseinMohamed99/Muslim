@@ -50,7 +50,11 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(settingsProvider.currentLanguage),
-
+      ///OR
+      // supportedLocales: const [
+      //   Locale('en', ''), // English, no country code
+      //   Locale('ar', ''), // Spanish, no country code
+      // ],
       theme: ThemeApp.lightTheme,
       darkTheme: ThemeApp.darkTheme,
       themeMode: settingsProvider.currentTheme,
