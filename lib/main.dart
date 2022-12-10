@@ -70,6 +70,7 @@ class MyApp extends StatelessWidget {
         return const DesktopScreen();
       }),
       routes: {
+
         HomeScreen.routeName: (_) => const HomeScreen(),
         QuranScreen.routeName: (_) => const QuranScreen(),
         SuraDetailsScreen.routeName: (_) => const SuraDetailsScreen(),
