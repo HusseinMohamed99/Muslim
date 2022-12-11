@@ -19,7 +19,7 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-int sIndex = 0;
+int currentIndex = 0;
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -43,10 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
         bottomNavigationBar: BottomNavigationBar(
           onTap: (index) {
             setState(() {
-              sIndex = index;
+              currentIndex = index;
             });
           },
-          currentIndex: sIndex,
+          currentIndex: currentIndex,
           items: [
             BottomNavigationBarItem(
                 backgroundColor: Theme.of(context).primaryColor,
@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 label: AppLocalizations.of(context)!.settings,),
           ],
         ),
-        body: screens[sIndex],
+        body: screens[currentIndex],
       ),
     );
   }
