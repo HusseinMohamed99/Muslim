@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:muslim_app/model/hadith_details.dart';
-import 'package:muslim_app/screens/hadith/hadith_details_screen.dart';
+import 'package:muslim_app/mobile/screens/hadith/hadith_details_screen.dart';
 import 'package:muslim_app/shared/components/my_divider.dart';
 import 'package:muslim_app/shared/components/navigator.dart';
 import 'package:muslim_app/shared/image_path/image_path.dart';

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DesktopScreen extends StatelessWidget {
   const DesktopScreen({Key? key}) : super(key: key);
+  static const String routeName = 'DesktopScreen';
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return   Scaffold(
       body: Center(
-          child: Lottie.asset(
-            'assets/lottie/soon.zip',
-            width: 200,
-            fit: BoxFit.fill,
+          child: Text('Coming Soon',style: GoogleFonts.elMessiri(
+            fontSize: 40
           ),),
+          ),
     );
   }
 }

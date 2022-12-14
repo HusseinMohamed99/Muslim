@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:muslim_app/desktop/desktop_screen.dart';
-import 'package:muslim_app/screens/hadith/hadith_details_screen.dart';
-import 'package:muslim_app/screens/hadith/hadith_screen.dart';
-import 'package:muslim_app/screens/home/home_screen.dart';
-import 'package:muslim_app/screens/quran/quran_screen.dart';
-import 'package:muslim_app/screens/quran/sura_details_screen.dart';
-import 'package:muslim_app/screens/radio/radio_screen.dart';
-import 'package:muslim_app/screens/sebha/sebha_screen.dart';
-import 'package:muslim_app/screens/settings/settings_screen.dart';
+import 'package:muslim_app/mobile/screens/hadith/hadith_details_screen.dart';
+import 'package:muslim_app/mobile/screens/hadith/hadith_screen.dart';
+import 'package:muslim_app/mobile/screens/home/home_screen.dart';
+import 'package:muslim_app/mobile/screens/quran/quran_screen.dart';
+import 'package:muslim_app/mobile/screens/quran/sura_details_screen.dart';
+import 'package:muslim_app/mobile/screens/radio/radio_screen.dart';
+import 'package:muslim_app/mobile/screens/sebha/sebha_screen.dart';
+import 'package:muslim_app/mobile/screens/settings/settings_screen.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
         if (kDebugMode) {
           print(constraints.minWidth.toInt());
         }
-        if (constraints.minWidth.toInt() <= 560) {
+        if (constraints.minWidth.toInt() <= 480) {
           return const HomeScreen();
         }
         return const DesktopScreen();
@@ -79,6 +79,7 @@ class MyApp extends StatelessWidget {
         SebhaScreen.routeName: (_) => const SebhaScreen(),
         SettingsScreen.routeName: (_) => const SettingsScreen(),
         RadioScreen.routeName: (_) => const RadioScreen(),
+        DesktopScreen.routeName: (_) => const DesktopScreen(),
       },
       initialRoute: '/',
     );

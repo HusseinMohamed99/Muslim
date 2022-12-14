@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:muslim_app/model/quran_details.dart';
 import 'package:muslim_app/model/sura_details.dart';
-import 'package:muslim_app/screens/quran/sura_details_screen.dart';
+import 'package:muslim_app/mobile/screens/quran/sura_details_screen.dart';
 import 'package:muslim_app/shared/components/my_divider.dart';
 import 'package:muslim_app/shared/components/navigator.dart';
 import 'package:muslim_app/shared/image_path/image_path.dart';
+import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:provider/provider.dart';
-import '../../shared/providers/settings_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranScreen extends StatelessWidget {
