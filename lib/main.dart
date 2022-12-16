@@ -21,16 +21,17 @@ void main() async {
 
   runApp(
     ChangeNotifierProvider(
-        create: (buildContext) => SettingsProvider(),
-        child: Builder(
-          builder: (context) {
-            SystemChrome.setPreferredOrientations([
-              DeviceOrientation.portraitUp,
-              DeviceOrientation.portraitDown,
-            ]);
-            return const MyApp();
-          },
-        )),
+      create: (buildContext) => SettingsProvider(),
+      child: Builder(
+        builder: (context) {
+          SystemChrome.setPreferredOrientations([
+            DeviceOrientation.portraitUp,
+            DeviceOrientation.portraitDown,
+          ]);
+          return const MyApp();
+        },
+      ),
+    ),
   );
 }
 
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(settingsProvider.currentLanguage),
+
       ///OR
       // supportedLocales: const [
       //   Locale('en', ''), // English, no country code
@@ -64,13 +66,13 @@ class MyApp extends StatelessWidget {
         if (kDebugMode) {
           print(constraints.minWidth.toInt());
         }
-        if (constraints.minWidth.toInt() <= 480) {
+        if (constraints.minWidth.toInt() <= 500) {
           return const HomeScreen();
         }
         return const DesktopScreen();
       }),
-      routes: {
 
+      routes: {
         HomeScreen.routeName: (_) => const HomeScreen(),
         QuranScreen.routeName: (_) => const QuranScreen(),
         SuraDetailsScreen.routeName: (_) => const SuraDetailsScreen(),
