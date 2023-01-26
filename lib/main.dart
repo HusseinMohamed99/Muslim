@@ -15,6 +15,7 @@ import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +29,7 @@ void main() async {
             DeviceOrientation.portraitUp,
             DeviceOrientation.portraitDown,
           ]);
-          return const MyApp();
+          return  MyApp();
         },
       ),
     ),
@@ -36,12 +37,15 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   MyApp({super.key});
+
+  late SettingsProvider settingsProvider;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
+    settingsProvider = Provider.of<SettingsProvider>(context);
+    getValueFromPref();
     return MaterialApp(
       localizationsDelegates: const [
         AppLocalizations.delegate,
@@ -85,5 +89,15 @@ class MyApp extends StatelessWidget {
       },
       initialRoute: '/',
     );
+  }
+  getValueFromPref() async {
+    final pref = await SharedPreferences.getInstance();
+    settingsProvider.changeLanguage(pref.getString("Lang") ?? "Light");
+
+    if (pref.getString("Theme") == "Light") {
+      settingsProvider.changeTheme(ThemeMode.light);
+    } else if (pref.getString("Theme") == "Dark") {
+      settingsProvider.changeTheme(ThemeMode.dark);
+    }
   }
 }
