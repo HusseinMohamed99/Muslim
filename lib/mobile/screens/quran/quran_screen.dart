@@ -36,8 +36,6 @@ class QuranScreen extends StatelessWidget {
                 color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,),
             ),
           ),
-          const MyDivider(),
-
           Expanded(
             flex: 5,
             child: Stack(

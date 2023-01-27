@@ -47,36 +47,33 @@ class _HadithScreenState extends State<HadithScreen> {
             ),
           ),
         ),
-        const MyDivider(),
-             Expanded(
-                flex: 5,
-                child: ListView.separated(
-                  separatorBuilder: (_, index) {
-                    return HadithTitle(allHadithList[index]);
-                  },
-                  itemCount: allHadithList.length + 1,
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      width: double.infinity,
-                      height: 3.0,
-                      color: Theme.of(context).accentColor,
-                    );
-                  },
-                ),
-              )
+        Expanded(
+          flex: 5,
+          child: ListView.separated(
+            separatorBuilder: (_, index) {
+              return HadithTitle(allHadithList[index]);
+            },
+            itemCount: allHadithList.length + 1,
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                width: double.infinity,
+                height: 3.0,
+                color: Theme.of(context).accentColor,
+              );
+            },
+          ),
+        )
       ],
     );
   }
-
-
 
   void loadHadithFile() async {
     var settingsProvider = Provider.of<SettingsProvider>(context);
 
     List<HadithDetailsArg> hadithList = [];
-    String content =
-    settingsProvider.currentLanguage == 'en' ?
-        await rootBundle.loadString('assets/hadith_files/hadith_en.txt') :  await rootBundle.loadString('assets/hadith_files/hadith_ar.txt');
+    String content = settingsProvider.currentLanguage == 'en'
+        ? await rootBundle.loadString('assets/hadith_files/hadith_en.txt')
+        : await rootBundle.loadString('assets/hadith_files/hadith_ar.txt');
     List<String> allHadithContent = content.split("#");
     for (int i = 0; i < allHadithContent.length; i++) {
       String singleHadith = allHadithContent[i].trim();
