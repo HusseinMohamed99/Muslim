@@ -100,7 +100,7 @@ class MyApp extends StatelessWidget {
 
   getValueFromPref() async {
     final pref = await SharedPreferences.getInstance();
-    settingsProvider.changeLanguage(pref.getString("Lang") ?? "Light");
+    settingsProvider.changeLanguage(pref.getString("Lang") ?? "en");
 
     if (pref.getString("Theme") == "Light") {
       settingsProvider.changeTheme(ThemeMode.light);
