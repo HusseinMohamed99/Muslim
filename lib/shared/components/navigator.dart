@@ -5,7 +5,11 @@ void pop(context) {
 }
 
 void navigateTo(context, {required String routeName, Object? arguments}) {
-  Navigator.pushNamed(context, routeName, arguments: arguments);
+  Navigator.pushNamed(
+    context,
+    routeName,
+    arguments: arguments,
+  );
 }
 
 
@@ -16,6 +20,10 @@ void navigateAndFinish(
       Object? arguments,
     }) {
   Navigator.pushNamedAndRemoveUntil(
-      context, routeName, arguments: arguments, (route) => false);
+    context,
+    routeName,
+    arguments: arguments,
+    (route) => false,
+  );
 }
 

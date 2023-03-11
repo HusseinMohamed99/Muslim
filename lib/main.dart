@@ -1,17 +1,15 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:muslim_app/desktop/desktop_screen.dart';
-import 'package:muslim_app/mobile/screens/hadith/hadith_details_screen.dart';
-import 'package:muslim_app/mobile/screens/hadith/hadith_screen.dart';
-import 'package:muslim_app/mobile/screens/home/home_screen.dart';
-import 'package:muslim_app/mobile/screens/quran/quran_screen.dart';
-import 'package:muslim_app/mobile/screens/quran/sura_details_screen.dart';
-import 'package:muslim_app/mobile/screens/radio/radio_screen.dart';
-import 'package:muslim_app/mobile/screens/sebha/sebha_screen.dart';
-import 'package:muslim_app/mobile/screens/settings/settings_screen.dart';
+import 'package:muslim_app/screens/hadith/hadith_details_screen.dart';
+import 'package:muslim_app/screens/hadith/hadith_screen.dart';
+import 'package:muslim_app/screens/home/home_screen.dart';
+import 'package:muslim_app/screens/quran/quran_screen.dart';
+import 'package:muslim_app/screens/quran/sura_details_screen.dart';
+import 'package:muslim_app/screens/radio/radio_screen.dart';
+import 'package:muslim_app/screens/sebha/sebha_screen.dart';
+import 'package:muslim_app/screens/settings/settings_screen.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +18,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  ScreenUtil.ensureScreenSize();
   runApp(
     ChangeNotifierProvider(
       create: (buildContext) => SettingsProvider(),
@@ -42,7 +40,6 @@ class MyApp extends StatelessWidget {
 
   late SettingsProvider settingsProvider;
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     settingsProvider = Provider.of<SettingsProvider>(context);
@@ -60,28 +57,13 @@ class MyApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: AppLocalizations.supportedLocales,
-            locale: Locale(settingsProvider.currentLanguage),
-
-            ///OR
-            // supportedLocales: const [
-            //   Locale('en', ''), // English, no country code
-            //   Locale('ar', ''), // Spanish, no country code
-            // ],
+            locale: Locale(
+              settingsProvider.currentLanguage,
+            ),
             theme: ThemeApp.lightTheme,
             darkTheme: ThemeApp.darkTheme,
             themeMode: settingsProvider.currentTheme,
             debugShowCheckedModeBanner: false,
-            home: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraints) {
-              if (kDebugMode) {
-                print(constraints.minWidth.toInt());
-              }
-              if (constraints.minWidth.toInt() <= 500) {
-                return const HomeScreen();
-              }
-              return const DesktopScreen();
-            }),
-
             routes: {
               HomeScreen.routeName: (_) => const HomeScreen(),
               QuranScreen.routeName: (_) => const QuranScreen(),
@@ -91,9 +73,8 @@ class MyApp extends StatelessWidget {
               SebhaScreen.routeName: (_) => const SebhaScreen(),
               SettingsScreen.routeName: (_) => const SettingsScreen(),
               RadioScreen.routeName: (_) => const RadioScreen(),
-              DesktopScreen.routeName: (_) => const DesktopScreen(),
             },
-            initialRoute: '/',
+            initialRoute: HomeScreen.routeName,
           );
         });
   }

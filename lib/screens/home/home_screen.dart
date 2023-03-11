@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:muslim_app/mobile/screens/hadith/hadith_screen.dart';
-import 'package:muslim_app/mobile/screens/quran/quran_screen.dart';
-import 'package:muslim_app/mobile/screens/radio/radio_screen.dart';
-import 'package:muslim_app/mobile/screens/sebha/sebha_screen.dart';
-import 'package:muslim_app/mobile/screens/settings/settings_screen.dart';
+import 'package:muslim_app/screens/hadith/hadith_screen.dart';
+import 'package:muslim_app/screens/quran/quran_screen.dart';
+import 'package:muslim_app/screens/radio/radio_screen.dart';
+import 'package:muslim_app/screens/sebha/sebha_screen.dart';
+import 'package:muslim_app/screens/settings/settings_screen.dart';
 import 'package:muslim_app/shared/image_path/image_path.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:provider/provider.dart';

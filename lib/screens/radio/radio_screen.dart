@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import 'package:muslim_app/shared/components/size_box.dart';
 
 class RadioScreen extends StatelessWidget {
   static const String routeName = 'RadioScreen';
@@ -11,17 +13,18 @@ class RadioScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(
-              height: 50,
+            Space(
+              height: 50.h,
+              width: 0,
             ),
             Lottie.asset(
               'assets/lottie/radio.zip',
-              width: 500,
+              width: 500.w,
               fit: BoxFit.fill,
             ),
             Lottie.asset(
               'assets/lottie/soon.zip',
-              width: 200,
+              width: 200.w,
               fit: BoxFit.fill,
             )
           ],

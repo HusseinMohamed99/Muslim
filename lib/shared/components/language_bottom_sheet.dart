@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:muslim_app/shared/components/size_box.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
+import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -18,34 +21,46 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
     return Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
-          color:  settingsProvider.isDarkMode() ? const Color(0xff141922) : Colors.white,
+          color: settingsProvider.isDarkMode()
+              ? const Color(0xff141922)
+              : Colors.white,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
-          )
-      ),
-      height: 200,
+          ).r),
+      height: 200.h,
       padding: const EdgeInsets.all(20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           InkWell(
-              onTap: () {
-                settingsProvider.changeLanguage('en');
-              },
-              child: settingsProvider.currentLanguage == 'en'
-                  ? getSelectedItem (AppLocalizations.of(context)!.english,)
-                  : getUnselectedItem (AppLocalizations.of(context)!.english,)),
-          const SizedBox(
-            height: 12,
+            onTap: () {
+              settingsProvider.changeLanguage('en');
+            },
+            child: settingsProvider.currentLanguage == 'en'
+                ? getSelectedItem(
+                    AppLocalizations.of(context)!.english,
+                  )
+                : getUnselectedItem(
+                    AppLocalizations.of(context)!.english,
+                  ),
+          ),
+          Space(
+            height: 12.h,
+            width: 0,
           ),
           InkWell(
-              onTap: () {
-                settingsProvider.changeLanguage('ar');
-              },
-              child: settingsProvider.currentLanguage == 'ar'
-                  ? getSelectedItem(AppLocalizations.of(context)!.arabic,)
-                  : getUnselectedItem(AppLocalizations.of(context)!.arabic,))
+            onTap: () {
+              settingsProvider.changeLanguage('ar');
+            },
+            child: settingsProvider.currentLanguage == 'ar'
+                ? getSelectedItem(
+                    AppLocalizations.of(context)!.arabic,
+                  )
+                : getUnselectedItem(
+                    AppLocalizations.of(context)!.arabic,
+                  ),
+          )
         ],
       ),
     );
@@ -57,14 +72,18 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
       children: [
         Text(
           title,
-          style: Theme.of(context)
-              .textTheme
-              .headline4
-              ?.copyWith(color: Theme.of(context).accentColor),
+          style: Theme.of(context).textTheme.headline4?.copyWith(
+                color: Provider.of<SettingsProvider>(context).isDarkMode()
+                    ? ThemeApp.yellow
+                    : ThemeApp.lightPrimary,
+              ),
         ),
         Icon(
           FontAwesomeIcons.circleCheck,
-          color: Theme.of(context).accentColor,
+          color: Provider.of<SettingsProvider>(context).isDarkMode()
+              ? ThemeApp.yellow
+              : ThemeApp.lightPrimary,
+          size: 24.sp,
         )
       ],
     );

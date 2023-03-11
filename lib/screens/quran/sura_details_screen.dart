@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:muslim_app/model/sura_details.dart';
@@ -8,6 +9,7 @@ import 'package:muslim_app/shared/components/get_verses.dart';
 import 'package:muslim_app/shared/components/indicator.dart';
 import 'package:muslim_app/shared/components/size_box.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
+import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -35,7 +37,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(settingsProvider.getBackgroundImage()),
+          image: AssetImage(
+            settingsProvider.getBackgroundImage(),
+          ),
           fit: BoxFit.fill,
         ),
       ),
@@ -47,7 +51,11 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           ),
         ),
         body: verses.isEmpty
-            ? Center(child: AdaptiveIndicator(os: getOs()))
+            ? Center(
+                child: AdaptiveIndicator(
+                  os: getOs(),
+                ),
+              )
             : SizedBox(
                 width: double.infinity,
                 height: double.infinity,
@@ -57,9 +65,11 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                       : Colors.white,
                   elevation: 12,
                   margin:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 64),
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 64)
+                          .r,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(12).r,
+                  ),
                   child: Column(
                     children: [
                       Row(
@@ -69,20 +79,20 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                               backgroundColor: settingsProvider.isDarkMode()
                                   ? Colors.white
                                   : Colors.black,
-                              radius: 15,
+                              radius: 15.r,
                               child: Icon(
                                 FontAwesomeIcons.circlePlay,
                                 color: settingsProvider.isDarkMode()
                                     ? Colors.black
                                     : Colors.white,
                               )),
-                          const Space(width: 20, height: 0),
+                          Space(width: 20.w, height: 0),
                           Text(
                             settingsProvider.currentLanguage == 'en'
                                 ? 'Sura ${argNames.names}'
                                 : 'سورة ${argNames.names}',
                             style: GoogleFonts.elMessiri(
-                              fontSize: 32,
+                              fontSize: 32.sp,
                               color: settingsProvider.isDarkMode()
                                   ? Colors.white
                                   : Colors.black,
@@ -92,8 +102,10 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                       ),
                       Container(
                         width: double.infinity,
-                        height: 3.0,
-                        color: Theme.of(context).accentColor,
+                        height: 3.0.h,
+                        color: settingsProvider.isDarkMode()
+                            ? ThemeApp.yellow
+                            : ThemeApp.lightPrimary,
                       ),
                       Expanded(
                         child: ListView.builder(
@@ -126,14 +138,14 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   ) {
     var settingsProvider = Provider.of<SettingsProvider>(context);
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12).r,
       alignment: Alignment.center,
       child: Text(
         '$content ${getVerseEndSymbol(index)}',
         textAlign: TextAlign.center,
         textDirection: TextDirection.rtl,
         style: TextStyle(
-          fontSize: 25,
+          fontSize: 25.sp,
           color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
         ),
       ),

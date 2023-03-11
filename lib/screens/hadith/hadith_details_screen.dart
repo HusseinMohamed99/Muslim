@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:muslim_app/model/hadith_details.dart';
@@ -36,7 +37,11 @@ class HadithDetailsScreen extends StatelessWidget {
           ),
         ),
         body: argNames.content.isEmpty
-            ? Center(child: AdaptiveIndicator(os: getOs()))
+            ? Center(
+                child: AdaptiveIndicator(
+                  os: getOs(),
+                ),
+              )
             : SizedBox(
                 width: double.infinity,
                 height: double.infinity,
@@ -46,9 +51,11 @@ class HadithDetailsScreen extends StatelessWidget {
                       : Colors.white,
                   elevation: 12,
                   margin:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 64),
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 64)
+                          .r,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
+                    borderRadius: BorderRadius.circular(12).r,
+                  ),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
@@ -59,19 +66,19 @@ class HadithDetailsScreen extends StatelessWidget {
                                 backgroundColor: settingsProvider.isDarkMode()
                                     ? Colors.white
                                     : Colors.black,
-                                radius: 15,
+                                radius: 15.r,
                                 child: Icon(
                                   FontAwesomeIcons.circlePlay,
                                   color: settingsProvider.isDarkMode()
                                       ? Colors.black
                                       : Colors.white,
                                 )),
-                            const Space(width: 10, height: 0),
+                            Space(width: 10.w, height: 0),
                             FittedBox(
                               child: Text(
                                 argNames.title,
                                 style: GoogleFonts.elMessiri(
-                                  fontSize: 30,
+                                  fontSize: 30.sp,
                                   color: settingsProvider.isDarkMode()
                                       ? Colors.white
                                       : Colors.black,
@@ -82,19 +89,22 @@ class HadithDetailsScreen extends StatelessWidget {
                         ),
                         Container(
                           width: double.infinity,
-                          height: 3.0,
-                          color: ThemeApp.lightPrimary,
+                          height: 3.0.h,
+                          color: settingsProvider.isDarkMode()
+                              ? ThemeApp.yellow
+                              : ThemeApp.lightPrimary,
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 12),
+                                  horizontal: 8, vertical: 12)
+                              .r,
                           alignment: Alignment.center,
                           child: Text(
                             argNames.content,
                             textAlign: TextAlign.center,
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 25.sp,
                               color: settingsProvider.isDarkMode()
                                   ? Colors.white
                                   : Colors.black,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:muslim_app/shared/components/size_box.dart';
 import 'package:muslim_app/shared/image_path/image_path.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
+import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -31,7 +33,9 @@ class _SebhaScreenState extends State<SebhaScreen> {
             children: [
               Image.asset(
                 AssetsPath.sebhaImage,
-                color: Theme.of(context).accentColor,
+                color: settingsProvider.isDarkMode()
+                    ? ThemeApp.yellow
+                    : ThemeApp.lightPrimary,
               ),
               if (sIndex >= 1000)
                 Positioned(
@@ -39,7 +43,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                   child: Text(
                     '$index',
                     style: GoogleFonts.elMessiri(
-                      fontSize: 32,
+                      fontSize: 32.sp,
                       fontWeight: FontWeight.bold,
                       color: settingsProvider.isDarkMode()
                           ? Colors.white
@@ -49,31 +53,31 @@ class _SebhaScreenState extends State<SebhaScreen> {
                 ),
             ],
           ),
-          const Space(width: 0, height: 20),
+          Space(width: 0, height: 20.h),
           Text(
-           AppLocalizations.of(context)!.sebha_numbers,
+            AppLocalizations.of(context)!.sebha_numbers,
             style: GoogleFonts.elMessiri(
-              fontSize: 25,
+              fontSize: 25.sp,
               color:
                   settingsProvider.isDarkMode() ? Colors.white : Colors.black,
             ),
           ),
-          const Space(width: 0, height: 20),
+          Space(width: 0, height: 20.h),
           Stack(
             alignment: Alignment.center,
             children: [
               Container(
-                width: 69,
-                height: 81,
+                width: 69.w,
+                height: 81.h,
                 decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(25.0),
+                  borderRadius: BorderRadius.circular(25.0).r,
                 ),
               ),
               Text(
                 '$sIndex',
                 style: GoogleFonts.elMessiri(
-                  fontSize: 32,
+                  fontSize: 32.sp,
                   fontWeight: FontWeight.bold,
                   color: settingsProvider.isDarkMode()
                       ? Colors.white
@@ -82,7 +86,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
               ),
             ],
           ),
-          const Space(width: 0, height: 20),
+          Space(width: 0, height: 20.h),
           InkWell(
             onTap: () {
               setState(() {
@@ -98,16 +102,19 @@ class _SebhaScreenState extends State<SebhaScreen> {
             },
             child: Container(
               padding:
-                  const EdgeInsets.only(right: 15, left: 15, top: 5, bottom: 5),
+                  const EdgeInsets.only(right: 15, left: 15, top: 5, bottom: 5)
+                      .r,
               decoration: BoxDecoration(
-                color: Theme.of(context).accentColor,
+                color: settingsProvider.isDarkMode()
+                    ? ThemeApp.yellow
+                    : ThemeApp.lightPrimary,
                 borderRadius: BorderRadius.circular(25.0),
               ),
               child: Text(
                 AppLocalizations.of(context)!.subhan_allah,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.elMessiri(
-                  fontSize: 25,
+                  fontSize: 25.sp,
                   fontWeight: FontWeight.bold,
                   color: settingsProvider.isDarkMode()
                       ? Colors.white
