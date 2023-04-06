@@ -4,7 +4,7 @@
 
 | Splash Screen | 2                       |
 |------|-------------------------------------------|
-|<img src="assets/1.png" width="400">| <img src="assets/2.png" width="400"> |
+|<img src="assets/1.jpg" width="400">| <img src="assets/2.png" width="400"> |
 | 3                                     | 4  Page                                |
 |---------------------------------------------|----------------------------------------------|
 | <img src="assets/3.png" width="400"> | <img src="assets/4.png" width="400"> |
