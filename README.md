@@ -5,7 +5,7 @@
 | Splash Screen | Splash Dark                       |
 |------|-------------------------------------------|
 |<img src="assets/splash.png" width="400">| <img src="assets/splash_dark.png" width="400"> |
-| 3                                     | 4  Page                                |
+| Quran Screen Light                                    | Quran Screen Dark                              |
 | <img src="assets/1.jpg" width="400"> | <img src="assets/7.jpg" width="400"> |
 | 5 Screen                                    | 6 Page                               |
 |----------------------------------------------|----------------------------------------------|
