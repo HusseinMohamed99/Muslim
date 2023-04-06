@@ -2,7 +2,7 @@
 
 
 
-| Splash Screen | 2                       |
+| Splash Screen | Splash Dark                       |
 |------|-------------------------------------------|
 |<img src="assets/splash.png" width="400">| <img src="assets/splash_dark.png" width="400"> |
 | 3                                     | 4  Page                                |
