@@ -12,8 +12,8 @@
 | Sebha Screen Light | sebha Screen Dark                       |
 | <img src="assets/3.jpg" width="400"> | <img src="assets/9.jpg" width="400"> |
 | Settings Screen Light | Settings Screen Dark                       |
-| <img src="assets/4.jpg" width="400"> | <img src="assets/8.jpg" width="400"> |
+| <img src="assets/4.jpg" width="400"> | <img src="assets/10.jpg" width="400"> |
 | Ayet Screen Light | Ayet Screen Dark                       |
-| <img src="assets/5.jpg" width="400"> | <img src="assets/9.jpg" width="400"> |
+| <img src="assets/5.jpg" width="400"> | <img src="assets/11.jpg" width="400"> |
 | Hadith Screen Light | Hadith Screen Dark                       |
-| <img src="assets/6.jpg" width="400"> | <img src="assets/10.jpg" width="400"> |
+| <img src="assets/6.jpg" width="400"> | <img src="assets/12.jpg" width="400"> |
