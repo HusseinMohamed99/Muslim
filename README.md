@@ -6,7 +6,6 @@
 |------|-------------------------------------------|
 |<img src="assets/splash.png" width="400">| <img src="assets/splash_dark.png" width="400"> |
 | 3                                     | 4  Page                                |
-
 | <img src="assets/3.jpg" width="400"> | <img src="assets/4.jpg" width="400"> |
 | 5 Screen                                    | 6 Page                               |
 |----------------------------------------------|----------------------------------------------|
