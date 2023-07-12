@@ -21,15 +21,15 @@ class ThemeApp {
     ),
     cardColor: Colors.white,
     textTheme: TextTheme(
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         fontSize: 32.sp,
         color: Colors.black,
       ),
-      headline4: TextStyle(
+      headlineMedium: TextStyle(
         fontSize: 28.sp,
         color: Colors.black,
       ),
-      subtitle2: TextStyle(
+      titleSmall: TextStyle(
         fontSize: 14.sp,
         color: Colors.black,
       ),
@@ -88,15 +88,15 @@ class ThemeApp {
       ),
     ),
     textTheme: TextTheme(
-      headline6: TextStyle(
+      titleLarge: TextStyle(
         fontSize: 22.sp,
         color: Colors.white,
       ),
-      headline4: TextStyle(
+      headlineMedium: TextStyle(
         fontSize: 28.sp,
         color: Colors.white,
       ),
-      subtitle2: TextStyle(
+      titleSmall: TextStyle(
         fontSize: 14.sp,
         color: Colors.white,
       ),

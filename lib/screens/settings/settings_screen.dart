@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:muslim_app/shared/components/language_bottom_sheet.dart';
-import 'package:muslim_app/shared/components/theme_bottom_sheet.dart';
 import 'package:muslim_app/shared/components/size_box.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:muslim_app/shared/components/theme_bottom_sheet.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +29,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
           Text(
             AppLocalizations.of(context)!.theme,
-            style: Theme.of(context).textTheme.subtitle2!.copyWith(
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.sp,
                 ),
@@ -66,8 +66,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           ? AppLocalizations.of(context)!.dark
                           : AppLocalizations.of(context)!.light,
                       style: settingsProvider.currentLanguage == 'en'
-                          ? Theme.of(context).textTheme.headline6
-                          : Theme.of(context).textTheme.headline6!.copyWith(
+                          ? Theme.of(context).textTheme.titleLarge
+                          : Theme.of(context).textTheme.titleLarge!.copyWith(
                                 fontSize: 20.sp,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -86,7 +86,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Space(width: 0, height: 24.h),
           Text(
             AppLocalizations.of(context)!.language,
-            style: Theme.of(context).textTheme.subtitle2!.copyWith(
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.sp,
                 ),
@@ -126,8 +126,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           ? AppLocalizations.of(context)!.english
                           : AppLocalizations.of(context)!.arabic,
                       style: settingsProvider.currentLanguage == 'en'
-                          ? Theme.of(context).textTheme.headline6
-                          : Theme.of(context).textTheme.headline6!.copyWith(
+                          ? Theme.of(context).textTheme.titleLarge
+                          : Theme.of(context).textTheme.titleLarge!.copyWith(
                                 fontSize: 20.sp,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -146,7 +146,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           Space(width: 0, height: 24.h),
           Text(
             'GitHub',
-            style: Theme.of(context).textTheme.subtitle2!.copyWith(
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.sp,
                 ),
@@ -181,7 +181,7 @@ You can develop it from my GitHub https://github.com/HusseinMohamed99''');
                     Space(width: 10.w, height: 0),
                     Text(
                       'GitHub',
-                      style: Theme.of(context).textTheme.headline6!.copyWith(
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                           ),
@@ -200,7 +200,7 @@ You can develop it from my GitHub https://github.com/HusseinMohamed99''');
           Space(width: 0, height: 24.h),
           Text(
             'WebSite',
-            style: Theme.of(context).textTheme.subtitle2!.copyWith(
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 20.sp,
                 ),
@@ -241,7 +241,7 @@ You can connect with me from my Portfolio https://zaap.bio/HusseinMohamed''');
                     ),
                     Text(
                       'My Portfolio',
-                      style: Theme.of(context).textTheme.headline6!.copyWith(
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
                             fontSize: 20.sp,
                             fontWeight: FontWeight.bold,
                           ),
