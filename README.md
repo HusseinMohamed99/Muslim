@@ -1,5 +1,7 @@
-# muslim_app
+# Muslim
 
+## Download The App![GitHub All Releases](https://img.shields.io/github/downloads/HusseinMohamed99/Muslim_app/total?color=green)
+<a href="https://github.com/HusseinMohamed99/Socialite/releases/download/v2.0.0/Socialite.apk"><img src="https://playerzon.com/asset/download.png" width="200"></img></a>
 
 
 | Splash Screen | Splash Dark                       |
