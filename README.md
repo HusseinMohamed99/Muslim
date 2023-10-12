@@ -25,3 +25,7 @@ Localized the application for English and Arabic speakers
 | <img src="assets/5.jpg" width="400"> | <img src="assets/11.jpg" width="400"> |
 | Hadith Screen Light | Hadith Screen Dark                       |
 | <img src="assets/6.jpg" width="400"> | <img src="assets/12.jpg" width="400"> |
+
+Muslim
+:-:
+<video src='https://github.com/HusseinMohamed99/Muslim_app/assets/84459939/ba1e0b62-7ab5-40c7-bde7-af515bd6bab3' width=250/> |
