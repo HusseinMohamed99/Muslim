@@ -45,6 +45,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
       ),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text(
             AppLocalizations.of(context)!.app_title,
             style: GoogleFonts.elMessiri(),

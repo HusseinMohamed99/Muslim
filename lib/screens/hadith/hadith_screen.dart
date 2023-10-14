@@ -33,7 +33,7 @@ class _HadithScreenState extends State<HadithScreen> {
         Expanded(
           flex: 2,
           child: Image.asset(
-            AssetsPath.albasmalaImage,
+            AssetsPath.alBasmalaImage,
           ),
         ),
         const MyDivider(),

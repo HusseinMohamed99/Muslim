@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:muslim_app/shared/components/size_box.dart';
 import 'package:muslim_app/shared/image_path/image_path.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
@@ -17,113 +16,135 @@ class SebhaScreen extends StatefulWidget {
   State<SebhaScreen> createState() => _SebhaScreenState();
 }
 
-int sIndex = 0;
-int index = 1;
-
 class _SebhaScreenState extends State<SebhaScreen> {
+  int indexCounter = 0;
+  int currentIndex = 0;
+  List<String> azkar = ['سبحان الله', 'الحمد لله', 'الله اكبر'];
+  double _angle = 2 * 3.14; // angel = 360 degree <initial value>
+
   @override
   Widget build(BuildContext context) {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
-
+    var mediaQuery = MediaQuery.of(context).size;
+    var locale = AppLocalizations.of(context)!;
+    var theme = Theme.of(context);
+    var appProvider = Provider.of<SettingsProvider>(context);
     return Center(
-      child: Column(
-        children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Image.asset(
-                AssetsPath.sebhaImage,
-                color: settingsProvider.isDarkMode()
-                    ? ThemeApp.yellow
-                    : ThemeApp.lightPrimary,
-              ),
-              if (sIndex >= 1000)
-                Positioned(
-                  top: 170,
-                  child: Text(
-                    '$index',
-                    style: GoogleFonts.elMessiri(
-                      fontSize: 32.sp,
-                      fontWeight: FontWeight.bold,
-                      color: settingsProvider.isDarkMode()
-                          ? Colors.white
-                          : Colors.black,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(left: 40),
+                  child: Image.asset(
+                    appProvider.isDarkMode()
+                        ? AssetsPath.sebhaHeaderDarkImage
+                        : AssetsPath.sebhaHeaderImage,
+                    width: mediaQuery.width / 5.64,
+                    height: mediaQuery.height / 8.285,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 72),
+                  child: Transform.rotate(
+                    angle: _angle,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (_angle == 0 || indexCounter == 33) {
+                            _angle = 2 * 3.14;
+                            indexCounter = 0;
+                            (currentIndex == 2)
+                                ? currentIndex = 0
+                                : currentIndex++;
+                          }
+
+                          _angle -= (360 / 33) * (3.16 / 180);
+                          indexCounter++;
+                        });
+                      },
+                      child: Image.asset(
+                        appProvider.isDarkMode()
+                            ? AssetsPath.sebhaBodyDarkImage
+                            : AssetsPath.sebhaBodyImage,
+                        width: mediaQuery.width / 1.776,
+                        height: mediaQuery.height / 3.718,
+                      ),
                     ),
                   ),
                 ),
-            ],
-          ),
-          Space(width: 0, height: 20.h),
-          Text(
-            AppLocalizations.of(context)!.sebha_numbers,
-            style: GoogleFonts.elMessiri(
-              fontSize: 25.sp,
-              color:
-                  settingsProvider.isDarkMode() ? Colors.white : Colors.black,
+              ],
             ),
-          ),
-          Space(width: 0, height: 20.h),
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                width: 70.w,
-                height: 60.h,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(10.0).r,
-                ),
+            SizedBox(height: mediaQuery.height / 20.23),
+            Text(
+              locale.sebha_numbers,
+              style: GoogleFonts.elMessiri(
+                fontSize: 25.sp,
+                color: appProvider.isDarkMode() ? Colors.white : Colors.black,
               ),
-              Text(
-                '$sIndex',
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(
+                vertical: 24,
+              ),
+              alignment: Alignment.center,
+              width: mediaQuery.width * .2,
+              height: mediaQuery.height * .115,
+              decoration: BoxDecoration(
+                color: theme.primaryColor,
+                borderRadius: BorderRadius.circular(10.0).r,
+              ),
+              child: Text(
+                indexCounter.toString(),
                 style: GoogleFonts.elMessiri(
                   fontSize: 32.sp,
                   fontWeight: FontWeight.bold,
-                  color: settingsProvider.isDarkMode()
-                      ? Colors.white
-                      : Colors.black,
-                ),
-              ),
-            ],
-          ),
-          Space(width: 0, height: 20.h),
-          InkWell(
-            onTap: () {
-              setState(() {
-                if (sIndex >= 33) {
-                  setState(() {
-                    sIndex = 0;
-                    index++;
-                  });
-                } else {
-                  sIndex++;
-                }
-              });
-            },
-            child: Container(
-              padding:
-                  const EdgeInsets.only(right: 15, left: 15, top: 5, bottom: 5)
-                      .r,
-              decoration: BoxDecoration(
-                color: settingsProvider.isDarkMode()
-                    ? ThemeApp.yellow
-                    : ThemeApp.lightPrimary,
-                borderRadius: BorderRadius.circular(25.0),
-              ),
-              child: Text(
-                AppLocalizations.of(context)!.subhan_allah,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.elMessiri(
-                  fontSize: 25.sp,
-                  fontWeight: FontWeight.bold,
-                  color: settingsProvider.isDarkMode()
-                      ? Colors.white
-                      : Colors.black,
+                  color: appProvider.isDarkMode() ? Colors.white : Colors.black,
                 ),
               ),
             ),
-          ),
-        ],
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 90),
+              child: OutlinedButton(
+                onPressed: () {
+                  if (currentIndex == 2) {
+                    currentIndex = 0;
+                  } else {
+                    currentIndex++;
+                  }
+                  setState(() {
+                    indexCounter = 0;
+                    _angle = 2 * 3.14;
+                  });
+                },
+                style: OutlinedButton.styleFrom(
+                  backgroundColor: appProvider.isDarkMode()
+                      ? ThemeApp.yellow
+                      : ThemeApp.lightPrimary,
+                  padding: const EdgeInsets.only(
+                      right: 15, left: 15, top: 5, bottom: 5),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.horizontal(
+                      right: Radius.circular(50),
+                      left: Radius.circular(50),
+                    ),
+                  ),
+                ),
+                child: Text(
+                  azkar[currentIndex],
+                  style: GoogleFonts.elMessiri(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                    color:
+                        appProvider.isDarkMode() ? Colors.white : Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

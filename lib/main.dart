@@ -45,38 +45,39 @@ class MyApp extends StatelessWidget {
     settingsProvider = Provider.of<SettingsProvider>(context);
     getValueFromPref();
     return ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) {
-          return MaterialApp(
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: AppLocalizations.supportedLocales,
-            locale: Locale(
-              settingsProvider.currentLanguage,
-            ),
-            theme: ThemeApp.lightTheme,
-            darkTheme: ThemeApp.darkTheme,
-            themeMode: settingsProvider.currentTheme,
-            debugShowCheckedModeBanner: false,
-            routes: {
-              HomeScreen.routeName: (_) => const HomeScreen(),
-              QuranScreen.routeName: (_) => const QuranScreen(),
-              SuraDetailsScreen.routeName: (_) => const SuraDetailsScreen(),
-              HadithScreen.routeName: (_) => const HadithScreen(),
-              HadithDetailsScreen.routeName: (_) => const HadithDetailsScreen(),
-              SebhaScreen.routeName: (_) => const SebhaScreen(),
-              SettingsScreen.routeName: (_) => const SettingsScreen(),
-              RadioScreen.routeName: (_) => const RadioScreen(),
-            },
-            initialRoute: HomeScreen.routeName,
-          );
-        });
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: Locale(
+            settingsProvider.currentLanguage,
+          ),
+          theme: ThemeApp.lightTheme,
+          darkTheme: ThemeApp.darkTheme,
+          themeMode: settingsProvider.currentTheme,
+          debugShowCheckedModeBanner: false,
+          routes: {
+            HomeScreen.routeName: (_) => const HomeScreen(),
+            QuranScreen.routeName: (_) => const QuranScreen(),
+            SuraDetailsScreen.routeName: (_) => const SuraDetailsScreen(),
+            HadithScreen.routeName: (_) => const HadithScreen(),
+            HadithDetailsScreen.routeName: (_) => const HadithDetailsScreen(),
+            SebhaScreen.routeName: (_) => const SebhaScreen(),
+            SettingsScreen.routeName: (_) => const SettingsScreen(),
+            RadioScreen.routeName: (_) => const RadioScreen(),
+          },
+          initialRoute: HomeScreen.routeName,
+        );
+      },
+    );
   }
 
   getValueFromPref() async {

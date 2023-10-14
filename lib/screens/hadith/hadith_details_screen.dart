@@ -31,8 +31,9 @@ class HadithDetailsScreen extends StatelessWidget {
       ),
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text(
-           AppLocalizations.of(context)!.app_title,
+            AppLocalizations.of(context)!.app_title,
             style: GoogleFonts.elMessiri(),
           ),
         ),
