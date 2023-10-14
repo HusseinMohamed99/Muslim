@@ -72,6 +72,11 @@ class ThemeApp {
       ),
       selectedLabelStyle: const TextStyle(
         color: Colors.black,
+        fontWeight: FontWeight.bold,
+      ),
+      unselectedLabelStyle: const TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
       ),
       selectedItemColor: Colors.black,
     ),
@@ -115,6 +120,14 @@ class ThemeApp {
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      selectedLabelStyle: const TextStyle(
+        fontWeight: FontWeight.bold,
+        color: yellow,
+      ),
+      unselectedLabelStyle: const TextStyle(
+        color: yellow,
+        fontWeight: FontWeight.bold,
+      ),
       showSelectedLabels: true,
       showUnselectedLabels: false,
       selectedIconTheme: IconThemeData(
@@ -124,9 +137,6 @@ class ThemeApp {
       unselectedIconTheme: IconThemeData(
         size: 30.sp,
         color: Colors.white,
-      ),
-      selectedLabelStyle: const TextStyle(
-        color: yellow,
       ),
       selectedItemColor: yellow,
     ),

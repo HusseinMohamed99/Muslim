@@ -41,7 +41,12 @@ class RadioScreen extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                          backgroundColor: ThemeApp.darkPrimary,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              ThemeApp.lightPrimary),
+                          strokeWidth: 5,
+                        ),
                       );
                     } else if (snapshot.hasError) {
                       return const Center(

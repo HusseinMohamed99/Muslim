@@ -29,122 +29,113 @@ class _SebhaScreenState extends State<SebhaScreen> {
     var theme = Theme.of(context);
     var appProvider = Provider.of<SettingsProvider>(context);
     return Center(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Stack(
-              alignment: Alignment.topCenter,
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(left: 40),
-                  child: Image.asset(
-                    appProvider.isDarkMode()
-                        ? AssetsPath.sebhaHeaderDarkImage
-                        : AssetsPath.sebhaHeaderImage,
-                    width: mediaQuery.width / 5.64,
-                    height: mediaQuery.height / 8.285,
-                  ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(left: 40),
+                child: Image.asset(
+                  appProvider.isDarkMode()
+                      ? AssetsPath.sebhaHeaderDarkImage
+                      : AssetsPath.sebhaHeaderImage,
+                  width: mediaQuery.width / 5.64,
+                  height: mediaQuery.height / 8.285,
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 72),
-                  child: Transform.rotate(
-                    angle: _angle,
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          if (_angle == 0 || indexCounter == 33) {
-                            _angle = 2 * 3.14;
-                            indexCounter = 0;
-                            (currentIndex == 2)
-                                ? currentIndex = 0
-                                : currentIndex++;
-                          }
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 72),
+                child: Transform.rotate(
+                  angle: _angle,
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        if (_angle == 0 || indexCounter == 33) {
+                          _angle = 2 * 3.14;
+                          indexCounter = 0;
+                          (currentIndex == 2)
+                              ? currentIndex = 0
+                              : currentIndex++;
+                        }
 
-                          _angle -= (360 / 33) * (3.16 / 180);
-                          indexCounter++;
-                        });
-                      },
-                      child: Image.asset(
-                        appProvider.isDarkMode()
-                            ? AssetsPath.sebhaBodyDarkImage
-                            : AssetsPath.sebhaBodyImage,
-                        width: mediaQuery.width / 1.776,
-                        height: mediaQuery.height / 3.718,
-                      ),
+                        _angle -= (360 / 33) * (3.16 / 180);
+                        indexCounter++;
+                      });
+                    },
+                    child: Image.asset(
+                      appProvider.isDarkMode()
+                          ? AssetsPath.sebhaBodyDarkImage
+                          : AssetsPath.sebhaBodyImage,
+                      width: mediaQuery.width / 1.776,
+                      height: mediaQuery.height / 3.718,
                     ),
                   ),
                 ),
-              ],
+              ),
+            ],
+          ),
+          SizedBox(height: mediaQuery.height / 20.23),
+          Text(
+            locale.sebha_numbers,
+            style: GoogleFonts.elMessiri(
+              fontSize: 25.sp,
+              color: appProvider.isDarkMode() ? Colors.white : Colors.black,
             ),
-            SizedBox(height: mediaQuery.height / 20.23),
-            Text(
-              locale.sebha_numbers,
+          ),
+          Container(
+            padding: const EdgeInsets.all(5),
+            margin: const EdgeInsets.all(20),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: theme.primaryColor,
+            ),
+            child: Text(
+              indexCounter.toString(),
               style: GoogleFonts.elMessiri(
-                fontSize: 25.sp,
+                fontSize: 32.sp,
+                fontWeight: FontWeight.bold,
                 color: appProvider.isDarkMode() ? Colors.white : Colors.black,
               ),
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(
-                vertical: 24,
-              ),
-              alignment: Alignment.center,
-              width: mediaQuery.width * .2,
-              height: mediaQuery.height * .115,
-              decoration: BoxDecoration(
-                color: theme.primaryColor,
-                borderRadius: BorderRadius.circular(10.0).r,
-              ),
-              child: Text(
-                indexCounter.toString(),
-                style: GoogleFonts.elMessiri(
-                  fontSize: 32.sp,
-                  fontWeight: FontWeight.bold,
-                  color: appProvider.isDarkMode() ? Colors.white : Colors.black,
+          ),
+          OutlinedButton(
+            onPressed: () {
+              if (currentIndex == 2) {
+                currentIndex = 0;
+              } else {
+                currentIndex++;
+              }
+              setState(() {
+                indexCounter = 0;
+                _angle = 2 * 3.14;
+              });
+            },
+            style: OutlinedButton.styleFrom(
+              backgroundColor: appProvider.isDarkMode()
+                  ? ThemeApp.yellow
+                  : ThemeApp.lightPrimary,
+              padding:
+                  const EdgeInsets.only(right: 15, left: 15, top: 5, bottom: 5),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.horizontal(
+                  right: Radius.circular(10),
+                  left: Radius.circular(10),
                 ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 90),
-              child: OutlinedButton(
-                onPressed: () {
-                  if (currentIndex == 2) {
-                    currentIndex = 0;
-                  } else {
-                    currentIndex++;
-                  }
-                  setState(() {
-                    indexCounter = 0;
-                    _angle = 2 * 3.14;
-                  });
-                },
-                style: OutlinedButton.styleFrom(
-                  backgroundColor: appProvider.isDarkMode()
-                      ? ThemeApp.yellow
-                      : ThemeApp.lightPrimary,
-                  padding: const EdgeInsets.only(
-                      right: 15, left: 15, top: 5, bottom: 5),
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.horizontal(
-                      right: Radius.circular(50),
-                      left: Radius.circular(50),
-                    ),
-                  ),
-                ),
-                child: Text(
-                  azkar[currentIndex],
-                  style: GoogleFonts.elMessiri(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.bold,
-                    color:
-                        appProvider.isDarkMode() ? Colors.white : Colors.black,
-                  ),
-                ),
+            child: Text(
+              azkar[currentIndex],
+              style: GoogleFonts.elMessiri(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.bold,
+                color: appProvider.isDarkMode() ? Colors.white : Colors.black,
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
