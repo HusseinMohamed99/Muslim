@@ -33,4 +33,4 @@ Localized the application for English and Arabic speakers
 
 Muslim
 :-:
-<video src='https://github.com/HusseinMohamed99/Muslim_app/assets/84459939/ce6fd3bc-ea2e-4a3c-ba2c-9d07968d73b8' width=250/>
+<video src='https://github.com/HusseinMohamed99/Muslim_app/assets/84459939/ce6fd3bc-ea2e-4a3c-ba2c-9d07968d73b8' width=250/>|
