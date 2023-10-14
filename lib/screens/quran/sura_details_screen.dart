@@ -145,7 +145,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         '$content ${getVerseEndSymbol(index)}',
         textAlign: TextAlign.center,
         textDirection: TextDirection.rtl,
-        style: TextStyle(
+        style: GoogleFonts.amiriQuran(
           fontSize: 25.sp,
           color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
         ),
