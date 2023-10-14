@@ -110,7 +110,7 @@ class HadithTitle extends StatelessWidget {
           hadith.title,
           textAlign: TextAlign.center,
           style: GoogleFonts.elMessiri(
-            fontSize: 32.sp,
+            fontSize: 25.sp,
             color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
           ),
         ),

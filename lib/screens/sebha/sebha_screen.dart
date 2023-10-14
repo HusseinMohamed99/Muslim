@@ -67,11 +67,11 @@ class _SebhaScreenState extends State<SebhaScreen> {
             alignment: Alignment.center,
             children: [
               Container(
-                width: 69.w,
-                height: 81.h,
+                width: 70.w,
+                height: 60.h,
                 decoration: BoxDecoration(
                   color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.circular(25.0).r,
+                  borderRadius: BorderRadius.circular(10.0).r,
                 ),
               ),
               Text(
@@ -90,7 +90,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
           InkWell(
             onTap: () {
               setState(() {
-                if (sIndex >= 1000) {
+                if (sIndex >= 33) {
                   setState(() {
                     sIndex = 0;
                     index++;

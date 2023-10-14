@@ -49,7 +49,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     Container(
                       width: 60.w,
-                      height: 60.h,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
@@ -106,7 +105,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   children: [
                     Container(
                       width: 60.w,
-                      height: 60.h,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
@@ -167,7 +165,6 @@ You can develop it from my GitHub https://github.com/HusseinMohamed99''');
                   children: [
                     Container(
                       width: 60.w,
-                      height: 60.h,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
@@ -224,7 +221,6 @@ You can connect with me from my Portfolio https://zaap.bio/HusseinMohamed''');
                   children: [
                     Container(
                       width: 60.w,
-                      height: 60.h,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,

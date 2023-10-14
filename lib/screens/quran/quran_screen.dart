@@ -130,7 +130,7 @@ class SuraTitle extends StatelessWidget {
                   color: settingsProvider.isDarkMode()
                       ? Colors.white
                       : Colors.black,
-                  fontSize: 32.sp,
+                  fontSize: 25.sp,
                 ),
               ),
               Text(
@@ -140,7 +140,7 @@ class SuraTitle extends StatelessWidget {
                   color: settingsProvider.isDarkMode()
                       ? Colors.white
                       : Colors.black,
-                  fontSize: 32.sp,
+                  fontSize: 25.sp,
                 ),
               ),
             ],
