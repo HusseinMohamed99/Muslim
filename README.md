@@ -22,7 +22,7 @@ Localized the application for English and Arabic speakers
 <img src="https://github.com/HusseinMohamed99/Muslim_app/assets/84459939/e12eddc6-505d-4cbc-8d34-e3a456a3184d" width="250" />
  <img src="https://github.com/HusseinMohamed99/Muslim_app/assets/84459939/ef5cdbf0-04cc-4b1f-91ca-05da7ac27049" width="250" />
 <img src="https://github.com/HusseinMohamed99/Muslim_app/assets/84459939/df267b56-69b0-4fdf-85db-66b3eb404549" width="250" />
-<img src=" https://github.com/HusseinMohamed99/Muslim_app/assets/84459939/32ff6b6b-eaaa-4272-b405-007fe34b23fb" width="250" />
+<img src="https://github.com/HusseinMohamed99/Muslim_app/assets/84459939/32ff6b6b-eaaa-4272-b405-007fe34b23fb" width="250" />
 <img src="https://github.com/HusseinMohamed99/Muslim_app/assets/84459939/d75e0314-1237-47be-aa94-7d7323d73ddf" width="250" />
 <img src="https://github.com/HusseinMohamed99/Muslim_app/assets/84459939/6094a563-046a-462f-8eb0-d4ec7525571a" width="250" />
  <img src="https://github.com/HusseinMohamed99/Muslim_app/assets/84459939/e3054035-ea42-42ee-ad3c-d4edabeaceb6" width="250" />
