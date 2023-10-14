@@ -7,94 +7,66 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:muslim_app/model/radio_model.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
+import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
 
-class RadioScreen extends StatefulWidget {
+class RadioScreen extends StatelessWidget {
   const RadioScreen({super.key});
   static const String routeName = 'RadioScreen';
-
-  @override
-  State<RadioScreen> createState() => _RadioScreenState();
-}
-
-class _RadioScreenState extends State<RadioScreen> {
-  late AudioPlayer audioPlayer;
-
-  @override
-  void initState() {
-    super.initState();
-    audioPlayer = AudioPlayer();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    audioPlayer.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    var settingsProvider = Provider.of<SettingsProvider>(context);
-
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(settingsProvider.getBackgroundImage()),
-          fit: BoxFit.fill,
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        extendBody: true,
-        body: SizedBox(
-          height: screenHeight,
-          width: screenWidth,
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Image.asset(
-                    'assets/images/radio.png',
-                  ),
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      extendBody: true,
+      body: SizedBox(
+        height: screenHeight,
+        width: screenWidth,
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Image.asset(
+                  'assets/images/radio.png',
                 ),
-                Expanded(
-                  child: FutureBuilder(
-                    future: Api.getRadios(),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      } else if (snapshot.hasError) {
-                        return const Center(
-                          child: Text(
-                            "something went wrong",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                            ),
-                          ),
-                        );
-                      }
-                      var radios = snapshot.data ?? [];
-                      return ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        physics: const PageScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return RadioItem(radios[index], audioPlayer);
-                        },
-                        itemCount: radios.length,
+              ),
+              Expanded(
+                child: FutureBuilder(
+                  future: Api.getRadios(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
                       );
-                    },
-                  ),
-                )
-              ],
-            ),
+                    } else if (snapshot.hasError) {
+                      return const Center(
+                        child: Text(
+                          "something went wrong",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                          ),
+                        ),
+                      );
+                    }
+                    var radios = snapshot.data ?? [];
+                    return ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      physics: const PageScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return RadioItem(radios[index]);
+                      },
+                      itemCount: radios.length,
+                    );
+                  },
+                ),
+              )
+            ],
           ),
         ),
       ),
@@ -112,10 +84,28 @@ class Api {
   }
 }
 
-class RadioItem extends StatelessWidget {
-  const RadioItem(this.radio, this.audioPlayer, {super.key});
+class RadioItem extends StatefulWidget {
+  const RadioItem(this.radio, {super.key});
   final Radios radio;
-  final AudioPlayer audioPlayer;
+
+  @override
+  State<RadioItem> createState() => _RadioItemState();
+}
+
+class _RadioItemState extends State<RadioItem> {
+  late AudioPlayer audioPlayer;
+
+  @override
+  void initState() {
+    super.initState();
+    audioPlayer = AudioPlayer();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    audioPlayer.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -127,7 +117,7 @@ class RadioItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            radio.name ?? "",
+            widget.radio.name ?? "",
             style: GoogleFonts.elMessiri(
               fontSize: 20.sp,
               color:
@@ -146,21 +136,31 @@ class RadioItem extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Icon-metro.png',
-                  color: Theme.of(context).primaryColor,
+                  color: settingsProvider.isDarkMode()
+                      ? ThemeApp.yellow
+                      : ThemeApp.lightPrimary,
                 ),
               ),
               const SizedBox(
                 width: 10,
               ),
               IconButton(
-                onPressed: () async {
-                  audioPlayer.play(
-                    UrlSource(radio.url ?? ""),
+                onPressed: () {
+                  setState(
+                    () {
+                      audioPlayer.state == PlayerState.playing
+                          ? audioPlayer.pause()
+                          : audioPlayer.play(
+                              UrlSource(widget.radio.url ?? ""),
+                            );
+                    },
                   );
                 },
                 icon: Image.asset(
                   'assets/images/Icon-awesome-play.png',
-                  color: Theme.of(context).primaryColor,
+                  color: settingsProvider.isDarkMode()
+                      ? ThemeApp.yellow
+                      : ThemeApp.lightPrimary,
                 ),
               ),
               IconButton(
@@ -169,7 +169,9 @@ class RadioItem extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/Icon-metro-next.png',
-                  color: Theme.of(context).primaryColor,
+                  color: settingsProvider.isDarkMode()
+                      ? ThemeApp.yellow
+                      : ThemeApp.lightPrimary,
                 ),
               ),
             ],

@@ -48,14 +48,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Row(
                   children: [
                     Container(
-                      width: 60.w,
+                      width: 55,
+                      height: 55,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
                         FontAwesomeIcons.solidMoon,
-                        size: 50.sp,
+                        size: 40.sp,
                         color: Colors.black,
                       ),
                     ),
@@ -104,14 +105,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Row(
                   children: [
                     Container(
-                      width: 60.w,
+                      width: 55,
+                      height: 55,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
                         FontAwesomeIcons.globe,
-                        size: 50.sp,
+                        size: 40.sp,
                         color: Colors.black,
                       ),
                     ),
@@ -164,14 +166,15 @@ You can develop it from my GitHub https://github.com/HusseinMohamed99''');
                 child: Row(
                   children: [
                     Container(
-                      width: 60.w,
+                      width: 55,
+                      height: 55,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
                         FontAwesomeIcons.github,
-                        size: 50.sp,
+                        size: 40.sp,
                         color: Colors.black,
                       ),
                     ),
@@ -220,7 +223,8 @@ You can connect with me from my Portfolio https://zaap.bio/HusseinMohamed''');
                 child: Row(
                   children: [
                     Container(
-                      width: 60.w,
+                      width: 55,
+                      height: 55,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
