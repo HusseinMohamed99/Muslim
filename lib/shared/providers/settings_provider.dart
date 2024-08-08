@@ -6,21 +6,23 @@ class SettingsProvider extends ChangeNotifier {
   ThemeMode currentTheme = ThemeMode.light;
   String currentLanguage = 'en';
 
-  void changeLanguage(String newLanguage)async {
-    final pref =await SharedPreferences.getInstance();
-    if(currentLanguage == newLanguage)return;
+  void changeLanguage(String newLanguage) async {
+    final pref = await SharedPreferences.getInstance();
+    if (currentLanguage == newLanguage) return;
     currentLanguage = newLanguage;
-    pref.setString("Lang", currentLanguage);
+    await pref.setString('Lang', currentLanguage);
     notifyListeners();
   }
 
-  void changeTheme(ThemeMode newMode)async {
-    final pref =await SharedPreferences.getInstance();
-    if (newMode == currentTheme)return;
+  void changeTheme(ThemeMode newMode) async {
+    final pref = await SharedPreferences.getInstance();
+    if (newMode == currentTheme) return;
     currentTheme = newMode;
-    pref.setString("Theme", currentTheme == ThemeMode.light ? "Light" : "Dark");
+    await pref.setString(
+        'Theme', currentTheme == ThemeMode.light ? 'Light' : 'Dark');
     notifyListeners();
   }
+
   bool isDarkMode() {
     return currentTheme == ThemeMode.dark;
   }
@@ -35,4 +37,3 @@ class SettingsProvider extends ChangeNotifier {
         : AssetsPath.backgroundDark;
   }
 }
-

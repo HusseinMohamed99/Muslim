@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:muslim_app/screens/hadith/hadith_details_screen.dart';
@@ -13,12 +14,11 @@ import 'package:muslim_app/screens/settings/settings_screen.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  ScreenUtil.ensureScreenSize();
+  await ScreenUtil.ensureScreenSize();
   runApp(
     ChangeNotifierProvider(
       create: (buildContext) => SettingsProvider(),
@@ -28,15 +28,15 @@ void main() async {
             DeviceOrientation.portraitUp,
             DeviceOrientation.portraitDown,
           ]);
-          return MyApp();
+          return MuslimApp();
         },
       ),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MuslimApp extends StatelessWidget {
+  MuslimApp({super.key});
 
   late SettingsProvider settingsProvider;
 
@@ -82,11 +82,11 @@ class MyApp extends StatelessWidget {
 
   getValueFromPref() async {
     final pref = await SharedPreferences.getInstance();
-    settingsProvider.changeLanguage(pref.getString("Lang") ?? "en");
+    settingsProvider.changeLanguage(pref.getString('Lang') ?? 'en');
 
-    if (pref.getString("Theme") == "Light") {
+    if (pref.getString('Theme') == 'Light') {
       settingsProvider.changeTheme(ThemeMode.light);
-    } else if (pref.getString("Theme") == "Dark") {
+    } else if (pref.getString('Theme') == 'Dark') {
       settingsProvider.changeTheme(ThemeMode.dark);
     }
   }

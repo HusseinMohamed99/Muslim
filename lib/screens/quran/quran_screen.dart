@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:muslim_app/model/quran_details.dart';
@@ -10,11 +11,10 @@ import 'package:muslim_app/shared/image_path/image_path.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranScreen extends StatelessWidget {
   static const String routeName = 'QuranScreen';
-  const QuranScreen({Key? key}) : super(key: key);
+  const QuranScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +98,7 @@ class SuraTitle extends StatelessWidget {
   final String numbers;
   final int index;
 
-  const SuraTitle(this.names, this.numbers, this.index, {Key? key})
-      : super(key: key);
+  const SuraTitle(this.names, this.numbers, this.index, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -32,5 +32,6 @@ flutter:
   uses-material-design: true
   assets: 
     - assets/images/
-    - 'assets/quran_files/'
-    - 'assets/hadith_files/'
+    - assets/quran_files/
+    - assets/hadith_files/
+    

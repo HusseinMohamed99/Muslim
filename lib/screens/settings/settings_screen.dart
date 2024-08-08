@@ -11,7 +11,8 @@ import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
+
   static const String routeName = 'SettingsScreen';
 
   @override
@@ -42,9 +43,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Padding(
               padding: const EdgeInsets.all(8.0).r,
               child: InkWell(
-                onTap: () {
-                  showThemeBottomSheet();
-                },
+                onTap: showThemeBottomSheet,
                 child: Row(
                   children: [
                     Container(
@@ -99,9 +98,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Padding(
               padding: const EdgeInsets.all(8.0).r,
               child: InkWell(
-                onTap: () {
-                  showLanguageBottomSheet();
-                },
+                onTap: showLanguageBottomSheet,
                 child: Row(
                   children: [
                     Container(

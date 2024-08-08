@@ -10,7 +10,7 @@ class AssetsPath {
       'assets/images/sebha_head_header_dark.png';
   static const String sebhaBodyImage = 'assets/images/sebha_head_body.png';
   static const String sebhaHeaderImage = 'assets/images/sebha_head_header.png';
-  static const String alBasmalaImage = 'assets/images/alBasmala.png';
+  static const String alBasmalaImage = 'assets/images/albasmala.png';
   static const String hadithIcon = 'assets/images/hadith_icon.png';
   static const String quranIcon = 'assets/images/quran_icon.png';
   static const String radioIcon = 'assets/images/radio_icon.png';

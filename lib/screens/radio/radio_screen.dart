@@ -51,7 +51,7 @@ class RadioScreen extends StatelessWidget {
                     } else if (snapshot.hasError) {
                       return const Center(
                         child: Text(
-                          "something went wrong",
+                          'something went wrong',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20,
@@ -81,7 +81,7 @@ class RadioScreen extends StatelessWidget {
 
 class Api {
   static Future<List<Radios>> getRadios() async {
-    Uri url = Uri.https("mp3quran.net", "/api/v3/radios");
+    Uri url = Uri.https('mp3quran.net', '/api/v3/radios');
     http.Response response = await http.get(url);
     var data = jsonDecode(utf8.decode(response.bodyBytes));
     RadioModel radioResponse = RadioModel.fromJson(data);
@@ -122,7 +122,7 @@ class _RadioItemState extends State<RadioItem> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            widget.radio.name ?? "",
+            widget.radio.name ?? '',
             style: GoogleFonts.elMessiri(
               fontSize: 20.sp,
               color:
@@ -156,7 +156,7 @@ class _RadioItemState extends State<RadioItem> {
                       audioPlayer.state == PlayerState.playing
                           ? audioPlayer.pause()
                           : audioPlayer.play(
-                              UrlSource(widget.radio.url ?? ""),
+                              UrlSource(widget.radio.url ?? ''),
                             );
                     },
                   );
@@ -170,7 +170,7 @@ class _RadioItemState extends State<RadioItem> {
               ),
               IconButton(
                 onPressed: () async {
-                  audioPlayer.pause();
+                  await audioPlayer.pause();
                 },
                 icon: Image.asset(
                   'assets/images/Icon-metro-next.png',
