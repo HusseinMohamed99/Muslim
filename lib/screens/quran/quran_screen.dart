@@ -52,39 +52,30 @@ class QuranScreen extends StatelessWidget {
                     ? ThemeApp.yellow
                     : ThemeApp.lightPrimary,
               ),
-              settingsProvider.currentLanguage == 'ar'
-                  ? ListView.separated(
-                      separatorBuilder: (_, index) {
-                        return SuraTitle(QuranDetails.namesArabic[index],
-                            QuranDetails.numbersArabic[index], index);
-                      },
-                      itemCount: QuranDetails.namesArabic.length + 1,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          width: double.infinity,
-                          height: 3.0.h,
-                          color: settingsProvider.isDarkMode()
-                              ? ThemeApp.yellow
-                              : ThemeApp.lightPrimary,
-                        );
-                      },
-                    )
-                  : ListView.separated(
-                      separatorBuilder: (_, index) {
-                        return SuraTitle(QuranDetails.namesEnglish[index],
-                            QuranDetails.numbersEnglish[index], index);
-                      },
-                      itemCount: QuranDetails.namesEnglish.length + 1,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          width: double.infinity,
-                          height: 3.0.h,
-                          color: settingsProvider.isDarkMode()
-                              ? ThemeApp.yellow
-                              : ThemeApp.lightPrimary,
-                        );
-                      },
-                    ),
+              ListView.separated(
+                separatorBuilder: (_, index) {
+                  return SuraTitle(
+                      settingsProvider.currentLanguage == 'ar'
+                          ? QuranDetails.namesArabic[index]
+                          : QuranDetails.namesEnglish[index],
+                      settingsProvider.currentLanguage == 'ar'
+                          ? QuranDetails.numbersArabic[index]
+                          : QuranDetails.numbersEnglish[index],
+                      index);
+                },
+                itemCount: settingsProvider.currentLanguage == 'ar'
+                    ? QuranDetails.namesArabic.length + 1
+                    : QuranDetails.namesEnglish.length + 1,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    width: double.infinity,
+                    height: 3.0.h,
+                    color: settingsProvider.isDarkMode()
+                        ? ThemeApp.yellow
+                        : ThemeApp.lightPrimary,
+                  );
+                },
+              ),
             ],
           ),
         ),
@@ -122,14 +113,17 @@ class SuraTitle extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                names,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.elMessiri(
-                  color: settingsProvider.isDarkMode()
-                      ? Colors.white
-                      : Colors.black,
-                  fontSize: 25.sp,
+              SizedBox(
+                width: 100.w,
+                child: Text(
+                  names,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.elMessiri(
+                    color: settingsProvider.isDarkMode()
+                        ? Colors.white
+                        : Colors.black,
+                    fontSize: 20.sp,
+                  ),
                 ),
               ),
               Text(
@@ -139,7 +133,7 @@ class SuraTitle extends StatelessWidget {
                   color: settingsProvider.isDarkMode()
                       ? Colors.white
                       : Colors.black,
-                  fontSize: 25.sp,
+                  fontSize: 20.sp,
                 ),
               ),
             ],

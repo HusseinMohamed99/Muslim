@@ -66,8 +66,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                       : Colors.white,
                   elevation: 12,
                   margin:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 64)
-                          .r,
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 20).r,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12).r,
                   ),
@@ -76,27 +75,31 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          Space(width: 5.w, height: 0),
                           CircleAvatar(
-                              backgroundColor: settingsProvider.isDarkMode()
-                                  ? Colors.white
-                                  : Colors.black,
-                              radius: 15.r,
-                              child: Icon(
-                                FontAwesomeIcons.circlePlay,
-                                color: settingsProvider.isDarkMode()
-                                    ? Colors.black
-                                    : Colors.white,
-                              )),
-                          Space(width: 20.w, height: 0),
-                          Text(
-                            settingsProvider.currentLanguage == 'en'
-                                ? 'Sura ${argNames.names}'
-                                : 'سورة ${argNames.names}',
-                            style: GoogleFonts.elMessiri(
-                              fontSize: 32.sp,
+                            backgroundColor: settingsProvider.isDarkMode()
+                                ? Colors.white
+                                : Colors.black,
+                            radius: 15.r,
+                            child: Icon(
+                              FontAwesomeIcons.circlePlay,
                               color: settingsProvider.isDarkMode()
-                                  ? Colors.white
-                                  : Colors.black,
+                                  ? Colors.black
+                                  : Colors.white,
+                            ),
+                          ),
+                          Space(width: 20.w, height: 0),
+                          Expanded(
+                            child: Text(
+                              settingsProvider.currentLanguage == 'en'
+                                  ? 'Sura ${argNames.names}'
+                                  : 'سورة ${argNames.names}',
+                              style: GoogleFonts.elMessiri(
+                                fontSize: 25.sp,
+                                color: settingsProvider.isDarkMode()
+                                    ? Colors.white
+                                    : Colors.black,
+                              ),
                             ),
                           ),
                         ],

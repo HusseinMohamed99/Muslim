@@ -52,8 +52,7 @@ class HadithDetailsScreen extends StatelessWidget {
                       : Colors.white,
                   elevation: 12,
                   margin:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 64)
-                          .r,
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 20).r,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12).r,
                   ),
@@ -61,8 +60,9 @@ class HadithDetailsScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
+                            Space(width: 10.w, height: 0),
                             CircleAvatar(
                                 backgroundColor: settingsProvider.isDarkMode()
                                     ? Colors.white
@@ -74,18 +74,17 @@ class HadithDetailsScreen extends StatelessWidget {
                                       ? Colors.black
                                       : Colors.white,
                                 )),
-                            Space(width: 10.w, height: 0),
-                            FittedBox(
-                              child: Text(
-                                argNames.title,
-                                style: GoogleFonts.elMessiri(
-                                  fontSize: 30.sp,
-                                  color: settingsProvider.isDarkMode()
-                                      ? Colors.white
-                                      : Colors.black,
-                                ),
+                            Text(
+                              argNames.title,
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.elMessiri(
+                                fontSize: 25.sp,
+                                color: settingsProvider.isDarkMode()
+                                    ? Colors.white
+                                    : Colors.black,
                               ),
                             ),
+                            Space(width: 10.w, height: 0),
                           ],
                         ),
                         Container(
@@ -97,8 +96,9 @@ class HadithDetailsScreen extends StatelessWidget {
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(
-                                  horizontal: 8, vertical: 12)
-                              .r,
+                            horizontal: 8,
+                            vertical: 12,
+                          ).r,
                           alignment: Alignment.center,
                           child: Text(
                             argNames.content,

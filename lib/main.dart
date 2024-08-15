@@ -24,10 +24,12 @@ void main() async {
       create: (buildContext) => SettingsProvider(),
       child: Builder(
         builder: (context) {
-          SystemChrome.setPreferredOrientations([
-            DeviceOrientation.portraitUp,
-            DeviceOrientation.portraitDown,
-          ]);
+          SystemChrome.setPreferredOrientations(
+            [
+              DeviceOrientation.portraitUp,
+              DeviceOrientation.portraitDown,
+            ],
+          );
           return MuslimApp();
         },
       ),
