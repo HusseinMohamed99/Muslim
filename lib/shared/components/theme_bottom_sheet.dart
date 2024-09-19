@@ -17,83 +17,68 @@ class ThemeBottomSheet extends StatefulWidget {
 class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
   @override
   Widget build(BuildContext context) {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
+    final settingsProvider = Provider.of<SettingsProvider>(context);
+    final isDarkMode = settingsProvider.isDarkMode();
+    final backgroundColor = isDarkMode ? const Color(0xff141922) : Colors.white;
+
     return Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
-          color: settingsProvider.isDarkMode()
-              ? const Color(0xff141922)
-              : Colors.white,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30),
-            topRight: Radius.circular(30),
-          ).r),
+        color: backgroundColor,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ).r,
+      ),
       height: 200.h,
       padding: const EdgeInsets.all(20).r,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          InkWell(
-            onTap: () {
-              settingsProvider.changeTheme(
-                ThemeMode.light,
-              );
-            },
-            child: settingsProvider.isDarkMode()
-                ? getUnselectedItem(
-                    AppLocalizations.of(context)!.light,
-                  )
-                : getSelectedItem(
-                    AppLocalizations.of(context)!.light,
-                  ),
+          _buildThemeOption(
+            title: AppLocalizations.of(context)!.light,
+            isSelected: !isDarkMode,
+            onTap: () => settingsProvider.changeTheme(ThemeMode.light),
           ),
           const Space(width: 0, height: 12),
-          InkWell(
-            onTap: () {
-              settingsProvider.changeTheme(
-                ThemeMode.dark,
-              );
-            },
-            child: settingsProvider.isDarkMode()
-                ? getSelectedItem(
-                    AppLocalizations.of(context)!.dark,
-                  )
-                : getUnselectedItem(
-                    AppLocalizations.of(context)!.dark,
-                  ),
-          )
+          _buildThemeOption(
+            title: AppLocalizations.of(context)!.dark,
+            isSelected: isDarkMode,
+            onTap: () => settingsProvider.changeTheme(ThemeMode.dark),
+          ),
         ],
       ),
     );
   }
 
-  Widget getSelectedItem(String title) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          title,
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                color: Provider.of<SettingsProvider>(context).isDarkMode()
-                    ? ThemeApp.yellow
-                    : ThemeApp.lightPrimary,
-              ),
-        ),
-        Icon(
-          FontAwesomeIcons.circleCheck,
-          color: Provider.of<SettingsProvider>(context).isDarkMode()
-              ? ThemeApp.yellow
-              : ThemeApp.lightPrimary,
-          size: 24.sp,
-        )
-      ],
-    );
-  }
+  Widget _buildThemeOption({
+    required String title,
+    required bool isSelected,
+    required VoidCallback onTap,
+  }) {
+    final settingsProvider = Provider.of<SettingsProvider>(context);
+    final color =
+        settingsProvider.isDarkMode() ? ThemeApp.yellow : ThemeApp.lightPrimary;
 
-  Widget getUnselectedItem(String title) {
-    return Text(
-      title,
-      style: Theme.of(context).textTheme.headlineMedium,
+    return InkWell(
+      onTap: onTap,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                  color: isSelected ? color : null,
+                ),
+          ),
+          if (isSelected)
+            Icon(
+              FontAwesomeIcons.circleCheck,
+              color: color,
+              size: 24.sp,
+            ),
+        ],
+      ),
     );
   }
 }
