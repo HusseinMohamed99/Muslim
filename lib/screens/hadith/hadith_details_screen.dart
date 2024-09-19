@@ -16,10 +16,16 @@ class HadithDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
+    final settingsProvider = Provider.of<SettingsProvider>(context);
+    final HadithDetailsArg argNames =
+        ModalRoute.of(context)?.settings.arguments as HadithDetailsArg;
 
-    HadithDetailsArg argNames =
-        (ModalRoute.of(context)?.settings.arguments) as HadithDetailsArg;
+    final bool isDarkMode = settingsProvider.isDarkMode();
+    final Color backgroundColor = isDarkMode ? Colors.white : Colors.black;
+    final Color cardColor =
+        isDarkMode ? Theme.of(context).primaryColor : Colors.white;
+    final Color dividerColor =
+        isDarkMode ? ThemeApp.yellow : ThemeApp.lightPrimary;
 
     return Container(
       decoration: BoxDecoration(
@@ -37,16 +43,12 @@ class HadithDetailsScreen extends StatelessWidget {
           ),
         ),
         body: argNames.content.isEmpty
-            ? const Center(
-                child: AdaptiveIndicator(),
-              )
+            ? const Center(child: AdaptiveIndicator())
             : SizedBox(
                 width: double.infinity,
                 height: double.infinity,
                 child: Card(
-                  color: settingsProvider.isDarkMode()
-                      ? Theme.of(context).primaryColor
-                      : Colors.white,
+                  color: cardColor,
                   elevation: 12,
                   margin:
                       const EdgeInsets.symmetric(horizontal: 8, vertical: 20).r,
@@ -56,64 +58,67 @@ class HadithDetailsScreen extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Space(width: 10.w, height: 0),
-                            CircleAvatar(
-                                backgroundColor: settingsProvider.isDarkMode()
-                                    ? Colors.white
-                                    : Colors.black,
-                                radius: 15.r,
-                                child: Icon(
-                                  FontAwesomeIcons.circlePlay,
-                                  color: settingsProvider.isDarkMode()
-                                      ? Colors.black
-                                      : Colors.white,
-                                )),
-                            Text(
-                              argNames.title,
-                              textAlign: TextAlign.center,
-                              style: GoogleFonts.elMessiri(
-                                fontSize: 25.sp,
-                                color: settingsProvider.isDarkMode()
-                                    ? Colors.white
-                                    : Colors.black,
-                              ),
-                            ),
-                            Space(width: 10.w, height: 0),
-                          ],
-                        ),
-                        Container(
-                          width: double.infinity,
-                          height: 3.0.h,
-                          color: settingsProvider.isDarkMode()
-                              ? ThemeApp.yellow
-                              : ThemeApp.lightPrimary,
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 12,
-                          ).r,
-                          alignment: Alignment.center,
-                          child: Text(
-                            argNames.content,
-                            textAlign: TextAlign.center,
-                            textDirection: TextDirection.rtl,
-                            style: TextStyle(
-                              fontSize: 25.sp,
-                              color: settingsProvider.isDarkMode()
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
-                          ),
-                        ),
+                        _buildHeader(context, argNames.title, backgroundColor),
+                        _buildDivider(dividerColor),
+                        _buildContent(argNames.content, isDarkMode),
                       ],
                     ),
                   ),
                 ),
               ),
+      ),
+    );
+  }
+
+  Widget _buildHeader(
+      BuildContext context, String title, Color backgroundColor) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Space(width: 10.w, height: 0),
+        CircleAvatar(
+          backgroundColor: backgroundColor,
+          radius: 15.r,
+          child: Icon(
+            FontAwesomeIcons.circlePlay,
+            color:
+                backgroundColor == Colors.white ? Colors.black : Colors.white,
+          ),
+        ),
+        Text(
+          title,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.elMessiri(
+            fontSize: 25.sp,
+            color:
+                backgroundColor == Colors.white ? Colors.white : Colors.black,
+          ),
+        ),
+        Space(width: 10.w, height: 0),
+      ],
+    );
+  }
+
+  Widget _buildDivider(Color color) {
+    return Container(
+      width: double.infinity,
+      height: 3.0.h,
+      color: color,
+    );
+  }
+
+  Widget _buildContent(String content, bool isDarkMode) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12).r,
+      alignment: Alignment.center,
+      child: Text(
+        content,
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.rtl,
+        style: TextStyle(
+          fontSize: 25.sp,
+          color: isDarkMode ? Colors.white : Colors.black,
+        ),
       ),
     );
   }

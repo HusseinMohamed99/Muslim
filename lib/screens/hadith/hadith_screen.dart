@@ -24,88 +24,107 @@ class _HadithScreenState extends State<HadithScreen> {
   List<HadithDetailsArg> allHadithList = [];
 
   @override
+  void initState() {
+    super.initState();
+    loadHadithFile();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var settingsProvider = Provider.of<SettingsProvider>(context);
-    if (allHadithList.isEmpty) loadHadithFile();
-
     return Column(
       children: [
-        Expanded(
-          flex: 2,
-          child: Image.asset(
-            AssetsPath.alBasmalaImage,
-          ),
-        ),
+        _buildHeaderImage(),
         const MyDivider(),
-        Padding(
-          padding: const EdgeInsets.all(6.0).r,
-          child: Text(
-            AppLocalizations.of(context)!.hadith_name,
-            style: GoogleFonts.elMessiri(
-              fontSize: 25.sp,
-              fontWeight: FontWeight.w500,
-              color:
-                  settingsProvider.isDarkMode() ? Colors.white : Colors.black,
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 5,
-          child: ListView.separated(
-            separatorBuilder: (_, index) {
-              return HadithTitle(allHadithList[index]);
-            },
-            itemCount: allHadithList.length + 1,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                width: double.infinity,
-                height: 3.0,
-                color: settingsProvider.isDarkMode()
-                    ? ThemeApp.yellow
-                    : ThemeApp.lightPrimary,
-              );
-            },
-          ),
-        )
+        _buildTitle(context, settingsProvider),
+        _buildHadithList(settingsProvider),
       ],
     );
   }
 
-  void loadHadithFile() async {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
+  Widget _buildHeaderImage() {
+    return Expanded(
+      flex: 2,
+      child: Image.asset(AssetsPath.alBasmalaImage),
+    );
+  }
 
-    List<HadithDetailsArg> hadithList = [];
-    String content = settingsProvider.currentLanguage == 'en'
-        ? await rootBundle.loadString('assets/hadith_files/hadith_en.txt')
-        : await rootBundle.loadString('assets/hadith_files/hadith_ar.txt');
-    List<String> allHadithContent = content.split('#');
-    for (int i = 0; i < allHadithContent.length; i++) {
-      String singleHadith = allHadithContent[i].trim();
-      int indexOfFirstLine = singleHadith.indexOf('\n');
-      String title = singleHadith.substring(0, indexOfFirstLine);
-      String content = singleHadith.substring(indexOfFirstLine + 1);
-      HadithDetailsArg hadith = HadithDetailsArg(title, content);
-      hadithList.add(hadith);
-    }
-    allHadithList = hadithList;
-    setState(() {});
+  Widget _buildTitle(BuildContext context, SettingsProvider settingsProvider) {
+    return Padding(
+      padding: const EdgeInsets.all(6.0).r,
+      child: Text(
+        AppLocalizations.of(context)!.hadith_name,
+        style: GoogleFonts.elMessiri(
+          fontSize: 25.sp,
+          fontWeight: FontWeight.w500,
+          color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHadithList(SettingsProvider settingsProvider) {
+    return Expanded(
+      flex: 5,
+      child: ListView.separated(
+        itemCount: allHadithList.length,
+        separatorBuilder: (context, index) {
+          return Container(
+            width: double.infinity,
+            height: 3.0,
+            color: settingsProvider.isDarkMode()
+                ? ThemeApp.yellow
+                : ThemeApp.lightPrimary,
+          );
+        },
+        itemBuilder: (BuildContext context, int index) {
+          return HadithTitle(hadith: allHadithList[index]);
+        },
+      ),
+    );
+  }
+
+  Future<void> loadHadithFile() async {
+    if (!mounted) return; // Ensure widget is mounted before accessing context
+    var settingsProvider =
+        Provider.of<SettingsProvider>(context, listen: false);
+
+    String filePath = settingsProvider.currentLanguage == 'en'
+        ? 'assets/hadith_files/hadith_en.txt'
+        : 'assets/hadith_files/hadith_ar.txt';
+    String content = await rootBundle.loadString(filePath);
+
+    List<HadithDetailsArg> hadithList = content.split('#').map((hadithText) {
+      final hadithLines = hadithText.trim().split('\n');
+      return HadithDetailsArg(
+          hadithLines.first, hadithLines.skip(1).join('\n'));
+    }).toList();
+
+    setState(() {
+      allHadithList = hadithList;
+    });
   }
 }
 
 class HadithTitle extends StatelessWidget {
   final HadithDetailsArg hadith;
-  const HadithTitle(this.hadith, {super.key});
+
+  const HadithTitle({required this.hadith, super.key});
 
   @override
   Widget build(BuildContext context) {
     var settingsProvider = Provider.of<SettingsProvider>(context);
     return InkWell(
       onTap: () {
-        navigateTo(context,
-            routeName: HadithDetailsScreen.routeName, arguments: hadith);
+        navigateTo(
+          context,
+          routeName: HadithDetailsScreen.routeName,
+          arguments: hadith,
+        );
       },
       child: Container(
         alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(vertical: 8.0.h),
         child: Text(
           hadith.title,
           textAlign: TextAlign.center,
