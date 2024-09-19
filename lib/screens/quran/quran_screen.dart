@@ -14,86 +14,106 @@ import 'package:provider/provider.dart';
 
 class QuranScreen extends StatelessWidget {
   static const String routeName = 'QuranScreen';
+
   const QuranScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
+    final settingsProvider = Provider.of<SettingsProvider>(context);
+    final isDarkMode = settingsProvider.isDarkMode();
+    final isArabic = settingsProvider.currentLanguage == 'ar';
+
     return Column(
       children: [
-        Expanded(
-          flex: 2,
-          child: Image.asset(
-            AssetsPath.quranImage,
-          ),
-        ),
+        _buildHeaderImage(),
         const MyDivider(),
-        Padding(
-          padding: const EdgeInsets.all(6.0).r,
-          child: Text(
-            AppLocalizations.of(context)!.sura_name,
-            style: GoogleFonts.elMessiri(
-              fontSize: 25.sp,
-              fontWeight: FontWeight.w500,
-              color:
-                  settingsProvider.isDarkMode() ? Colors.white : Colors.black,
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 5,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                height: double.infinity,
-                width: 3.0,
-                color: settingsProvider.isDarkMode()
-                    ? ThemeApp.yellow
-                    : ThemeApp.lightPrimary,
-              ),
-              ListView.separated(
-                separatorBuilder: (_, index) {
-                  return SuraTitle(
-                      settingsProvider.currentLanguage == 'ar'
-                          ? QuranDetails.namesArabic[index]
-                          : QuranDetails.namesEnglish[index],
-                      settingsProvider.currentLanguage == 'ar'
-                          ? QuranDetails.numbersArabic[index]
-                          : QuranDetails.numbersEnglish[index],
-                      index);
-                },
-                itemCount: settingsProvider.currentLanguage == 'ar'
-                    ? QuranDetails.namesArabic.length + 1
-                    : QuranDetails.namesEnglish.length + 1,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    width: double.infinity,
-                    height: 3.0.h,
-                    color: settingsProvider.isDarkMode()
-                        ? ThemeApp.yellow
-                        : ThemeApp.lightPrimary,
-                  );
-                },
-              ),
-            ],
-          ),
-        ),
+        _buildTitle(context, isDarkMode),
+        _buildSuraList(context, isDarkMode, isArabic),
       ],
+    );
+  }
+
+  Widget _buildHeaderImage() {
+    return Expanded(
+      flex: 2,
+      child: Image.asset(AssetsPath.quranImage),
+    );
+  }
+
+  Widget _buildTitle(BuildContext context, bool isDarkMode) {
+    return Padding(
+      padding: const EdgeInsets.all(6.0).r,
+      child: Text(
+        AppLocalizations.of(context)!.sura_name,
+        style: GoogleFonts.elMessiri(
+          fontSize: 25.sp,
+          fontWeight: FontWeight.w500,
+          color: isDarkMode ? Colors.white : Colors.black,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSuraList(BuildContext context, bool isDarkMode, bool isArabic) {
+    return Expanded(
+      flex: 5,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          _buildSeparatorLine(isDarkMode),
+          ListView.separated(
+            separatorBuilder: (context, index) => SuraTitle(
+              names: isArabic
+                  ? QuranDetails.namesArabic[index]
+                  : QuranDetails.namesEnglish[index],
+              numbers: isArabic
+                  ? QuranDetails.numbersArabic[index]
+                  : QuranDetails.numbersEnglish[index],
+              index: index,
+            ),
+            itemCount: (isArabic
+                    ? QuranDetails.namesArabic.length
+                    : QuranDetails.namesEnglish.length) +
+                1,
+            itemBuilder: (context, index) => _buildItemSeparator(isDarkMode),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSeparatorLine(bool isDarkMode) {
+    return Container(
+      height: double.infinity,
+      width: 3.0,
+      color: isDarkMode ? ThemeApp.yellow : ThemeApp.lightPrimary,
+    );
+  }
+
+  Widget _buildItemSeparator(bool isDarkMode) {
+    return Container(
+      width: double.infinity,
+      height: 3.0.h,
+      color: isDarkMode ? ThemeApp.yellow : ThemeApp.lightPrimary,
     );
   }
 }
 
 class SuraTitle extends StatelessWidget {
-  final String names;
-  final String numbers;
+  final String names, numbers;
   final int index;
 
-  const SuraTitle(this.names, this.numbers, this.index, {super.key});
+  const SuraTitle({
+    required this.names,
+    required this.numbers,
+    required this.index,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
+    final settingsProvider = Provider.of<SettingsProvider>(context);
+    final isDarkMode = settingsProvider.isDarkMode();
 
     return InkWell(
       onTap: () {
@@ -113,31 +133,24 @@ class SuraTitle extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(
-                width: 100.w,
-                child: Text(
-                  names,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.elMessiri(
-                    color: settingsProvider.isDarkMode()
-                        ? Colors.white
-                        : Colors.black,
-                    fontSize: 20.sp,
-                  ),
-                ),
-              ),
-              Text(
-                numbers,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.elMessiri(
-                  color: settingsProvider.isDarkMode()
-                      ? Colors.white
-                      : Colors.black,
-                  fontSize: 20.sp,
-                ),
-              ),
+              _buildText(names, isDarkMode),
+              _buildText(numbers, isDarkMode),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildText(String text, bool isDarkMode) {
+    return SizedBox(
+      width: 100.w,
+      child: Text(
+        text,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.elMessiri(
+          fontSize: 20.sp,
+          color: isDarkMode ? Colors.white : Colors.black,
         ),
       ),
     );
