@@ -17,126 +17,128 @@ class SebhaScreen extends StatefulWidget {
 }
 
 class _SebhaScreenState extends State<SebhaScreen> {
-  int indexCounter = 0;
-  int currentIndex = 0;
-  List<String> azkar = ['سبحان الله', 'الحمد لله', 'الله اكبر'];
-  double _angle = 2 * 3.14; // angel = 360 degree <initial value>
+  int _indexCounter = 0;
+  int _currentIndex = 0;
+  final List<String> _azkar = ['سبحان الله', 'الحمد لله', 'الله اكبر'];
+  double _angle = 2 * 3.14; // Initial angle = 360 degrees
 
   @override
   Widget build(BuildContext context) {
-    var mediaQuery = MediaQuery.of(context).size;
-    var locale = AppLocalizations.of(context)!;
-    var theme = Theme.of(context);
-    var appProvider = Provider.of<SettingsProvider>(context);
+    final mediaQuery = MediaQuery.of(context).size;
+    final locale = AppLocalizations.of(context)!;
+    final appProvider = Provider.of<SettingsProvider>(context);
+
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(left: 40),
-                child: Image.asset(
-                  appProvider.isDarkMode()
-                      ? AssetsPath.sebhaHeaderDarkImage
-                      : AssetsPath.sebhaHeaderImage,
-                  width: mediaQuery.width / 5.64,
-                  height: mediaQuery.height / 8.285,
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 72),
-                child: Transform.rotate(
-                  angle: _angle,
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        if (_angle == 0 || indexCounter == 33) {
-                          _angle = 2 * 3.14;
-                          indexCounter = 0;
-                          (currentIndex == 2)
-                              ? currentIndex = 0
-                              : currentIndex++;
-                        }
-
-                        _angle -= (360 / 33) * (3.16 / 180);
-                        indexCounter++;
-                      });
-                    },
-                    child: Image.asset(
-                      appProvider.isDarkMode()
-                          ? AssetsPath.sebhaBodyDarkImage
-                          : AssetsPath.sebhaBodyImage,
-                      width: mediaQuery.width / 1.776,
-                      height: mediaQuery.height / 3.718,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          _buildHeaderImage(appProvider, mediaQuery),
           SizedBox(height: mediaQuery.height / 20.23),
-          Text(
-            locale.sebha_numbers,
-            style: GoogleFonts.elMessiri(
-              fontSize: 25.sp,
-              color: appProvider.isDarkMode() ? Colors.white : Colors.black,
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(5),
-            margin: const EdgeInsets.all(20),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: theme.primaryColor,
-            ),
-            child: Text(
-              indexCounter.toString(),
-              style: GoogleFonts.elMessiri(
-                fontSize: 32.sp,
-                fontWeight: FontWeight.bold,
-                color: appProvider.isDarkMode() ? Colors.white : Colors.black,
-              ),
-            ),
-          ),
-          OutlinedButton(
-            onPressed: () {
-              if (currentIndex == 2) {
-                currentIndex = 0;
-              } else {
-                currentIndex++;
-              }
-              setState(() {
-                indexCounter = 0;
-                _angle = 2 * 3.14;
-              });
-            },
-            style: OutlinedButton.styleFrom(
-              backgroundColor: appProvider.isDarkMode()
-                  ? ThemeApp.yellow
-                  : ThemeApp.lightPrimary,
-              padding:
-                  const EdgeInsets.only(right: 15, left: 15, top: 5, bottom: 5),
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.horizontal(
-                  right: Radius.circular(10),
-                  left: Radius.circular(10),
-                ),
-              ),
-            ),
-            child: Text(
-              azkar[currentIndex],
-              style: GoogleFonts.elMessiri(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.bold,
-                color: appProvider.isDarkMode() ? Colors.white : Colors.black,
-              ),
-            ),
-          ),
+          _buildCounterText(appProvider),
+          _buildAzkarButton(appProvider, locale),
         ],
       ),
     );
+  }
+
+  Widget _buildHeaderImage(SettingsProvider appProvider, Size mediaQuery) {
+    return Stack(
+      alignment: Alignment.topCenter,
+      children: [
+        Container(
+          margin: const EdgeInsets.only(left: 40),
+          child: Image.asset(
+            appProvider.isDarkMode()
+                ? AssetsPath.sebhaHeaderDarkImage
+                : AssetsPath.sebhaHeaderImage,
+            width: mediaQuery.width / 5.64,
+            height: mediaQuery.height / 8.285,
+          ),
+        ),
+        Container(
+          margin: const EdgeInsets.only(top: 72),
+          child: Transform.rotate(
+            angle: _angle,
+            child: GestureDetector(
+              onTap: _onRotateTap,
+              child: Image.asset(
+                appProvider.isDarkMode()
+                    ? AssetsPath.sebhaBodyDarkImage
+                    : AssetsPath.sebhaBodyImage,
+                width: mediaQuery.width / 1.776,
+                height: mediaQuery.height / 3.718,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCounterText(SettingsProvider appProvider) {
+    return Container(
+      padding: const EdgeInsets.all(5),
+      margin: const EdgeInsets.all(20),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Theme.of(context).primaryColor,
+      ),
+      child: Text(
+        _indexCounter.toString(),
+        style: GoogleFonts.elMessiri(
+          fontSize: 32.sp,
+          fontWeight: FontWeight.bold,
+          color: appProvider.isDarkMode() ? Colors.white : Colors.black,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAzkarButton(
+      SettingsProvider appProvider, AppLocalizations locale) {
+    return OutlinedButton(
+      onPressed: _onAzkarButtonPressed,
+      style: OutlinedButton.styleFrom(
+        backgroundColor:
+            appProvider.isDarkMode() ? ThemeApp.yellow : ThemeApp.lightPrimary,
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.horizontal(
+            right: Radius.circular(10),
+            left: Radius.circular(10),
+          ),
+        ),
+      ),
+      child: Text(
+        _azkar[_currentIndex],
+        style: GoogleFonts.elMessiri(
+          fontSize: 20.sp,
+          fontWeight: FontWeight.bold,
+          color: appProvider.isDarkMode() ? Colors.white : Colors.black,
+        ),
+      ),
+    );
+  }
+
+  void _onRotateTap() {
+    setState(() {
+      if (_angle == 0 || _indexCounter == 33) {
+        _angle = 2 * 3.14;
+        _indexCounter = 0;
+        _currentIndex = (_currentIndex == 2) ? 0 : _currentIndex + 1;
+      }
+
+      _angle -= (360 / 33) * (3.14 / 180); // Convert degrees to radians
+      _indexCounter++;
+    });
+  }
+
+  void _onAzkarButtonPressed() {
+    setState(() {
+      _currentIndex = (_currentIndex == 2) ? 0 : _currentIndex + 1;
+      _indexCounter = 0;
+      _angle = 2 * 3.14; // Reset angle
+    });
   }
 }
