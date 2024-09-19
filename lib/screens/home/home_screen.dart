@@ -19,12 +19,12 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-int currentIndex = 0;
-
 class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
+    final settingsProvider = Provider.of<SettingsProvider>(context);
 
     return Container(
       decoration: BoxDecoration(
@@ -41,48 +41,59 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-          currentIndex: currentIndex,
-          items: [
-            BottomNavigationBarItem(
-                backgroundColor: Theme.of(context).primaryColor,
-                icon: const ImageIcon(
-                  AssetImage(AssetsPath.quranIcon),
-                ),
-                label: AppLocalizations.of(context)!.quran),
-            BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
-              icon:
-                  const ImageIcon(AssetImage('assets/images/hadith_icon.png')),
-              label: AppLocalizations.of(context)!.hadith,
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
-              icon: const ImageIcon(AssetImage('assets/images/sebha_icon.png')),
-              label: AppLocalizations.of(context)!.sebha,
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
-              icon: const ImageIcon(AssetImage('assets/images/radio_icon.png')),
-              label: AppLocalizations.of(context)!.radio,
-            ),
-            BottomNavigationBarItem(
-              backgroundColor: Theme.of(context).primaryColor,
-              icon: const Icon(Icons.settings),
-              label: AppLocalizations.of(context)!.settings,
-            ),
-          ],
+          onTap: _onItemTapped,
+          currentIndex: _currentIndex,
+          items: _buildBottomNavigationBarItems(context),
         ),
-        body: screens[currentIndex],
+        body: _screens[_currentIndex],
       ),
     );
   }
 
-  List<Widget> screens = [
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  List<BottomNavigationBarItem> _buildBottomNavigationBarItems(
+      BuildContext context) {
+    return [
+      _buildBottomNavigationBarItem(
+        icon: AssetsPath.quranIcon,
+        label: AppLocalizations.of(context)!.quran,
+      ),
+      _buildBottomNavigationBarItem(
+        icon: 'assets/images/hadith_icon.png',
+        label: AppLocalizations.of(context)!.hadith,
+      ),
+      _buildBottomNavigationBarItem(
+        icon: 'assets/images/sebha_icon.png',
+        label: AppLocalizations.of(context)!.sebha,
+      ),
+      _buildBottomNavigationBarItem(
+        icon: 'assets/images/radio_icon.png',
+        label: AppLocalizations.of(context)!.radio,
+      ),
+      _buildBottomNavigationBarItem(
+        icon: Icons.settings,
+        label: AppLocalizations.of(context)!.settings,
+      ),
+    ];
+  }
+
+  BottomNavigationBarItem _buildBottomNavigationBarItem({
+    required dynamic icon,
+    required String label,
+  }) {
+    return BottomNavigationBarItem(
+      backgroundColor: Theme.of(context).primaryColor,
+      icon: icon is String ? ImageIcon(AssetImage(icon)) : Icon(icon),
+      label: label,
+    );
+  }
+
+  final List<Widget> _screens = [
     const QuranScreen(),
     const HadithScreen(),
     const SebhaScreen(),
