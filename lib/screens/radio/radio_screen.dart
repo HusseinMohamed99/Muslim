@@ -16,63 +16,65 @@ class RadioScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.transparent,
       extendBody: true,
-      body: SizedBox(
-        height: screenHeight,
-        width: screenWidth,
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 1,
-                child: Image.asset(
-                  'assets/images/radio.png',
-                ),
-              ),
-              Expanded(
-                child: FutureBuilder(
-                  future: Api.getRadios(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(
-                        child: CircularProgressIndicator(
-                          backgroundColor: ThemeApp.darkPrimary,
-                          valueColor: AlwaysStoppedAnimation<Color>(
-                              ThemeApp.lightPrimary),
-                          strokeWidth: 5,
-                        ),
-                      );
-                    } else if (snapshot.hasError) {
-                      return const Center(
-                        child: Text(
-                          'something went wrong',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                          ),
-                        ),
-                      );
-                    }
-                    var radios = snapshot.data ?? [];
-                    return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      physics: const PageScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return RadioItem(radios[index]);
-                      },
-                      itemCount: radios.length,
-                    );
-                  },
-                ),
-              )
-            ],
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildImage(),
+            Expanded(child: _buildRadioList()),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildImage() {
+    return Expanded(
+      flex: 1,
+      child: Image.asset('assets/images/radio.png'),
+    );
+  }
+
+  Widget _buildRadioList() {
+    return FutureBuilder<List<Radios>>(
+      future: Api.getRadios(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return _buildLoadingIndicator();
+        } else if (snapshot.hasError) {
+          return _buildError();
+        }
+        var radios = snapshot.data ?? [];
+        return ListView.builder(
+          scrollDirection: Axis.horizontal,
+          physics: const PageScrollPhysics(),
+          itemBuilder: (context, index) => RadioItem(radios[index]),
+          itemCount: radios.length,
+        );
+      },
+    );
+  }
+
+  Widget _buildLoadingIndicator() {
+    return const Center(
+      child: CircularProgressIndicator(
+        backgroundColor: ThemeApp.darkPrimary,
+        valueColor: AlwaysStoppedAnimation<Color>(ThemeApp.lightPrimary),
+        strokeWidth: 5,
+      ),
+    );
+  }
+
+  Widget _buildError() {
+    return const Center(
+      child: Text(
+        'Something went wrong',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 20,
         ),
       ),
     );
@@ -81,10 +83,11 @@ class RadioScreen extends StatelessWidget {
 
 class Api {
   static Future<List<Radios>> getRadios() async {
-    Uri url = Uri.https('mp3quran.net', '/api/v3/radios');
-    http.Response response = await http.get(url);
-    var data = jsonDecode(utf8.decode(response.bodyBytes));
-    RadioModel radioResponse = RadioModel.fromJson(data);
+    final url = Uri.https('mp3quran.net', '/api/v3/radios');
+    final response = await http.get(url);
+    final data =
+        jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+    final radioResponse = RadioModel.fromJson(data);
     return radioResponse.radios ?? [];
   }
 }
@@ -108,81 +111,75 @@ class _RadioItemState extends State<RadioItem> {
 
   @override
   void dispose() {
-    super.dispose();
     audioPlayer.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
+    final settingsProvider = Provider.of<SettingsProvider>(context);
 
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            widget.radio.name ?? '',
-            style: GoogleFonts.elMessiri(
-              fontSize: 20.sp,
-              color:
-                  settingsProvider.isDarkMode() ? Colors.white : Colors.black,
-            ),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                onPressed: () {
-                  audioPlayer.pause();
-                },
-                icon: Image.asset(
-                  'assets/images/Icon-metro.png',
-                  color: settingsProvider.isDarkMode()
-                      ? ThemeApp.yellow
-                      : ThemeApp.lightPrimary,
-                ),
-              ),
-              const SizedBox(
-                width: 10,
-              ),
-              IconButton(
-                onPressed: () {
-                  setState(
-                    () {
-                      audioPlayer.state == PlayerState.playing
-                          ? audioPlayer.pause()
-                          : audioPlayer.play(
-                              UrlSource(widget.radio.url ?? ''),
-                            );
-                    },
-                  );
-                },
-                icon: Image.asset(
-                  'assets/images/Icon-awesome-play.png',
-                  color: settingsProvider.isDarkMode()
-                      ? ThemeApp.yellow
-                      : ThemeApp.lightPrimary,
-                ),
-              ),
-              IconButton(
-                onPressed: () async {
-                  await audioPlayer.pause();
-                },
-                icon: Image.asset(
-                  'assets/images/Icon-metro-next.png',
-                  color: settingsProvider.isDarkMode()
-                      ? ThemeApp.yellow
-                      : ThemeApp.lightPrimary,
-                ),
-              ),
-            ],
-          )
+          _buildRadioName(settingsProvider),
+          const SizedBox(height: 50),
+          _buildControlButtons(settingsProvider),
         ],
       ),
     );
+  }
+
+  Widget _buildRadioName(SettingsProvider settingsProvider) {
+    return Text(
+      widget.radio.name ?? '',
+      style: GoogleFonts.elMessiri(
+        fontSize: 20.sp,
+        color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
+      ),
+    );
+  }
+
+  Widget _buildControlButtons(SettingsProvider settingsProvider) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _buildIconButton('assets/images/Icon-metro.png',
+            () => audioPlayer.pause(), settingsProvider),
+        const SizedBox(width: 10),
+        _buildIconButton(
+          'assets/images/Icon-awesome-play.png',
+          _togglePlayPause,
+          settingsProvider,
+        ),
+        _buildIconButton('assets/images/Icon-metro-next.png',
+            () => audioPlayer.pause(), settingsProvider),
+      ],
+    );
+  }
+
+  Widget _buildIconButton(String assetPath, VoidCallback onPressed,
+      SettingsProvider settingsProvider) {
+    return IconButton(
+      onPressed: onPressed,
+      icon: Image.asset(
+        assetPath,
+        color: settingsProvider.isDarkMode()
+            ? ThemeApp.yellow
+            : ThemeApp.lightPrimary,
+      ),
+    );
+  }
+
+  void _togglePlayPause() {
+    setState(() {
+      if (audioPlayer.state == PlayerState.playing) {
+        audioPlayer.pause();
+      } else {
+        audioPlayer.play(UrlSource(widget.radio.url ?? ''));
+      }
+    });
   }
 }
