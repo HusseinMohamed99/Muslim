@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:muslim_app/model/hadith_details.dart';
 import 'package:muslim_app/shared/adaptive/indicator.dart';
-import 'package:muslim_app/shared/components/indicator.dart';
 import 'package:muslim_app/shared/components/size_box.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
@@ -38,10 +37,8 @@ class HadithDetailsScreen extends StatelessWidget {
           ),
         ),
         body: argNames.content.isEmpty
-            ? Center(
-                child: AdaptiveIndicator(
-                  os: getOs(),
-                ),
+            ? const Center(
+                child: AdaptiveIndicator(),
               )
             : SizedBox(
                 width: double.infinity,

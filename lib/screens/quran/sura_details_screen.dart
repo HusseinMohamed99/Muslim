@@ -7,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:muslim_app/model/sura_details.dart';
 import 'package:muslim_app/shared/adaptive/indicator.dart';
 import 'package:muslim_app/shared/components/get_verses.dart';
-import 'package:muslim_app/shared/components/indicator.dart';
 import 'package:muslim_app/shared/components/size_box.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
@@ -52,10 +51,8 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           ),
         ),
         body: verses.isEmpty
-            ? Center(
-                child: AdaptiveIndicator(
-                  os: getOs(),
-                ),
+            ? const Center(
+                child: AdaptiveIndicator(),
               )
             : SizedBox(
                 width: double.infinity,
