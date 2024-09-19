@@ -75,7 +75,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Space(width: 5.w, height: 0),
+                          Space(width: 20.w, height: 0),
                           CircleAvatar(
                             backgroundColor: settingsProvider.isDarkMode()
                                 ? Colors.white
@@ -88,12 +88,13 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                                   : Colors.white,
                             ),
                           ),
-                          Space(width: 20.w, height: 0),
+                          const SizedBox.shrink(),
                           Expanded(
                             child: Text(
                               settingsProvider.currentLanguage == 'en'
                                   ? 'Sura ${argNames.names}'
                                   : 'سورة ${argNames.names}',
+                              textAlign: TextAlign.center,
                               style: GoogleFonts.elMessiri(
                                 fontSize: 25.sp,
                                 color: settingsProvider.isDarkMode()
@@ -145,7 +146,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12).r,
       alignment: Alignment.center,
       child: Text(
-        '$content ${getVerseEndSymbol(index)}',
+        '$content ${getVerseEndSymbol(index + 1)}',
         textAlign: TextAlign.center,
         textDirection: TextDirection.rtl,
         style: GoogleFonts.amiriQuran(
