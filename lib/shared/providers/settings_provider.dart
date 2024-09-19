@@ -6,34 +6,35 @@ class SettingsProvider extends ChangeNotifier {
   ThemeMode currentTheme = ThemeMode.light;
   String currentLanguage = 'en';
 
-  void changeLanguage(String newLanguage) async {
+  Future<void> _updatePreferences(String key, String value) async {
     final pref = await SharedPreferences.getInstance();
-    if (currentLanguage == newLanguage) return;
-    currentLanguage = newLanguage;
-    await pref.setString('Lang', currentLanguage);
-    notifyListeners();
+    await pref.setString(key, value);
+  }
+
+  void changeLanguage(String newLanguage) async {
+    if (currentLanguage != newLanguage) {
+      currentLanguage = newLanguage;
+      await _updatePreferences('Lang', currentLanguage);
+      notifyListeners();
+    }
   }
 
   void changeTheme(ThemeMode newMode) async {
-    final pref = await SharedPreferences.getInstance();
-    if (newMode == currentTheme) return;
-    currentTheme = newMode;
-    await pref.setString(
-        'Theme', currentTheme == ThemeMode.light ? 'Light' : 'Dark');
-    notifyListeners();
+    if (newMode != currentTheme) {
+      currentTheme = newMode;
+      final themeValue = currentTheme == ThemeMode.light ? 'Light' : 'Dark';
+      await _updatePreferences('Theme', themeValue);
+      notifyListeners();
+    }
   }
 
-  bool isDarkMode() {
-    return currentTheme == ThemeMode.dark;
-  }
+  bool isDarkMode() => currentTheme == ThemeMode.dark;
 
-  void refreshApp() {
-    notifyListeners();
-  }
+  void refreshApp() => notifyListeners();
 
   String getBackgroundImage() {
-    return currentTheme == ThemeMode.light
-        ? AssetsPath.backgroundLight
-        : AssetsPath.backgroundDark;
+    return isDarkMode()
+        ? AssetsPath.backgroundDark
+        : AssetsPath.backgroundLight;
   }
 }
