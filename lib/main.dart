@@ -1,7 +1,9 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim_app/firebase_options.dart';
 import 'package:muslim_app/screens/hadith/hadith_details_screen.dart';
 import 'package:muslim_app/screens/hadith/hadith_screen.dart';
 import 'package:muslim_app/screens/home/home_screen.dart';
@@ -17,6 +19,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await ScreenUtil.ensureScreenSize();
 
   runApp(

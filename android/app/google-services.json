@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "862579859384",
+    "project_id": "muslim-84517",
+    "storage_bucket": "muslim-84517.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862579859384:android:bffdcdd9accb00e5a3b94d",
+        "android_client_info": {
+          "package_name": "com.Dev.Muslim"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtWzbGjFvslotW8zw74h_uGFb47XriBfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
