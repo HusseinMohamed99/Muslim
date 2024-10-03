@@ -58,21 +58,26 @@ class MuslimApplication extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: AppLocalizations.supportedLocales,
-          locale: Locale(settingsProvider.currentLanguage),
-          theme: ThemeApp.lightTheme,
-          darkTheme: ThemeApp.darkTheme,
-          themeMode: settingsProvider.currentTheme,
-          debugShowCheckedModeBanner: false,
-          routes: _buildAppRoutes(),
-          initialRoute: HomeScreen.routeName,
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: const TextScaler.linear(1.0),
+          ),
+          child: MaterialApp(
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: Locale(settingsProvider.currentLanguage),
+            theme: ThemeApp.lightTheme,
+            darkTheme: ThemeApp.darkTheme,
+            themeMode: settingsProvider.currentTheme,
+            debugShowCheckedModeBanner: false,
+            routes: _buildAppRoutes(),
+            initialRoute: HomeScreen.routeName,
+          ),
         );
       },
     );
