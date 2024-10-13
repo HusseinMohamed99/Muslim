@@ -30,11 +30,11 @@ class QuranScreen extends StatelessWidget {
 
   Widget _buildTitle(BuildContext context, bool isDarkMode) {
     return Padding(
-      padding: const EdgeInsets.all(6.0).r,
+      padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 6.h),
       child: Text(
         AppLocalizations.of(context)!.sura_name,
         style: GoogleFonts.elMessiri(
-          fontSize: 25.sp,
+          fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
           fontWeight: FontWeight.w500,
           color: isDarkMode ? Colors.white : Colors.black,
         ),
@@ -73,7 +73,7 @@ class QuranScreen extends StatelessWidget {
   Widget _buildSeparatorLine(bool isDarkMode) {
     return Container(
       height: double.infinity,
-      width: 3.0,
+      width: 3.0.h,
       color: isDarkMode ? ThemeApp.yellow : ThemeApp.lightPrimary,
     );
   }
@@ -114,32 +114,27 @@ class SuraTitle extends StatelessWidget {
           ),
         );
       },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40.0).r,
-        child: Container(
-          alignment: Alignment.center,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _buildText(names, isDarkMode),
-              _buildText(numbers, isDarkMode),
-            ],
-          ),
+      child: Container(
+        alignment: Alignment.center,
+        padding: EdgeInsets.symmetric(horizontal: 40.0.w),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _buildText(names, isDarkMode, context),
+            _buildText(numbers, isDarkMode, context),
+          ],
         ),
       ),
     );
   }
 
-  Widget _buildText(String text, bool isDarkMode) {
-    return SizedBox(
-      width: 100.w,
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
-        style: GoogleFonts.elMessiri(
-          fontSize: 20.sp,
-          color: isDarkMode ? Colors.white : Colors.black,
-        ),
+  Widget _buildText(String text, bool isDarkMode, BuildContext context) {
+    return Text(
+      text,
+      textAlign: TextAlign.center,
+      style: GoogleFonts.elMessiri(
+        fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
+        color: isDarkMode ? Colors.white : Colors.black,
       ),
     );
   }

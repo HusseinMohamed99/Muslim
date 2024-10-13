@@ -33,7 +33,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           automaticallyImplyLeading: false,
           title: Text(
             AppLocalizations.of(context)!.app_title,
-            style: GoogleFonts.elMessiri(),
+            style: GoogleFonts.elMessiri(
+              fontSize: getResponsiveFontSize(context, fontSize: 30.sp),
+            ),
           ),
         ),
         body: _buildBody(context, settingsProvider, argNames),
@@ -53,7 +55,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                   ? Theme.of(context).primaryColor
                   : Colors.white,
               elevation: 12,
-              margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 20).r,
+              margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 20.h),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12).r,
               ),
@@ -90,7 +92,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Space(width: 20.w, height: 0),
+        const Space(width: 20, height: 0),
         CircleAvatar(
           backgroundColor: isDarkMode ? Colors.white : Colors.black,
           radius: 15.r,
@@ -105,7 +107,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
             title,
             textAlign: TextAlign.center,
             style: GoogleFonts.elMessiri(
-              fontSize: 25.sp,
+              fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
               color: isDarkMode ? Colors.white : Colors.black,
             ),
           ),
@@ -126,14 +128,14 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   Widget _buildVerseWidget(
       String content, int index, SettingsProvider settingsProvider) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12).r,
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 12.h),
       alignment: Alignment.center,
       child: Text(
         '$content ${getVerseEndSymbol(index + 1)}',
         textAlign: TextAlign.center,
         textDirection: TextDirection.rtl,
         style: GoogleFonts.amiriQuran(
-          fontSize: 25.sp,
+          fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
           color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
         ),
       ),

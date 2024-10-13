@@ -1,18 +1,13 @@
 import 'dart:convert';
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
-import 'package:muslim_app/firebase_options.dart';
 import 'package:muslim_app/model/hadith_details.dart';
 import 'package:muslim_app/model/quran_details.dart';
 import 'package:muslim_app/model/radio_model.dart';
@@ -26,17 +21,16 @@ import 'package:muslim_app/shared/image_path/image_path.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 part '../../../screens/home/home_screen.dart';
 part '../../../screens/quran/sura_details_screen.dart';
-part './../../../main.dart';
 part './../../../screens/hadith/hadith_details_screen.dart';
 part './../../../screens/hadith/hadith_screen.dart';
 part './../../../screens/settings/settings_screen.dart';
 part './../../../screens/settings/widgets/custom_card_widget.dart';
 part './../../../screens/settings/widgets/title_widget.dart';
 part './../../../shared/components/language_bottom_sheet.dart';
+part './../../../shared/components/responsive_font_size.dart';
 part './../../../shared/components/size_box.dart';
 part './../../../shared/components/theme_bottom_sheet.dart';
 part 'package:muslim_app/screens/quran/quran_screen.dart';

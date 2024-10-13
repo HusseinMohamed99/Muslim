@@ -39,11 +39,11 @@ class _HadithScreenState extends State<HadithScreen> {
 
   Widget _buildTitle(BuildContext context, SettingsProvider settingsProvider) {
     return Padding(
-      padding: const EdgeInsets.all(6.0).r,
+      padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 6.h),
       child: Text(
         AppLocalizations.of(context)!.hadith_name,
         style: GoogleFonts.elMessiri(
-          fontSize: 25.sp,
+          fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
           fontWeight: FontWeight.w500,
           color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
         ),
@@ -59,7 +59,7 @@ class _HadithScreenState extends State<HadithScreen> {
         separatorBuilder: (context, index) {
           return Container(
             width: double.infinity,
-            height: 3.0,
+            height: 3.0.h,
             color: settingsProvider.isDarkMode()
                 ? ThemeApp.yellow
                 : ThemeApp.lightPrimary,
@@ -117,7 +117,7 @@ class HadithTitle extends StatelessWidget {
           hadith.title,
           textAlign: TextAlign.center,
           style: GoogleFonts.elMessiri(
-            fontSize: 25.sp,
+            fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
             color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
           ),
         ),

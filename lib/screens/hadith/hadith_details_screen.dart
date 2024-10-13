@@ -49,7 +49,7 @@ class HadithDetailsScreen extends StatelessWidget {
                       children: [
                         _buildHeader(context, argNames.title, backgroundColor),
                         _buildDivider(dividerColor),
-                        _buildContent(argNames.content, isDarkMode),
+                        _buildContent(argNames.content, isDarkMode, context),
                       ],
                     ),
                   ),
@@ -64,7 +64,7 @@ class HadithDetailsScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Space(width: 10.w, height: 0),
+        const Space(width: 10, height: 0),
         CircleAvatar(
           backgroundColor: backgroundColor,
           radius: 15.r,
@@ -78,12 +78,12 @@ class HadithDetailsScreen extends StatelessWidget {
           title,
           textAlign: TextAlign.center,
           style: GoogleFonts.elMessiri(
-            fontSize: 25.sp,
+            fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
             color:
                 backgroundColor == Colors.white ? Colors.white : Colors.black,
           ),
         ),
-        Space(width: 10.w, height: 0),
+        const Space(width: 10, height: 0),
       ],
     );
   }
@@ -96,16 +96,20 @@ class HadithDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildContent(String content, bool isDarkMode) {
+  Widget _buildContent(
+    String content,
+    bool isDarkMode,
+    BuildContext context,
+  ) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12).r,
+      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 12.h),
       alignment: Alignment.center,
       child: Text(
         content,
         textAlign: TextAlign.center,
         textDirection: TextDirection.rtl,
         style: TextStyle(
-          fontSize: 25.sp,
+          fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
           color: isDarkMode ? Colors.white : Colors.black,
         ),
       ),

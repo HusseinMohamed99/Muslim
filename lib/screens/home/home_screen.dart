@@ -27,7 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           title: Text(
             AppLocalizations.of(context)!.app_title,
-            style: GoogleFonts.elMessiri(),
+            style: GoogleFonts.elMessiri(
+              fontSize: getResponsiveFontSize(context, fontSize: 30.sp),
+            ),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
