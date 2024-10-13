@@ -43,10 +43,15 @@ class CustomCardWidget extends StatelessWidget {
               Text(
                 titleText,
                 style: settingsProvider.currentLanguage == 'en'
-                    ? Theme.of(context).textTheme.titleLarge
+                    ? Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontSize:
+                              getResponsiveFontSize(context, fontSize: 25.sp),
+                          fontWeight: FontWeight.w600,
+                        )
                     : Theme.of(context).textTheme.titleLarge!.copyWith(
-                          fontSize: 20.sp,
-                          fontWeight: FontWeight.bold,
+                          fontSize:
+                              getResponsiveFontSize(context, fontSize: 25.sp),
+                          fontWeight: FontWeight.w600,
                         ),
               ),
               const Spacer(),

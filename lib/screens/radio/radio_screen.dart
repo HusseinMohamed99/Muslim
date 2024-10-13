@@ -125,6 +125,7 @@ class _RadioItemState extends State<RadioItem> {
   Widget _buildRadioName(SettingsProvider settingsProvider) {
     return Text(
       widget.radio.name ?? '',
+      textAlign: TextAlign.center,
       style: GoogleFonts.elMessiri(
         fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
         color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
@@ -143,7 +144,9 @@ class _RadioItemState extends State<RadioItem> {
           height: 0,
         ),
         _buildIconButton(
-          'assets/images/Icon-awesome-play.png',
+          audioPlayer.state == PlayerState.playing
+              ? 'assets/images/pause_icon.png'
+              : 'assets/images/Icon-awesome-play.png',
           _togglePlayPause,
           settingsProvider,
         ),
@@ -159,6 +162,8 @@ class _RadioItemState extends State<RadioItem> {
       onPressed: onPressed,
       icon: Image.asset(
         assetPath,
+        width: 24.w,
+        height: 24.h,
         color: settingsProvider.isDarkMode()
             ? ThemeApp.yellow
             : ThemeApp.lightPrimary,

@@ -12,7 +12,7 @@ class TitleWidget extends StatelessWidget {
       titleText,
       style: Theme.of(context).textTheme.titleSmall!.copyWith(
             fontWeight: FontWeight.bold,
-            fontSize: 20.sp,
+            fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
           ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:muslim_app/core/helpers/export_manager/export_manager.dart';
 import 'package:muslim_app/shared/image_path/image_path.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
@@ -46,7 +47,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
       alignment: Alignment.topCenter,
       children: [
         Container(
-          margin: const EdgeInsets.only(left: 40),
+          margin: EdgeInsets.only(left: 40.w),
           child: Image.asset(
             appProvider.isDarkMode()
                 ? AssetsPath.sebhaHeaderDarkImage
@@ -56,7 +57,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
           ),
         ),
         Container(
-          margin: const EdgeInsets.only(top: 72),
+          margin: EdgeInsets.only(top: 72.h),
           child: Transform.rotate(
             angle: _angle,
             child: GestureDetector(
@@ -77,8 +78,8 @@ class _SebhaScreenState extends State<SebhaScreen> {
 
   Widget _buildCounterText(SettingsProvider appProvider) {
     return Container(
-      padding: const EdgeInsets.all(5),
-      margin: const EdgeInsets.all(20),
+      padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+      margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       alignment: Alignment.center,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
@@ -87,7 +88,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
       child: Text(
         _indexCounter.toString(),
         style: GoogleFonts.elMessiri(
-          fontSize: 32.sp,
+          fontSize: getResponsiveFontSize(context, fontSize: 32.sp),
           fontWeight: FontWeight.bold,
           color: appProvider.isDarkMode() ? Colors.white : Colors.black,
         ),
@@ -102,7 +103,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
       style: OutlinedButton.styleFrom(
         backgroundColor:
             appProvider.isDarkMode() ? ThemeApp.yellow : ThemeApp.lightPrimary,
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.horizontal(
             right: Radius.circular(10),
@@ -113,7 +114,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
       child: Text(
         _azkar[_currentIndex],
         style: GoogleFonts.elMessiri(
-          fontSize: 20.sp,
+          fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
           fontWeight: FontWeight.bold,
           color: appProvider.isDarkMode() ? Colors.white : Colors.black,
         ),

@@ -24,7 +24,7 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
         ).r,
       ),
       height: 200.h,
-      padding: const EdgeInsets.all(20).r,
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -62,6 +62,7 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
             title,
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   color: isSelected ? color : null,
+                  fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
                 ),
           ),
           if (isSelected)

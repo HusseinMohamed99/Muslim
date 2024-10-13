@@ -92,7 +92,7 @@ class ThemeApp {
       ),
       showSelectedLabels: true,
       showUnselectedLabels: false,
-      selectedIconTheme: IconThemeData(size: 36.sp, color: selectedColor),
+      selectedIconTheme: IconThemeData(size: 34.sp, color: selectedColor),
       unselectedIconTheme: IconThemeData(size: 30.sp, color: unselectedColor),
       selectedItemColor: selectedColor,
     );

@@ -18,7 +18,7 @@ class LanguageBottomSheet extends StatelessWidget {
         ),
       ),
       height: 200.h,
-      padding: const EdgeInsets.all(20),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -67,10 +67,10 @@ class LanguageBottomSheet extends StatelessWidget {
       children: [
         Text(
           title,
-          style: Theme.of(context)
-              .textTheme
-              .headlineMedium
-              ?.copyWith(color: textColor),
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                color: textColor,
+                fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
+              ),
         ),
         Icon(
           FontAwesomeIcons.circleCheck,
@@ -84,7 +84,9 @@ class LanguageBottomSheet extends StatelessWidget {
   Widget _getUnselectedItem(BuildContext context, String title) {
     return Text(
       title,
-      style: Theme.of(context).textTheme.headlineMedium,
+      style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+            fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
+          ),
     );
   }
 }
