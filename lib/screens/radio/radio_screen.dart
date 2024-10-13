@@ -35,7 +35,7 @@ class RadioScreen extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return _buildLoadingIndicator();
         } else if (snapshot.hasError) {
-          return _buildError();
+          return _buildError(context);
         }
         var radios = snapshot.data ?? [];
         return ListView.builder(
@@ -58,13 +58,13 @@ class RadioScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildError() {
-    return const Center(
+  Widget _buildError(BuildContext context) {
+    return Center(
       child: Text(
         'Something went wrong',
         style: TextStyle(
           color: Colors.white,
-          fontSize: 20,
+          fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
         ),
       ),
     );
@@ -115,7 +115,7 @@ class _RadioItemState extends State<RadioItem> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildRadioName(settingsProvider),
-          const SizedBox(height: 50),
+          const Space(width: 0, height: 50),
           _buildControlButtons(settingsProvider),
         ],
       ),
@@ -126,7 +126,7 @@ class _RadioItemState extends State<RadioItem> {
     return Text(
       widget.radio.name ?? '',
       style: GoogleFonts.elMessiri(
-        fontSize: 20.sp,
+        fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
         color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
       ),
     );
@@ -138,7 +138,10 @@ class _RadioItemState extends State<RadioItem> {
       children: [
         _buildIconButton('assets/images/Icon-metro.png',
             () => audioPlayer.pause(), settingsProvider),
-        const SizedBox(width: 10),
+        const Space(
+          width: 10,
+          height: 0,
+        ),
         _buildIconButton(
           'assets/images/Icon-awesome-play.png',
           _togglePlayPause,

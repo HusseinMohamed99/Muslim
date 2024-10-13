@@ -96,9 +96,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         CircleAvatar(
           backgroundColor: isDarkMode ? Colors.white : Colors.black,
           radius: 15.r,
-          child: Icon(
-            FontAwesomeIcons.circlePlay,
-            color: isDarkMode ? Colors.black : Colors.white,
+          child: Image.asset(
+            AssetsPath.quranIcon,
+            // color: isDarkMode ? Colors.black : Colors.white,
           ),
         ),
         const SizedBox.shrink(),
