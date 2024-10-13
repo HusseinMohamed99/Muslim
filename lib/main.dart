@@ -1,23 +1,4 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:muslim_app/firebase_options.dart';
-import 'package:muslim_app/screens/hadith/hadith_details_screen.dart';
-import 'package:muslim_app/screens/hadith/hadith_screen.dart';
-import 'package:muslim_app/screens/home/home_screen.dart';
-import 'package:muslim_app/screens/quran/quran_screen.dart';
-import 'package:muslim_app/screens/quran/sura_details_screen.dart';
-import 'package:muslim_app/screens/radio/radio_screen.dart';
-import 'package:muslim_app/screens/sebha/sebha_screen.dart';
-import 'package:muslim_app/screens/settings/settings_screen.dart';
-import 'package:muslim_app/shared/providers/settings_provider.dart';
-import 'package:muslim_app/shared/style/theme.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+part of './core/helpers/export_manager/export_manager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

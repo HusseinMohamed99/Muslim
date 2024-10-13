@@ -1,16 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:muslim_app/model/sura_details.dart';
-import 'package:muslim_app/shared/adaptive/indicator.dart';
-import 'package:muslim_app/shared/components/get_verses.dart';
-import 'package:muslim_app/shared/components/size_box.dart';
-import 'package:muslim_app/shared/providers/settings_provider.dart';
-import 'package:muslim_app/shared/style/theme.dart';
-import 'package:provider/provider.dart';
+part of './../../core/helpers/export_manager/export_manager.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   const SuraDetailsScreen({super.key});

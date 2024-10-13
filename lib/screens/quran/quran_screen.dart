@@ -1,16 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:muslim_app/model/quran_details.dart';
-import 'package:muslim_app/model/sura_details.dart';
-import 'package:muslim_app/screens/quran/sura_details_screen.dart';
-import 'package:muslim_app/shared/components/my_divider.dart';
-import 'package:muslim_app/shared/components/navigator.dart';
-import 'package:muslim_app/shared/image_path/image_path.dart';
-import 'package:muslim_app/shared/providers/settings_provider.dart';
-import 'package:muslim_app/shared/style/theme.dart';
-import 'package:provider/provider.dart';
+part of './../../core/helpers/export_manager/export_manager.dart';
 
 class QuranScreen extends StatelessWidget {
   static const String routeName = 'QuranScreen';

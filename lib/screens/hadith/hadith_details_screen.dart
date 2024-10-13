@@ -1,14 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:muslim_app/model/hadith_details.dart';
-import 'package:muslim_app/shared/adaptive/indicator.dart';
-import 'package:muslim_app/shared/components/size_box.dart';
-import 'package:muslim_app/shared/providers/settings_provider.dart';
-import 'package:muslim_app/shared/style/theme.dart';
-import 'package:provider/provider.dart';
+part of './../../core/helpers/export_manager/export_manager.dart';
 
 class HadithDetailsScreen extends StatelessWidget {
   const HadithDetailsScreen({super.key});
@@ -50,8 +40,7 @@ class HadithDetailsScreen extends StatelessWidget {
                 child: Card(
                   color: cardColor,
                   elevation: 12,
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 20).r,
+                  margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 20.h),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12).r,
                   ),

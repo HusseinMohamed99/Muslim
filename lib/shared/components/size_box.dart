@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+part of './../../core/helpers/export_manager/export_manager.dart';
 
 class Space extends StatelessWidget {
   final double width;
