@@ -98,7 +98,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           radius: 15.r,
           child: Image.asset(
             AssetsPath.quranIcon,
-            // color: isDarkMode ? Colors.black : Colors.white,
+            color: isDarkMode ? Colors.black : Colors.white,
           ),
         ),
         const SizedBox.shrink(),
