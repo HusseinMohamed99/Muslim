@@ -99,7 +99,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
   Widget _buildAzkarButton(
       SettingsProvider appProvider, AppLocalizations locale) {
     return OutlinedButton(
-      onPressed: _onAzkarButtonPressed,
+      onPressed: _onRotateTap,
       style: OutlinedButton.styleFrom(
         backgroundColor:
             appProvider.isDarkMode() ? ThemeApp.yellow : ThemeApp.lightPrimary,
@@ -135,11 +135,11 @@ class _SebhaScreenState extends State<SebhaScreen> {
     });
   }
 
-  void _onAzkarButtonPressed() {
-    setState(() {
-      _currentIndex = (_currentIndex == 2) ? 0 : _currentIndex + 1;
-      _indexCounter = 0;
-      _angle = 2 * 3.14; // Reset angle
-    });
-  }
+//   void _onAzkarButtonPressed() {
+//     setState(() {
+//       _currentIndex = (_currentIndex == 2) ? 0 : _currentIndex + 1;
+//       _indexCounter = 0;
+//       _angle = 2 * 3.14; // Reset angle
+//     });
+//   }
 }
