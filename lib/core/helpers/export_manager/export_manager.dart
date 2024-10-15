@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ import 'package:muslim_app/shared/image_path/image_path.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
+import 'package:upgrader/upgrader.dart';
 
 part '../../../screens/home/home_screen.dart';
 part '../../../screens/quran/sura_details_screen.dart';

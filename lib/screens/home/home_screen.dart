@@ -16,28 +16,30 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final settingsProvider = Provider.of<SettingsProvider>(context);
 
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(settingsProvider.getBackgroundImage()),
-          fit: BoxFit.fill,
-        ),
-      ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            AppLocalizations.of(context)!.app_title,
-            style: GoogleFonts.elMessiri(
-              fontSize: getResponsiveFontSize(context, fontSize: 30.sp),
-            ),
+    return UpgradeWrapper(
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(settingsProvider.getBackgroundImage()),
+            fit: BoxFit.fill,
           ),
         ),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: _onItemTapped,
-          currentIndex: _currentIndex,
-          items: _buildBottomNavigationBarItems(context),
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              AppLocalizations.of(context)!.app_title,
+              style: GoogleFonts.elMessiri(
+                fontSize: getResponsiveFontSize(context, fontSize: 30.sp),
+              ),
+            ),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            onTap: _onItemTapped,
+            currentIndex: _currentIndex,
+            items: _buildBottomNavigationBarItems(context),
+          ),
+          body: _screens[_currentIndex],
         ),
-        body: _screens[_currentIndex],
       ),
     );
   }
@@ -92,4 +94,19 @@ class _HomeScreenState extends State<HomeScreen> {
     const RadioScreen(),
     const SettingsScreen(),
   ];
+}
+
+class UpgradeWrapper extends StatelessWidget {
+  const UpgradeWrapper({super.key, required this.child});
+  final Widget child;
+  @override
+  Widget build(BuildContext context) {
+    return UpgradeAlert(
+      dialogStyle: Platform.isIOS
+          ? UpgradeDialogStyle.cupertino
+          : UpgradeDialogStyle.material,
+      upgrader: Upgrader(),
+      child: child,
+    );
+  }
 }
