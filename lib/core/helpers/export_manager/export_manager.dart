@@ -26,7 +26,7 @@ import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-part '../../../screens/home/home_screen.dart';
+part '../../../screens/layout/home_layout.dart';
 part '../../../screens/quran/sura_details_screen.dart';
 part './../../../screens/hadith/hadith_details_screen.dart';
 part './../../../screens/hadith/hadith_screen.dart';
@@ -40,3 +40,5 @@ part './../../../shared/components/theme_bottom_sheet.dart';
 part './../../../shared/components/upgrade_wrapper.dart';
 part 'package:muslim_app/screens/quran/quran_screen.dart';
 part 'package:muslim_app/screens/radio/radio_screen.dart';
+
+part './../../../screens/home/home_screen.dart';

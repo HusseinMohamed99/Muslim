@@ -84,7 +84,7 @@ class MuslimApplication extends StatelessWidget {
             themeMode: settingsProvider.currentTheme,
             debugShowCheckedModeBanner: false,
             routes: _buildAppRoutes(),
-            initialRoute: HomeScreen.routeName,
+            initialRoute: HomeLayout.routeName,
           ),
         );
       },
@@ -93,7 +93,7 @@ class MuslimApplication extends StatelessWidget {
 
   Map<String, WidgetBuilder> _buildAppRoutes() {
     return {
-      HomeScreen.routeName: (_) => const HomeScreen(),
+      HomeLayout.routeName: (_) => const HomeLayout(),
       QuranScreen.routeName: (_) => const QuranScreen(),
       SuraDetailsScreen.routeName: (_) => const SuraDetailsScreen(),
       HadithScreen.routeName: (_) => const HadithScreen(),
