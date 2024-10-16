@@ -14,47 +14,65 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     var settingsProvider = Provider.of<SettingsProvider>(context);
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          TitleWidget(
-            titleText: AppLocalizations.of(context)!.theme,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(settingsProvider.getBackgroundImage()),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            AppLocalizations.of(context)!.settings,
+            style: GoogleFonts.elMessiri(
+              fontSize: getResponsiveFontSize(context, fontSize: 30.sp),
+            ),
           ),
-          const Space(width: 0, height: 8),
-          CustomCardWidget(
-            settingsProvider: settingsProvider,
-            function: showThemeBottomSheet,
-            titleText: settingsProvider.isDarkMode()
-                ? AppLocalizations.of(context)!.dark
-                : AppLocalizations.of(context)!.light,
-            iconData: FontAwesomeIcons.solidMoon,
+        ),
+        body: Container(
+          padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TitleWidget(
+                titleText: AppLocalizations.of(context)!.theme,
+              ),
+              const Space(width: 0, height: 8),
+              CustomCardWidget(
+                settingsProvider: settingsProvider,
+                function: showThemeBottomSheet,
+                titleText: settingsProvider.isDarkMode()
+                    ? AppLocalizations.of(context)!.dark
+                    : AppLocalizations.of(context)!.light,
+                iconData: FontAwesomeIcons.solidMoon,
+              ),
+              const Space(width: 0, height: 24),
+              TitleWidget(
+                titleText: AppLocalizations.of(context)!.language,
+              ),
+              const Space(width: 0, height: 8),
+              CustomCardWidget(
+                settingsProvider: settingsProvider,
+                function: showLanguageBottomSheet,
+                titleText: settingsProvider.currentLanguage == 'en'
+                    ? AppLocalizations.of(context)!.english
+                    : AppLocalizations.of(context)!.arabic,
+                iconData: FontAwesomeIcons.globe,
+              ),
+              const Space(width: 0, height: 24),
+              TitleWidget(
+                titleText: AppLocalizations.of(context)!.rating,
+              ),
+              const Space(width: 0, height: 8),
+              CustomCardWidget(
+                settingsProvider: settingsProvider,
+                function: goToApplicationOnPlayStore,
+                titleText: AppLocalizations.of(context)!.rating,
+                iconData: FontAwesomeIcons.star,
+              ),
+            ],
           ),
-          const Space(width: 0, height: 24),
-          TitleWidget(
-            titleText: AppLocalizations.of(context)!.language,
-          ),
-          const Space(width: 0, height: 8),
-          CustomCardWidget(
-            settingsProvider: settingsProvider,
-            function: showLanguageBottomSheet,
-            titleText: settingsProvider.currentLanguage == 'en'
-                ? AppLocalizations.of(context)!.english
-                : AppLocalizations.of(context)!.arabic,
-            iconData: FontAwesomeIcons.globe,
-          ),
-          const Space(width: 0, height: 24),
-          TitleWidget(
-            titleText: AppLocalizations.of(context)!.rating,
-          ),
-          const Space(width: 0, height: 8),
-          CustomCardWidget(
-            settingsProvider: settingsProvider,
-            function: goToApplicationOnPlayStore,
-            titleText: AppLocalizations.of(context)!.rating,
-            iconData: FontAwesomeIcons.star,
-          ),
-        ],
+        ),
       ),
     );
   }

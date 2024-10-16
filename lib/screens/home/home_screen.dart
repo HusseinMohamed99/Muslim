@@ -32,6 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 fontSize: getResponsiveFontSize(context, fontSize: 30.sp),
               ),
             ),
+            leading: IconButton(
+                onPressed: () {
+                  navigateTo(context, routeName: SettingsScreen.routeName);
+                },
+                icon: const Icon(Icons.settings)),
           ),
           bottomNavigationBar: BottomNavigationBar(
             onTap: _onItemTapped,
@@ -69,10 +74,10 @@ class _HomeScreenState extends State<HomeScreen> {
         icon: 'assets/images/radio_icon.png',
         label: AppLocalizations.of(context)!.radio,
       ),
-      _buildBottomNavigationBarItem(
-        icon: Icons.settings,
-        label: AppLocalizations.of(context)!.settings,
-      ),
+      // _buildBottomNavigationBarItem(
+      //   icon: Icons.settings,
+      //   label: AppLocalizations.of(context)!.settings,
+      // ),
     ];
   }
 
@@ -92,6 +97,6 @@ class _HomeScreenState extends State<HomeScreen> {
     const HadithScreen(),
     const SebhaScreen(),
     const RadioScreen(),
-    const SettingsScreen(),
+    // const SettingsScreen(),
   ];
 }
