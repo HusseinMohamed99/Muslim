@@ -10,8 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0;
-
+  int _currentIndex = 2;
   @override
   Widget build(BuildContext context) {
     final settingsProvider = Provider.of<SettingsProvider>(context);
@@ -41,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           bottomNavigationBar: BottomNavigationBar(
             onTap: _onItemTapped,
             currentIndex: _currentIndex,
-            items: _buildBottomNavigationBarItems(context),
+            items: _buildBottomNavigationBarItems(context, _currentIndex),
           ),
           body: _screens[_currentIndex],
         ),
@@ -56,12 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   List<BottomNavigationBarItem> _buildBottomNavigationBarItems(
-      BuildContext context) {
+      BuildContext context, int index) {
     return [
-      _buildBottomNavigationBarItem(
-        icon: AssetsPath.quranIcon,
-        label: AppLocalizations.of(context)!.quran,
-      ),
       _buildBottomNavigationBarItem(
         icon: 'assets/images/hadith_icon.png',
         label: AppLocalizations.of(context)!.hadith,
@@ -71,32 +66,47 @@ class _HomeScreenState extends State<HomeScreen> {
         label: AppLocalizations.of(context)!.sebha,
       ),
       _buildBottomNavigationBarItem(
+        icon: AssetsPath.quranIcon,
+        label: AppLocalizations.of(context)!.quran,
+        index: 0,
+      ),
+      _buildBottomNavigationBarItem(
         icon: 'assets/images/radio_icon.png',
         label: AppLocalizations.of(context)!.radio,
       ),
-      // _buildBottomNavigationBarItem(
-      //   icon: Icons.settings,
-      //   label: AppLocalizations.of(context)!.settings,
-      // ),
+      _buildBottomNavigationBarItem(
+        icon: 'assets/images/radio_icon.png',
+        label: AppLocalizations.of(context)!.settings,
+      ),
     ];
   }
 
   BottomNavigationBarItem _buildBottomNavigationBarItem({
-    required dynamic icon,
+    dynamic icon,
     required String label,
+    int? index,
   }) {
+    final isDarkMode = Provider.of<SettingsProvider>(context).isDarkMode();
+
     return BottomNavigationBarItem(
       backgroundColor: Theme.of(context).primaryColor,
-      icon: icon is String ? ImageIcon(AssetImage(icon)) : Icon(icon),
+      icon: index != 0
+          ? ImageIcon(AssetImage(icon))
+          : CircleAvatar(
+              backgroundImage: AssetImage(icon),
+              backgroundColor: isDarkMode
+                  ? const Color(0xffFACC1D)
+                  : const Color(0xff141A2E),
+            ),
       label: label,
     );
   }
 
   final List<Widget> _screens = [
-    const QuranScreen(),
     const HadithScreen(),
     const SebhaScreen(),
+    const QuranScreen(),
     const RadioScreen(),
-    // const SettingsScreen(),
+    const SettingsScreen(),
   ];
 }
