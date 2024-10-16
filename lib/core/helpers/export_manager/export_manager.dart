@@ -21,8 +21,10 @@ import 'package:muslim_app/shared/components/navigator.dart';
 import 'package:muslim_app/shared/image_path/image_path.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:upgrader/upgrader.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part '../../../screens/home/home_screen.dart';
 part '../../../screens/quran/sura_details_screen.dart';
@@ -35,7 +37,6 @@ part './../../../shared/components/language_bottom_sheet.dart';
 part './../../../shared/components/responsive_font_size.dart';
 part './../../../shared/components/size_box.dart';
 part './../../../shared/components/theme_bottom_sheet.dart';
+part './../../../shared/components/upgrade_wrapper.dart';
 part 'package:muslim_app/screens/quran/quran_screen.dart';
 part 'package:muslim_app/screens/radio/radio_screen.dart';
-
-part './../../../shared/components/upgrade_wrapper.dart';

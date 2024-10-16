@@ -43,6 +43,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 : AppLocalizations.of(context)!.arabic,
             iconData: FontAwesomeIcons.globe,
           ),
+          const Space(width: 0, height: 24),
+          TitleWidget(
+            titleText: AppLocalizations.of(context)!.rating,
+          ),
+          const Space(width: 0, height: 8),
+          CustomCardWidget(
+            settingsProvider: settingsProvider,
+            function: goToApplicationOnPlayStore,
+            titleText: AppLocalizations.of(context)!.rating,
+            iconData: FontAwesomeIcons.star,
+          ),
         ],
       ),
     );
@@ -64,5 +75,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
         return const LanguageBottomSheet();
       },
     );
+  }
+}
+
+void goToApplicationOnPlayStore() async {
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+  String url = '';
+  String packageName = packageInfo.packageName;
+  if (Platform.isAndroid) {
+    url = 'https://play.google.com/store/apps/details?id=$packageName';
+    if (!await launchUrl(Uri.parse(url),
+        mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
