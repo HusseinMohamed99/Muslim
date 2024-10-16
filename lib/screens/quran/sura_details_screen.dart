@@ -97,7 +97,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           backgroundColor: isDarkMode ? Colors.white : Colors.black,
           radius: 15.r,
           child: Image.asset(
-            AssetsPath.quranIcon,
+            AssetsPath.assetsImagesQuranIcon,
             color: isDarkMode ? Colors.black : Colors.white,
           ),
         ),

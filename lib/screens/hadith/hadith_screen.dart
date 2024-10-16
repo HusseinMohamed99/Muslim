@@ -33,7 +33,7 @@ class _HadithScreenState extends State<HadithScreen> {
   Widget _buildHeaderImage() {
     return Expanded(
       flex: 2,
-      child: Image.asset(AssetsPath.alBasmalaImage),
+      child: Image.asset(AssetsPath.assetsImagesAlbasmala),
     );
   }
 

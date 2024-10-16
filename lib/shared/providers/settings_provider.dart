@@ -34,7 +34,7 @@ class SettingsProvider extends ChangeNotifier {
 
   String getBackgroundImage() {
     return isDarkMode()
-        ? AssetsPath.backgroundDark
-        : AssetsPath.backgroundLight;
+        ? AssetsPath.assetsImagesBackgroundDark
+        : AssetsPath.assetsImagesBackgroundLight;
   }
 }

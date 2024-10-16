@@ -70,8 +70,8 @@ class _SebhaScreenState extends State<SebhaScreen> {
           margin: EdgeInsets.only(left: 40.w),
           child: Image.asset(
             appProvider.isDarkMode()
-                ? AssetsPath.sebhaHeaderDarkImage
-                : AssetsPath.sebhaHeaderImage,
+                ? AssetsPath.assetsImagesSebhaHeadHeaderDark
+                : AssetsPath.assetsImagesSebhaHeadHeader,
             width: mediaQuery.width / 5.64,
             height: mediaQuery.height / 8.285,
           ),
@@ -84,8 +84,8 @@ class _SebhaScreenState extends State<SebhaScreen> {
               onTap: _onRotateTap,
               child: Image.asset(
                 appProvider.isDarkMode()
-                    ? AssetsPath.sebhaBodyDarkImage
-                    : AssetsPath.sebhaBodyImage,
+                    ? AssetsPath.assetsImagesSebhaHeadBodyDark
+                    : AssetsPath.assetsImagesSebhaHeadBody,
                 width: mediaQuery.width / 1.776,
                 height: mediaQuery.height / 3.718,
                 fit: BoxFit.fill,

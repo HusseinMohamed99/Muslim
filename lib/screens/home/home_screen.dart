@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
         label: AppLocalizations.of(context)!.sebha,
       ),
       _buildBottomNavigationBarItem(
-        icon: AssetsPath.quranIcon,
+        icon: AssetsPath.assetsImagesQuranIcon,
         label: AppLocalizations.of(context)!.quran,
         index: 0,
       ),

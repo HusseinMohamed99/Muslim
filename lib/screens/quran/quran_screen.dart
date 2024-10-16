@@ -24,7 +24,7 @@ class QuranScreen extends StatelessWidget {
   Widget _buildHeaderImage() {
     return Expanded(
       flex: 2,
-      child: Image.asset(AssetsPath.quranImage),
+      child: Image.asset(AssetsPath.assetsImagesQuran),
     );
   }
 

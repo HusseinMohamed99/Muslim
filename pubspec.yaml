@@ -47,3 +47,8 @@ flutter:
     - assets/images/
     - assets/quran_files/
     - assets/hadith_files/
+flutter_assets:
+  assets_path: assets/images/
+  output_path: lib/shared/image_path/
+  filename: image_path.dart
+  classname: AssetsPath
