@@ -18,6 +18,10 @@ class AssetsPath {
   /// assets/images/hadith_icon.png
   static const String assetsImagesHadithIcon = "assets/images/hadith_icon.png";
 
+  /// Assets for assetsImagesHomeIcon
+  /// assets/images/home_icon.png
+  static const String assetsImagesHomeIcon = "assets/images/home_icon.png";
+
   /// Assets for assetsImagesIconAwesomePlay
   /// assets/images/Icon-awesome-play.png
   static const String assetsImagesIconAwesomePlay = "assets/images/Icon-awesome-play.png";

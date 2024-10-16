@@ -58,11 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
       BuildContext context, int index) {
     return [
       _buildBottomNavigationBarItem(
-        icon: 'assets/images/hadith_icon.png',
+        icon: AssetsPath.assetsImagesHadithIcon,
         label: AppLocalizations.of(context)!.hadith,
       ),
       _buildBottomNavigationBarItem(
-        icon: 'assets/images/sebha_icon.png',
+        icon: AssetsPath.assetsImagesSebhaIcon,
         label: AppLocalizations.of(context)!.sebha,
       ),
       _buildBottomNavigationBarItem(
@@ -71,12 +71,12 @@ class _HomeScreenState extends State<HomeScreen> {
         index: 0,
       ),
       _buildBottomNavigationBarItem(
-        icon: 'assets/images/radio_icon.png',
+        icon: AssetsPath.assetsImagesRadioIcon,
         label: AppLocalizations.of(context)!.radio,
       ),
       _buildBottomNavigationBarItem(
-        icon: 'assets/images/radio_icon.png',
-        label: AppLocalizations.of(context)!.settings,
+        icon: AssetsPath.assetsImagesHomeIcon,
+        label: AppLocalizations.of(context)!.home,
       ),
     ];
   }
@@ -93,10 +93,10 @@ class _HomeScreenState extends State<HomeScreen> {
       icon: index != 0
           ? ImageIcon(AssetImage(icon))
           : CircleAvatar(
-              backgroundImage: AssetImage(icon),
               backgroundColor: isDarkMode
                   ? const Color(0xffFACC1D)
                   : const Color(0xff141A2E),
+              child: Image(image: AssetImage(icon)),
             ),
       label: label,
     );
