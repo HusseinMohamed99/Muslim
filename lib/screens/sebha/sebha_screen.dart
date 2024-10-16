@@ -20,7 +20,14 @@ class SebhaScreen extends StatefulWidget {
 class _SebhaScreenState extends State<SebhaScreen> {
   int _indexCounter = 0;
   int _currentIndex = 0;
-  final List<String> _azkar = ['سبحان الله', 'الحمد لله', 'الله اكبر'];
+  final List<String> _azkar = [
+    'أَسْـتَغْفِرُ الله',
+    'اللّهُـمَّ أَنْـتَ السَّلامُ ، وَمِـنْكَ السَّلام ، تَبارَكْتَ يا ذا الجَـلالِ وَالإِكْـرام',
+    'سُـبْحانَ اللهِ',
+    'الحَمْـدُ لله',
+    'اللهُ أكْـبَر',
+    'لا إلهَ إلاّ اللّهُ وَحْـدَهُ لا شريكَ لهُ، لهُ الملكُ ولهُ الحَمْد، وهُوَ على كُلّ شَيءٍ قَـدير',
+  ];
   double _angle = 2 * 3.14; // Initial angle = 360 degrees
 
   @override
@@ -28,6 +35,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
     final mediaQuery = MediaQuery.of(context).size;
     final locale = AppLocalizations.of(context)!;
     final appProvider = Provider.of<SettingsProvider>(context);
+    final isDarkMode = appProvider.isDarkMode();
 
     return Center(
       child: Column(
@@ -37,6 +45,18 @@ class _SebhaScreenState extends State<SebhaScreen> {
           SizedBox(height: mediaQuery.height / 20.23),
           _buildCounterText(appProvider),
           _buildAzkarButton(appProvider, locale),
+          SizedBox(height: 10.h),
+          TextButton(
+            onPressed: _onAzkarButtonPressed,
+            child: Text(
+              AppLocalizations.of(context)!.reset,
+              style: GoogleFonts.elMessiri(
+                fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
+                fontWeight: FontWeight.w500,
+                color: isDarkMode ? Colors.white : Colors.black,
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -68,6 +88,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
                     : AssetsPath.sebhaBodyImage,
                 width: mediaQuery.width / 1.776,
                 height: mediaQuery.height / 3.718,
+                fit: BoxFit.fill,
               ),
             ),
           ),
@@ -98,25 +119,29 @@ class _SebhaScreenState extends State<SebhaScreen> {
 
   Widget _buildAzkarButton(
       SettingsProvider appProvider, AppLocalizations locale) {
-    return OutlinedButton(
-      onPressed: _onRotateTap,
-      style: OutlinedButton.styleFrom(
-        backgroundColor:
-            appProvider.isDarkMode() ? ThemeApp.yellow : ThemeApp.lightPrimary,
-        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.horizontal(
-            right: Radius.circular(10),
-            left: Radius.circular(10),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 24.w),
+      child: OutlinedButton(
+        onPressed: _onRotateTap,
+        style: OutlinedButton.styleFrom(
+          backgroundColor: appProvider.isDarkMode()
+              ? ThemeApp.yellow
+              : ThemeApp.lightPrimary,
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.horizontal(
+              right: Radius.circular(10),
+              left: Radius.circular(10),
+            ),
           ),
         ),
-      ),
-      child: Text(
-        _azkar[_currentIndex],
-        style: GoogleFonts.elMessiri(
-          fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
-          fontWeight: FontWeight.bold,
-          color: appProvider.isDarkMode() ? Colors.white : Colors.black,
+        child: Text(
+          _azkar[_currentIndex],
+          style: GoogleFonts.elMessiri(
+            fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
+            fontWeight: FontWeight.bold,
+            color: appProvider.isDarkMode() ? Colors.white : Colors.black,
+          ),
         ),
       ),
     );
@@ -124,22 +149,36 @@ class _SebhaScreenState extends State<SebhaScreen> {
 
   void _onRotateTap() {
     setState(() {
-      if (_angle == 0 || _indexCounter == 33) {
-        _angle = 2 * 3.14;
-        _indexCounter = 0;
-        _currentIndex = (_currentIndex == 2) ? 0 : _currentIndex + 1;
-      }
+      {
+        if (_angle == 0 || _currentIndex == 0 && _indexCounter == 3) {
+          _angle = 2 * 3.14;
+          _indexCounter = 0;
+          _currentIndex = _currentIndex + 1;
+        } else if (_angle == 0 || _currentIndex == 1 && _indexCounter == 1) {
+          _angle = 2 * 3.14;
+          _indexCounter = 0;
+          _currentIndex = _currentIndex + 1;
+        } else if (_angle == 0 || _currentIndex == 5 && _indexCounter == 10) {
+          _angle = 2 * 3.14;
+          _indexCounter = 0;
+          _currentIndex = (_currentIndex == 5) ? 0 : _currentIndex + 1;
+        } else if (_angle == 0 || _indexCounter == 33) {
+          _angle = 2 * 3.14;
+          _indexCounter = 0;
+          _currentIndex = _currentIndex + 1;
+        }
 
-      _angle -= (360 / 33) * (3.14 / 180); // Convert degrees to radians
-      _indexCounter++;
+        _angle -= (360 / 33) * (3.14 / 180); // Convert degrees to radians
+        _indexCounter++;
+      }
     });
   }
 
-//   void _onAzkarButtonPressed() {
-//     setState(() {
-//       _currentIndex = (_currentIndex == 2) ? 0 : _currentIndex + 1;
-//       _indexCounter = 0;
-//       _angle = 2 * 3.14; // Reset angle
-//     });
-//   }
+  void _onAzkarButtonPressed() {
+    setState(() {
+      _currentIndex = 0;
+      _indexCounter = 0;
+      _angle = 2 * 3.14; // Reset angle
+    });
+  }
 }
