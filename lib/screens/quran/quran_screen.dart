@@ -14,8 +14,8 @@ class QuranScreen extends StatelessWidget {
     return Column(
       children: [
         _buildHeaderImage(),
-        const MyDivider(),
-        _buildTitle(context, isDarkMode),
+        _buildItemSeparator(isDarkMode),
+        _buildSuraNameAndNumber(context, isDarkMode),
         _buildSuraList(context, isDarkMode, isArabic),
       ],
     );
@@ -28,27 +28,13 @@ class QuranScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTitle(BuildContext context, bool isDarkMode) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 6.h),
-      child: Text(
-        AppLocalizations.of(context)!.sura_name,
-        style: GoogleFonts.elMessiri(
-          fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
-          fontWeight: FontWeight.w500,
-          color: isDarkMode ? Colors.white : Colors.black,
-        ),
-      ),
-    );
-  }
-
   Widget _buildSuraList(BuildContext context, bool isDarkMode, bool isArabic) {
     return Expanded(
       flex: 5,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          _buildSeparatorLine(isDarkMode),
+          _buildSeparatorLine(isDarkMode: isDarkMode),
           ListView.separated(
             separatorBuilder: (context, index) => SuraTitle(
               names: isArabic
@@ -70,9 +56,41 @@ class QuranScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSeparatorLine(bool isDarkMode) {
+  Widget _buildSuraNameAndNumber(BuildContext context, bool isDarkMode) {
+    return SizedBox(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          _buildSeparatorLine(isDarkMode: isDarkMode, height: 30.h),
+          Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(horizontal: 40.0.w),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.sura_name,
+                  style: GoogleFonts.elMessiri(
+                    fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
+                  ),
+                ),
+                Text(
+                  AppLocalizations.of(context)!.sura_number,
+                  style: GoogleFonts.elMessiri(
+                    fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSeparatorLine({required bool isDarkMode, double? height}) {
     return Container(
-      height: double.infinity,
+      height: height ?? double.infinity,
       width: 3.0.h,
       color: isDarkMode ? ThemeApp.yellow : ThemeApp.lightPrimary,
     );
@@ -81,7 +99,7 @@ class QuranScreen extends StatelessWidget {
   Widget _buildItemSeparator(bool isDarkMode) {
     return Container(
       width: double.infinity,
-      height: 3.0.h,
+      height: 1.0.h,
       color: isDarkMode ? ThemeApp.yellow : ThemeApp.lightPrimary,
     );
   }

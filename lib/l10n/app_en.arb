@@ -4,6 +4,8 @@
 "@app_title": {},
 "sura_name": "Sura Name",
 "@sura_name": {},
+"sura_number": "Sura Number",
+"@sura_number": {},
 "quran": "Quran",
 "@quran": {},
 "quran_kareem": "Quran Kareem",

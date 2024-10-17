@@ -2,6 +2,7 @@
     "@@locale": "ar", 
     "app_title": "مسلم",
     "sura_name": "اسم السورة",
+    "sura_number": "رقم السورة",
     "quran": "القرآن",
     "quran_kareem": "القرآن الكريم",
     "hadith": "الحديث",
