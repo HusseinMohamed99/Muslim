@@ -39,11 +39,12 @@ class _HadithScreenState extends State<HadithScreen> {
     return Expanded(
       flex: 7,
       child: ListView.separated(
+        physics: const BouncingScrollPhysics(),
         itemCount: allHadithList.length,
         separatorBuilder: (context, index) {
           return Container(
-            width: double.infinity,
-            height: 3.0.h,
+            margin: EdgeInsets.symmetric(horizontal: 24.w),
+            height: 1.0.h,
             color: settingsProvider.isDarkMode()
                 ? ThemeApp.yellow
                 : ThemeApp.lightPrimary,
