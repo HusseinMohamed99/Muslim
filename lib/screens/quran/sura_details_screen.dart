@@ -34,7 +34,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           title: Text(
             AppLocalizations.of(context)!.app_title,
             style: GoogleFonts.elMessiri(
-              fontSize: getResponsiveFontSize(context, fontSize: 30.sp),
+              fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
             ),
           ),
         ),

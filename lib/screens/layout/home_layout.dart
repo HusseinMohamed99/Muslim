@@ -28,7 +28,7 @@ class _HomeLayoutState extends State<HomeLayout> {
             title: Text(
               _appTitles(context)[_currentIndex],
               style: GoogleFonts.elMessiri(
-                fontSize: getResponsiveFontSize(context, fontSize: 30.sp),
+                fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
               ),
             ),
             leading: IconButton(

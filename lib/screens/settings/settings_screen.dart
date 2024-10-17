@@ -25,7 +25,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           title: Text(
             AppLocalizations.of(context)!.settings,
             style: GoogleFonts.elMessiri(
-              fontSize: getResponsiveFontSize(context, fontSize: 30.sp),
+              fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
             ),
           ),
         ),
