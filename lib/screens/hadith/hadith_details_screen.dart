@@ -40,7 +40,8 @@ class HadithDetailsScreen extends StatelessWidget {
                 child: Card(
                   color: cardColor,
                   elevation: 12,
-                  margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 20.h),
+                  margin:
+                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12).r,
                   ),
@@ -48,7 +49,7 @@ class HadithDetailsScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         _buildHeader(context, argNames.title, backgroundColor),
-                        _buildDivider(dividerColor),
+                        _buildDivider(dividerColor, context),
                         _buildContent(argNames.content, isDarkMode, context),
                       ],
                     ),
@@ -61,36 +62,39 @@ class HadithDetailsScreen extends StatelessWidget {
 
   Widget _buildHeader(
       BuildContext context, String title, Color backgroundColor) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        const Space(width: 10, height: 0),
-        CircleAvatar(
-          backgroundColor: backgroundColor,
-          radius: 15.r,
-          child: Icon(
-            FontAwesomeIcons.circlePlay,
-            color:
-                backgroundColor == Colors.white ? Colors.black : Colors.white,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 2.h),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircleAvatar(
+            backgroundColor: backgroundColor == Colors.white
+                ? ThemeApp.darkPrimary
+                : ThemeApp.lightPrimary,
+            child: ImageIcon(
+              const AssetImage(AssetsPath.assetsImagesHadithIcon),
+              color:
+                  backgroundColor != Colors.white ? Colors.black : Colors.white,
+            ),
           ),
-        ),
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          style: GoogleFonts.elMessiri(
-            fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
-            color:
-                backgroundColor == Colors.white ? Colors.white : Colors.black,
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.elMessiri(
+              fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
+              color:
+                  backgroundColor == Colors.white ? Colors.white : Colors.black,
+            ),
           ),
-        ),
-        const Space(width: 10, height: 0),
-      ],
+          const Space(width: 10, height: 0),
+        ],
+      ),
     );
   }
 
-  Widget _buildDivider(Color color) {
+  Widget _buildDivider(Color color, BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: MediaQuery.sizeOf(context).width - 60,
       height: 3.0.h,
       color: color,
     );

@@ -101,6 +101,7 @@ class MuslimApplication extends StatelessWidget {
       SebhaScreen.routeName: (_) => const SebhaScreen(),
       SettingsScreen.routeName: (_) => const SettingsScreen(),
       RadioScreen.routeName: (_) => const RadioScreen(),
+      HomeScreen.routeName: (_) => const HomeScreen(),
     };
   }
 
