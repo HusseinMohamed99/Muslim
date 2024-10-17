@@ -26,7 +26,7 @@ class _HomeLayoutState extends State<HomeLayout> {
         child: Scaffold(
           appBar: AppBar(
             title: Text(
-              AppLocalizations.of(context)!.app_title,
+              _appTitles(context)[_currentIndex],
               style: GoogleFonts.elMessiri(
                 fontSize: getResponsiveFontSize(context, fontSize: 30.sp),
               ),
@@ -110,3 +110,11 @@ class _HomeLayoutState extends State<HomeLayout> {
     const RadioScreen(),
   ];
 }
+
+List<String> _appTitles(context) => [
+      AppLocalizations.of(context)!.quran,
+      AppLocalizations.of(context)!.hadith,
+      AppLocalizations.of(context)!.quran,
+      AppLocalizations.of(context)!.sebha,
+      AppLocalizations.of(context)!.radio,
+    ];
