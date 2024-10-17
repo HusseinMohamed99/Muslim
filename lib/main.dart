@@ -107,7 +107,7 @@ class MuslimApplication extends StatelessWidget {
 
   Future<void> _initializePreferences(SettingsProvider settingsProvider) async {
     final pref = await SharedPreferences.getInstance();
-    final language = pref.getString('Lang') ?? 'en';
+    final language = pref.getString('Lang') ?? 'ar';
     settingsProvider.changeLanguage(language);
 
     final theme = pref.getString('Theme');

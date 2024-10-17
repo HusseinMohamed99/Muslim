@@ -14,6 +14,10 @@ class AssetsPath {
   /// assets/images/background_light.png
   static const String assetsImagesBackgroundLight = "assets/images/background_light.png";
 
+  /// Assets for assetsImagesGetUp
+  /// assets/images/get-up.png
+  static const String assetsImagesGetUp = "assets/images/get-up.png";
+
   /// Assets for assetsImagesHadithIcon
   /// assets/images/hadith_icon.png
   static const String assetsImagesHadithIcon = "assets/images/hadith_icon.png";
@@ -42,9 +46,25 @@ class AssetsPath {
   /// assets/images/Icon-metro-next.png
   static const String assetsImagesIconMetroNext = "assets/images/Icon-metro-next.png";
 
+  /// Assets for assetsImagesMoon
+  /// assets/images/moon.png
+  static const String assetsImagesMoon = "assets/images/moon.png";
+
+  /// Assets for assetsImagesMuslim
+  /// assets/images/muslim.png
+  static const String assetsImagesMuslim = "assets/images/muslim.png";
+
   /// Assets for assetsImagesPauseIcon
   /// assets/images/pause_icon.png
   static const String assetsImagesPauseIcon = "assets/images/pause_icon.png";
+
+  /// Assets for assetsImagesPrayer
+  /// assets/images/prayer.png
+  static const String assetsImagesPrayer = "assets/images/prayer.png";
+
+  /// Assets for assetsImagesPraying
+  /// assets/images/praying.png
+  static const String assetsImagesPraying = "assets/images/praying.png";
 
   /// Assets for assetsImagesQuran
   /// assets/images/quran.png
@@ -61,6 +81,10 @@ class AssetsPath {
   /// Assets for assetsImagesRadioIcon
   /// assets/images/radio_icon.png
   static const String assetsImagesRadioIcon = "assets/images/radio_icon.png";
+
+  /// Assets for assetsImagesRamadan
+  /// assets/images/ramadan.png
+  static const String assetsImagesRamadan = "assets/images/ramadan.png";
 
   /// Assets for assetsImagesSebha
   /// assets/images/sebha.png
@@ -89,5 +113,13 @@ class AssetsPath {
   /// Assets for assetsImagesSetting
   /// assets/images/setting.png
   static const String assetsImagesSetting = "assets/images/setting.png";
+
+  /// Assets for assetsImagesSleeping
+  /// assets/images/sleeping.png
+  static const String assetsImagesSleeping = "assets/images/sleeping.png";
+
+  /// Assets for assetsImagesZakat
+  /// assets/images/zakat.png
+  static const String assetsImagesZakat = "assets/images/zakat.png";
 }
 
