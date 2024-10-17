@@ -63,7 +63,7 @@ class RadioScreen extends StatelessWidget {
       child: Text(
         'Something went wrong',
         style: TextStyle(
-          color: Colors.white,
+          color: Colors.red,
           fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
         ),
       ),
@@ -137,21 +137,13 @@ class _RadioItemState extends State<RadioItem> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _buildIconButton('assets/images/Icon-metro.png',
+        _buildIconButton('assets/images/pause_icon.png',
             () => audioPlayer.pause(), settingsProvider),
-        const Space(
-          width: 10,
-          height: 0,
-        ),
         _buildIconButton(
-          audioPlayer.state == PlayerState.playing
-              ? 'assets/images/pause_icon.png'
-              : 'assets/images/Icon-awesome-play.png',
+          'assets/images/Icon-awesome-play.png',
           _togglePlayPause,
           settingsProvider,
         ),
-        _buildIconButton('assets/images/Icon-metro-next.png',
-            () => audioPlayer.pause(), settingsProvider),
       ],
     );
   }
