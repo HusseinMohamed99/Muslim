@@ -58,12 +58,12 @@ class _HomeLayoutState extends State<HomeLayout> {
       BuildContext context, int index) {
     return [
       _buildBottomNavigationBarItem(
-        icon: AssetsPath.assetsImagesHadithIcon,
-        label: AppLocalizations.of(context)!.hadith,
+        icon: AssetsPath.assetsImagesHomeIcon,
+        label: AppLocalizations.of(context)!.home,
       ),
       _buildBottomNavigationBarItem(
-        icon: AssetsPath.assetsImagesSebhaIcon,
-        label: AppLocalizations.of(context)!.sebha,
+        icon: AssetsPath.assetsImagesHadithIcon,
+        label: AppLocalizations.of(context)!.hadith,
       ),
       _buildBottomNavigationBarItem(
         icon: AssetsPath.assetsImagesQuranIcon,
@@ -71,12 +71,12 @@ class _HomeLayoutState extends State<HomeLayout> {
         index: 0,
       ),
       _buildBottomNavigationBarItem(
-        icon: AssetsPath.assetsImagesRadioIcon,
-        label: AppLocalizations.of(context)!.radio,
+        icon: AssetsPath.assetsImagesSebhaIcon,
+        label: AppLocalizations.of(context)!.sebha,
       ),
       _buildBottomNavigationBarItem(
-        icon: AssetsPath.assetsImagesHomeIcon,
-        label: AppLocalizations.of(context)!.home,
+        icon: AssetsPath.assetsImagesRadioIcon,
+        label: AppLocalizations.of(context)!.radio,
       ),
     ];
   }
@@ -103,10 +103,10 @@ class _HomeLayoutState extends State<HomeLayout> {
   }
 
   final List<Widget> _screens = [
-    const HadithScreen(),
-    const SebhaScreen(),
-    const QuranScreen(),
-    const RadioScreen(),
     const HomeScreen(),
+    const HadithScreen(),
+    const QuranScreen(),
+    const SebhaScreen(),
+    const RadioScreen(),
   ];
 }
