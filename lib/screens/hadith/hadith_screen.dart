@@ -23,8 +23,6 @@ class _HadithScreenState extends State<HadithScreen> {
     return Column(
       children: [
         _buildHeaderImage(),
-        const MyDivider(),
-        _buildTitle(context, settingsProvider),
         _buildHadithList(settingsProvider),
       ],
     );
@@ -37,23 +35,9 @@ class _HadithScreenState extends State<HadithScreen> {
     );
   }
 
-  Widget _buildTitle(BuildContext context, SettingsProvider settingsProvider) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 6.h),
-      child: Text(
-        AppLocalizations.of(context)!.hadith_name,
-        style: GoogleFonts.elMessiri(
-          fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
-          fontWeight: FontWeight.w500,
-          color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
-        ),
-      ),
-    );
-  }
-
   Widget _buildHadithList(SettingsProvider settingsProvider) {
     return Expanded(
-      flex: 5,
+      flex: 7,
       child: ListView.separated(
         itemCount: allHadithList.length,
         separatorBuilder: (context, index) {

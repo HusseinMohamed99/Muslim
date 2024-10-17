@@ -112,8 +112,8 @@ class _HomeLayoutState extends State<HomeLayout> {
 }
 
 List<String> _appTitles(context) => [
-      AppLocalizations.of(context)!.quran,
-      AppLocalizations.of(context)!.hadith,
+      AppLocalizations.of(context)!.home,
+      AppLocalizations.of(context)!.hadith_name,
       AppLocalizations.of(context)!.quran,
       AppLocalizations.of(context)!.sebha,
       AppLocalizations.of(context)!.radio,
