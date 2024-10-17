@@ -159,7 +159,16 @@ class CustomCardListView extends StatelessWidget {
                 CustomCardItem(
                   imageIcon: AssetsPath.assetsImagesPraying,
                   title: 'اذكار بعد الصلاة',
-                  voidCallback: () {},
+                  voidCallback: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CustomHomeScreenDetails(
+                          currentIndex: 5,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -169,7 +178,16 @@ class CustomCardListView extends StatelessWidget {
                 CustomCardItem(
                   imageIcon: AssetsPath.assetsImagesZakat,
                   title: 'حساب الزكاه',
-                  voidCallback: () {},
+                  voidCallback: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const CustomHomeScreenDetails(
+                          currentIndex: 6,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -477,7 +495,36 @@ class CustomHomeScreenDetails extends StatelessWidget {
       '1',
       '1',
     ];
-
+    List<String> prayAzkar = [
+      'أسـتغفر الله، أسـتغفر الله، أسـتغفر الله.اللهـم أنـت السلام ، ومـنك السلام ، تباركت يا ذا الجـلال والإكـرام .',
+      'لا إله إلا الله وحده لا شريك له، له المـلك وله الحمد، وهو على كل شيء قدير، اللهـم لا مانع لما أعطـيت، ولا معطـي لما منـعت، ولا ينفـع ذا الجـد منـك الجـد.',
+      'لا إله إلا الله, وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير، لا حـول ولا قـوة إلا بالله، لا إله إلا اللـه، ولا نعـبـد إلا إيـاه, له النعـمة وله الفضل وله الثـناء الحـسن، لا إله إلا الله مخلصـين لـه الدين ولو كـره الكـافرون. ',
+      'سـبحان الله، والحمـد لله ، والله أكـبر.',
+      'لا إله إلا الله وحـده لا شريك له، له الملك وله الحمد، وهو على كل شيء قـدير.',
+      'بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم \nقُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِد إِذَا حَسَدَ.',
+      'بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم \nقُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ.',
+      'بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم \nقُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ، مَلِكِ ٱلنَّاسِ، إِلَٰهِ ٱلنَّاسِ، مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ، ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ، مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ.',
+      'بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم \nقُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ.',
+      'لا إله إلا الله وحـده لا شريك له، له الملك وله الحمد، يحيـي ويمـيت وهو على كل شيء قدير.',
+      'اللهـم إنـي أسألـك علمـا نافعـا ورزقـا طيـبا ، وعمـلا متقـبلا. ',
+      'اللهم أجرني من النار. ',
+      'اللهم أعني على ذكرك وشكرك وحسن عبادتك. ',
+    ];
+    List<String> prayAzkarNumber = [
+      '1',
+      '1',
+      '1',
+      '33',
+      '1',
+      '3',
+      '3',
+      '3',
+      '1',
+      '10',
+      '1',
+      '7',
+      '1',
+    ];
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -551,6 +598,16 @@ class CustomHomeScreenDetails extends StatelessWidget {
                   number: adeiaNumber[index],
                 ),
               );
+            } else if (currentIndex == 5) {
+              return CustomCard(
+                cardColor: cardColor,
+                isDarkMode: isDarkMode,
+                index: index,
+                morningAzkar: AzkarModel(
+                  content: prayAzkar[index],
+                  number: prayAzkarNumber[index],
+                ),
+              );
             }
             return null;
           },
@@ -563,6 +620,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
             wakeUpAzkar,
             sleepingAzkar,
             adeia,
+            prayAzkar,
           ),
         ),
       ),
@@ -575,6 +633,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
     wakeUpAzkar,
     sleepingAzkar,
     adeia,
+    prayAzkar,
   ) {
     int? length;
     if (currentIndex == 0) {
@@ -587,6 +646,8 @@ class CustomHomeScreenDetails extends StatelessWidget {
       length = sleepingAzkar.length;
     } else if (currentIndex == 4) {
       length = adeia.length;
+    } else if (currentIndex == 5) {
+      length = prayAzkar.length;
     }
     return length!;
   }
