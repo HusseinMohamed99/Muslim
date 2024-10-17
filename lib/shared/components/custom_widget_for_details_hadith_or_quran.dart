@@ -21,7 +21,7 @@ class CustomWidgetForDetailsHadithOrQuran extends StatelessWidget {
         children: [
           CircleAvatar(
             backgroundColor: backgroundColor == Colors.white
-                ? ThemeApp.darkPrimary
+                ? ThemeApp.yellow
                 : ThemeApp.lightPrimary,
             child: ImageIcon(
               AssetImage(imageIcon),
