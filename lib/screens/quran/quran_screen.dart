@@ -139,7 +139,10 @@ class SuraTitle extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildText(names, isDarkMode, context),
-            _buildText(numbers, isDarkMode, context),
+            Padding(
+              padding: EdgeInsetsDirectional.only(end: 40.w),
+              child: _buildText(numbers, isDarkMode, context),
+            ),
           ],
         ),
       ),
