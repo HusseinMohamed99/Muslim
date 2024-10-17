@@ -16,6 +16,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     final settingsProvider = Provider.of<SettingsProvider>(context);
     final argNames =
         ModalRoute.of(context)?.settings.arguments as SuraDetailsArg;
+    final bool isDarkMode = settingsProvider.isDarkMode();
+    final Color cardColor =
+        isDarkMode ? Theme.of(context).primaryColor : Colors.white;
 
     if (verses.isEmpty) {
       _readFile(argNames.index + 1);
@@ -38,37 +41,35 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
             ),
           ),
         ),
-        body: _buildBody(context, settingsProvider, argNames),
+        body: _buildBody(
+          context,
+          settingsProvider,
+          argNames,
+          cardColor,
+          isDarkMode,
+        ),
       ),
     );
   }
 
   Widget _buildBody(BuildContext context, SettingsProvider settingsProvider,
-      SuraDetailsArg argNames) {
+      SuraDetailsArg argNames, Color cardColor, bool isDarkMode) {
     return verses.isEmpty
         ? const Center(child: AdaptiveIndicator())
         : SizedBox(
             width: double.infinity,
             height: double.infinity,
             child: Card(
-              color: settingsProvider.isDarkMode()
-                  ? Theme.of(context).primaryColor
-                  : Colors.white,
+              color: cardColor,
               elevation: 12,
-              margin: EdgeInsets.symmetric(horizontal: 8.w, vertical: 20.h),
+              margin: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12).r,
               ),
               child: Column(
                 children: [
                   _buildHeader(context, settingsProvider, argNames),
-                  Container(
-                    width: double.infinity,
-                    height: 3.0.h,
-                    color: settingsProvider.isDarkMode()
-                        ? ThemeApp.yellow
-                        : ThemeApp.lightPrimary,
-                  ),
+                  const BuildDivider(),
                   Expanded(
                     child: ListView.builder(
                       itemBuilder: (_, index) => _buildVerseWidget(
@@ -85,34 +86,16 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   Widget _buildHeader(BuildContext context, SettingsProvider settingsProvider,
       SuraDetailsArg argNames) {
     final isDarkMode = settingsProvider.isDarkMode();
+    final Color backgroundColor = isDarkMode ? Colors.white : Colors.black;
+
     final language = settingsProvider.currentLanguage;
     final title =
         language == 'en' ? 'Sura ${argNames.names}' : 'سورة ${argNames.names}';
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Space(width: 20, height: 0),
-        CircleAvatar(
-          backgroundColor: isDarkMode ? Colors.white : Colors.black,
-          radius: 15.r,
-          child: Image.asset(
-            AssetsPath.assetsImagesQuranIcon,
-            color: isDarkMode ? Colors.black : Colors.white,
-          ),
-        ),
-        const SizedBox.shrink(),
-        Expanded(
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.elMessiri(
-              fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
-              color: isDarkMode ? Colors.white : Colors.black,
-            ),
-          ),
-        ),
-      ],
+    return CustomWidgetForDetailsHadithOrQuran(
+      backgroundColor: backgroundColor,
+      title: title,
+      imageIcon: AssetsPath.assetsImagesQuranIcon,
     );
   }
 

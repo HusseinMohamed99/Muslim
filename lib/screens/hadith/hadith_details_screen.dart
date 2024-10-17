@@ -14,8 +14,6 @@ class HadithDetailsScreen extends StatelessWidget {
     final Color backgroundColor = isDarkMode ? Colors.white : Colors.black;
     final Color cardColor =
         isDarkMode ? Theme.of(context).primaryColor : Colors.white;
-    final Color dividerColor =
-        isDarkMode ? ThemeApp.yellow : ThemeApp.lightPrimary;
 
     return Container(
       decoration: BoxDecoration(
@@ -34,71 +32,56 @@ class HadithDetailsScreen extends StatelessWidget {
             ),
           ),
         ),
-        body: argNames.content.isEmpty
-            ? const Center(child: AdaptiveIndicator())
-            : SizedBox(
-                width: double.infinity,
-                height: double.infinity,
-                child: Card(
-                  color: cardColor,
-                  elevation: 12,
-                  margin:
-                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12).r,
-                  ),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        _buildHeader(context, argNames.title, backgroundColor),
-                        _buildDivider(dividerColor, context),
-                        _buildContent(argNames.content, isDarkMode, context),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+        body: _buildBody(
+          context,
+          settingsProvider,
+          argNames,
+          cardColor,
+          backgroundColor,
+          isDarkMode,
+        ),
       ),
     );
+  }
+
+  Widget _buildBody(
+      BuildContext context,
+      SettingsProvider settingsProvider,
+      HadithDetailsArg argNames,
+      Color cardColor,
+      backgroundColor,
+      bool isDarkMode) {
+    return argNames.content.isEmpty
+        ? const Center(child: AdaptiveIndicator())
+        : SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: Card(
+              color: cardColor,
+              elevation: 12,
+              margin: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12).r,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    _buildHeader(context, argNames.title, backgroundColor),
+                    const BuildDivider(),
+                    _buildContent(argNames.content, isDarkMode, context),
+                  ],
+                ),
+              ),
+            ),
+          );
   }
 
   Widget _buildHeader(
       BuildContext context, String title, Color backgroundColor) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 2.h),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            backgroundColor: backgroundColor == Colors.white
-                ? ThemeApp.darkPrimary
-                : ThemeApp.lightPrimary,
-            child: ImageIcon(
-              const AssetImage(AssetsPath.assetsImagesHadithIcon),
-              color:
-                  backgroundColor != Colors.white ? Colors.black : Colors.white,
-            ),
-          ),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.elMessiri(
-              fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
-              color:
-                  backgroundColor == Colors.white ? Colors.white : Colors.black,
-            ),
-          ),
-          const Space(width: 10, height: 0),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildDivider(Color color, BuildContext context) {
-    return Container(
-      width: MediaQuery.sizeOf(context).width - 60,
-      height: 2.0.h,
-      color: color,
+    return CustomWidgetForDetailsHadithOrQuran(
+      backgroundColor: backgroundColor,
+      title: title,
+      imageIcon: AssetsPath.assetsImagesHadithIcon,
     );
   }
 

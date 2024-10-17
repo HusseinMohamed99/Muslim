@@ -4,8 +4,8 @@ import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
 
-class MyDivider extends StatelessWidget {
-  const MyDivider({super.key});
+class BuildDivider extends StatelessWidget {
+  const BuildDivider({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -72,12 +72,14 @@ class QuranScreen extends StatelessWidget {
                   AppLocalizations.of(context)!.sura_name,
                   style: GoogleFonts.elMessiri(
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
+                    color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
                 Text(
                   AppLocalizations.of(context)!.sura_number,
                   style: GoogleFonts.elMessiri(
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
+                    color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
               ],
