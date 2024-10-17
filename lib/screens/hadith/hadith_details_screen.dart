@@ -95,7 +95,7 @@ class HadithDetailsScreen extends StatelessWidget {
   Widget _buildDivider(Color color, BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width - 60,
-      height: 3.0.h,
+      height: 2.0.h,
       color: color,
     );
   }
