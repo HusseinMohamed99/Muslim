@@ -778,11 +778,13 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
           width: MediaQuery.sizeOf(context).width,
           height: MediaQuery.sizeOf(context).height,
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+            padding:
+                EdgeInsetsDirectional.symmetric(horizontal: 8.w, vertical: 8.h),
             child: Column(
               children: [
                 Text(
                   zakatBody,
+                  textDirection: TextDirection.rtl,
                   style: GoogleFonts.elMessiri(
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                     color: isDark ? Colors.white : Colors.black,
@@ -790,6 +792,7 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
                 ),
                 const Space(width: 0, height: 10),
                 TextFormField(
+                  textDirection: TextDirection.rtl,
                   style: GoogleFonts.elMessiri(
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                     color: isDark ? Colors.white : Colors.black,
@@ -798,6 +801,7 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'ادخل قيمة المال',
+                    hintTextDirection: TextDirection.rtl,
                     labelStyle: GoogleFonts.elMessiri(
                       fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                       color: isDark ? Colors.white : Colors.black,
