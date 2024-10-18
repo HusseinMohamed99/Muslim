@@ -182,9 +182,7 @@ class CustomCardListView extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const CustomHomeScreenDetails(
-                          currentIndex: 6,
-                        ),
+                        builder: (context) => const CustomZakatScreenDetails(),
                       ),
                     );
                   },
@@ -377,6 +375,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
       '7',
       '3',
       '1',
+      '1',
       '3',
       '3',
       '3',
@@ -386,6 +385,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
       '1',
       '3',
       '10',
+      '3',
       '3',
       '3',
       '3',
@@ -717,3 +717,138 @@ class AzkarModel {
 
   AzkarModel({required this.content, required this.number});
 }
+
+class CustomZakatScreenDetails extends StatefulWidget {
+  const CustomZakatScreenDetails({super.key});
+
+  @override
+  State<CustomZakatScreenDetails> createState() =>
+      _CustomZakatScreenDetailsState();
+}
+
+class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
+  final TextEditingController controller = TextEditingController();
+  double? zakat;
+  void calculateZakat() {
+    setState(() {
+      double? amount = double.tryParse(controller.text);
+      if (amount != null && amount > 0) {
+        zakat = amount * 0.025;
+      } else {
+        zakat = null;
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    controller.addListener(calculateZakat);
+  }
+
+  @override
+  void dispose() {
+    controller.removeListener(calculateZakat);
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final settingsProvider = Provider.of<SettingsProvider>(context);
+    final isDark = settingsProvider.isDarkMode();
+
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(settingsProvider.getBackgroundImage()),
+          fit: BoxFit.fill,
+        ),
+      ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'حساب الزكاة',
+            style: GoogleFonts.elMessiri(
+              fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
+            ),
+          ),
+        ),
+        body: SizedBox(
+          width: MediaQuery.sizeOf(context).width,
+          height: MediaQuery.sizeOf(context).height,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+            child: Column(
+              children: [
+                Text(
+                  zakatBody,
+                  style: GoogleFonts.elMessiri(
+                    fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
+                    color: isDark ? Colors.white : Colors.black,
+                  ),
+                ),
+                const Space(width: 0, height: 10),
+                TextFormField(
+                  style: GoogleFonts.elMessiri(
+                    fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
+                    color: isDark ? Colors.white : Colors.black,
+                  ),
+                  controller: controller,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: 'ادخل قيمة المال',
+                    labelStyle: GoogleFonts.elMessiri(
+                      fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
+                      color: isDark ? Colors.white : Colors.black,
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: !isDark
+                            ? ThemeApp.darkPrimary
+                            : ThemeApp.lightPrimary,
+                        width: 1.0,
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: !isDark
+                            ? ThemeApp.darkPrimary
+                            : ThemeApp.lightPrimary,
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
+                ),
+                const Space(width: 0, height: 20),
+                Text(
+                  'الزكاة المستحقة',
+                  style: GoogleFonts.elMessiri(
+                    fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
+                    color: isDark ? Colors.white : Colors.black,
+                  ),
+                ),
+                const Space(width: 0, height: 20),
+                Text(
+                  zakat?.toString() ?? '0.0',
+                  style: GoogleFonts.elMessiri(
+                    fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
+                    color: isDark ? Colors.white : Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+String zakatBody =
+    '''الزكاة هي الركن الثالث من أركان الإسلام الذي يأمر الإنسان بالتصدق وإعطاء جزء من المال للفقراء والمحتاجين. وهي عمل خيري إلزامي يهدف إلى دعم الفئات الأكثر فقراً في المجتمع. لأن التبرع بالمال للفقراء ينقي مال الأغنياء ويكفي الفقراء وعائلاتهم بتلبية اِحتياجاتهم الأساسية.
+
+نصاب زكاة المال المعلوم هو 2.5% من إجمالى المال الذى يملكه الشخص لمدة سنة كاملة، ويجب على المسلم أن يدفع زكاته في الوقت المحدد لها، وهو بعد مرور سنة كاملة على المال الذي يملكه.
+
+ما هو نصاب زكاة المال ؟
+النصاب هو قيمة الحد الأدني التي يجب أن تصل إليها الأموال ليكون عليها الزكاة، وهو 85 جرام من الذهب أو ما يعادلها من العملات الأخرى. ويجب على المسلم أن يدفع زكاته في الوقت المحدد لها، وهو بعد مرور سنة كاملة على المال الذي يملكه.''';
