@@ -90,7 +90,7 @@ class MuslimApplication extends StatelessWidget {
             // locale: Locale(settingsProvider.currentLanguage),
             theme: ThemeApp.lightTheme,
             darkTheme: ThemeApp.darkTheme,
-            themeMode: ThemeMode.system,
+            themeMode: settingsProvider.currentTheme,
             debugShowCheckedModeBanner: false,
             routes: _buildAppRoutes(),
             initialRoute: HomeLayout.routeName,
