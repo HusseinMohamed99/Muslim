@@ -78,10 +78,19 @@ class MuslimApplication extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: AppLocalizations.supportedLocales,
-            locale: Locale(settingsProvider.currentLanguage),
+            // Auto-detect locale from the system
+            localeResolutionCallback: (locale, supportedLocales) {
+              for (var supportedLocale in supportedLocales) {
+                if (supportedLocale.languageCode == locale?.languageCode) {
+                  return supportedLocale;
+                }
+              }
+              return supportedLocales.first;
+            },
+            // locale: Locale(settingsProvider.currentLanguage),
             theme: ThemeApp.lightTheme,
             darkTheme: ThemeApp.darkTheme,
-            themeMode: settingsProvider.currentTheme,
+            themeMode: ThemeMode.system,
             debugShowCheckedModeBanner: false,
             routes: _buildAppRoutes(),
             initialRoute: HomeLayout.routeName,
