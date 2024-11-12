@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim_app/core/helpers/dio_helper.dart';
 import 'package:muslim_app/core/helpers/export_manager/export_manager.dart';
 import 'package:muslim_app/firebase_options.dart';
 import 'package:muslim_app/screens/sebha/sebha_screen.dart';
@@ -19,7 +20,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
+  // Initialize Dio helper and Bloc observer
+  DioHelper.init();
   if (kReleaseMode) {
     // Pass all uncaught "fatal" errors from the framework to Crashlytics
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
@@ -109,5 +111,6 @@ class MuslimApplication extends StatelessWidget {
     } else if (theme == 'Dark') {
       settingsProvider.changeTheme(ThemeMode.dark);
     }
+    settingsProvider.getRadio();
   }
 }

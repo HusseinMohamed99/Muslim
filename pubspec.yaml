@@ -9,6 +9,7 @@ description: A new Flutter project.
 dependencies:
   audioplayers: ^6.0.0
   cupertino_icons: ^1.0.2
+  dio: ^5.7.0
   firebase_analytics: ^11.3.2
   firebase_core: ^3.5.0
   firebase_crashlytics: ^4.1.2

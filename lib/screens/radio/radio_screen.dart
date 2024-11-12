@@ -11,7 +11,7 @@ class RadioScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _buildImage(),
-          Expanded(child: _buildRadioList()),
+          const Expanded(child: RadioItem()),
         ],
       ),
     );
@@ -23,90 +23,22 @@ class RadioScreen extends StatelessWidget {
       child: Image.asset('assets/images/radio.png'),
     );
   }
-
-  Widget _buildRadioList() {
-    return FutureBuilder<List<Radios>>(
-      future: Api.getRadios(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return _buildLoadingIndicator();
-        } else if (snapshot.hasError) {
-          return _buildError(context);
-        }
-        var radios = snapshot.data ?? [];
-        return ListView.builder(
-          scrollDirection: Axis.horizontal,
-          physics: const PageScrollPhysics(),
-          itemBuilder: (context, index) => RadioItem(radios[index]),
-          itemCount: radios.length,
-        );
-      },
-    );
-  }
-
-  Widget _buildLoadingIndicator() {
-    return const Center(
-      child: CircularProgressIndicator(
-        backgroundColor: ThemeApp.darkPrimary,
-        valueColor: AlwaysStoppedAnimation<Color>(ThemeApp.lightPrimary),
-        strokeWidth: 5,
-      ),
-    );
-  }
-
-  Widget _buildError(BuildContext context) {
-    return Center(
-      child: Text(
-        'Something went wrong',
-        style: TextStyle(
-          color: Colors.red,
-          fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
-        ),
-      ),
-    );
-  }
-}
-
-class Api {
-  static Future<List<Radios>> getRadios() async {
-    final url = Uri.https('mp3quran.net', '/api/v3/radios');
-    final response = await http.get(url);
-    final data =
-        jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-    final radioResponse = RadioModel.fromJson(data);
-    return radioResponse.radios ?? [];
-  }
 }
 
 class RadioItem extends StatefulWidget {
-  const RadioItem(this.radio, {super.key});
-  final Radios radio;
+  const RadioItem({super.key});
 
   @override
   State<RadioItem> createState() => _RadioItemState();
 }
 
 class _RadioItemState extends State<RadioItem> {
-  late AudioPlayer audioPlayer;
-
-  @override
-  void initState() {
-    super.initState();
-    audioPlayer = AudioPlayer();
-  }
-
-  @override
-  void dispose() {
-    audioPlayer.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final settingsProvider = Provider.of<SettingsProvider>(context);
 
     return SizedBox(
-      width: MediaQuery.of(context).size.width,
+      width: MediaQuery.sizeOf(context).width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -120,7 +52,7 @@ class _RadioItemState extends State<RadioItem> {
 
   Widget _buildRadioName(SettingsProvider settingsProvider) {
     return Text(
-      widget.radio.name ?? '',
+      settingsProvider.currentRadio?.name ?? '',
       textAlign: TextAlign.center,
       style: GoogleFonts.elMessiri(
         fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
@@ -131,13 +63,21 @@ class _RadioItemState extends State<RadioItem> {
 
   Widget _buildControlButtons(SettingsProvider settingsProvider) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        _buildIconButton('assets/images/pause_icon.png',
-            () => audioPlayer.pause(), settingsProvider),
+        _buildIconButton(
+          'assets/images/Icon-metro-next.png',
+          () => nextRadio(settingsProvider),
+          settingsProvider,
+        ),
         _buildIconButton(
           'assets/images/Icon-awesome-play.png',
-          _togglePlayPause,
+          () => _togglePlayPause(settingsProvider),
+          settingsProvider,
+        ),
+        _buildIconButton(
+          'assets/images/Icon-metro.png',
+          () => previousRadio(settingsProvider),
           settingsProvider,
         ),
       ],
@@ -159,13 +99,38 @@ class _RadioItemState extends State<RadioItem> {
     );
   }
 
-  void _togglePlayPause() {
+  void _togglePlayPause(SettingsProvider settingsProvider) {
     setState(() {
-      if (audioPlayer.state == PlayerState.playing) {
-        audioPlayer.pause();
+      if (settingsProvider.radioPlayer.state == PlayerState.playing) {
+        settingsProvider.radioPlayer.pause();
       } else {
-        audioPlayer.play(UrlSource(widget.radio.url ?? ''));
+        settingsProvider.radioPlayer
+            .play(UrlSource(settingsProvider.currentRadio?.url ?? ''));
       }
     });
+  }
+
+  previousRadio(SettingsProvider settingsProvider) {
+    if (settingsProvider.currentIndex == 0) {
+      return;
+    } else {
+      settingsProvider.radioPlayer.stop();
+      settingsProvider.isRadioPlay = false;
+      settingsProvider.currentIndex--;
+      settingsProvider.currentRadio =
+          settingsProvider.radios![settingsProvider.currentIndex];
+    }
+  }
+
+  nextRadio(SettingsProvider settingsProvider) {
+    if (settingsProvider.currentIndex == settingsProvider.radios!.length - 1) {
+      return;
+    } else {
+      settingsProvider.radioPlayer.stop();
+      settingsProvider.isRadioPlay = false;
+      settingsProvider.currentIndex++;
+      settingsProvider.currentRadio =
+          settingsProvider.radios![settingsProvider.currentIndex];
+    }
   }
 }

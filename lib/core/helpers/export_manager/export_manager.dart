@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
@@ -9,10 +8,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart' as http;
 import 'package:muslim_app/model/hadith_details.dart';
 import 'package:muslim_app/model/quran_details.dart';
-import 'package:muslim_app/model/radio_model.dart';
 import 'package:muslim_app/model/sura_details.dart';
 import 'package:muslim_app/screens/sebha/sebha_screen.dart';
 import 'package:muslim_app/shared/adaptive/indicator.dart';

@@ -1,4 +1,9 @@
+import 'dart:developer';
+
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:muslim_app/core/helpers/dio_helper.dart';
+import 'package:muslim_app/model/radio_model.dart';
 import 'package:muslim_app/shared/image_path/image_path.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -36,5 +41,24 @@ class SettingsProvider extends ChangeNotifier {
     return isDarkMode()
         ? AssetsPath.assetsImagesBackgroundDark
         : AssetsPath.assetsImagesBackgroundLight;
+  }
+
+  List<Radios>? radios = [];
+  Radios? currentRadio;
+  int currentIndex = 0;
+  bool isRadioPlay = false;
+  final radioPlayer = AudioPlayer();
+
+  void getRadio() async {
+    await DioHelper.getData(
+      url: radio,
+    ).then((value) {
+      var data = RadioModel.fromJson(value.data);
+      radios = data.radios;
+      currentRadio = radios![currentIndex];
+      notifyListeners();
+    }).catchError((error) {
+      log('Error: $error');
+    });
   }
 }
