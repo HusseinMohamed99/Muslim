@@ -13,7 +13,6 @@ import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:upgrader/upgrader.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,9 +36,6 @@ void main() async {
 
   await ScreenUtil.ensureScreenSize();
 
-  if (kDebugMode) {
-    await Upgrader.clearSavedSettings();
-  }
   runApp(
     ChangeNotifierProvider(
       create: (_) => SettingsProvider(),
