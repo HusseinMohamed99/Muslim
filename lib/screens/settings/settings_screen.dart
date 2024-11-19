@@ -74,8 +74,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Text(
                 'Version: $appVersion',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.elMessiri(
-                  fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
+                style: GoogleFonts.poppins(
+                  fontSize: getResponsiveFontSize(context, fontSize: 14.sp),
                   fontWeight: FontWeight.w400,
                   color: settingsProvider.isDarkMode()
                       ? Colors.white

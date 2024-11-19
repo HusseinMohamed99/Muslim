@@ -24,8 +24,8 @@ class CustomCardWidget extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                width: 55,
-                height: 55,
+                width: 40.w,
+                height: 40.h,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
@@ -36,21 +36,18 @@ class CustomCardWidget extends StatelessWidget {
                   color: Colors.black,
                 ),
               ),
-              const Space(
-                width: 10,
-                height: 0,
-              ),
+              const Space(width: 10, height: 0),
               Text(
                 titleText,
                 style: settingsProvider.currentLanguage == 'en'
                     ? Theme.of(context).textTheme.titleLarge!.copyWith(
                           fontSize:
-                              getResponsiveFontSize(context, fontSize: 25.sp),
+                              getResponsiveFontSize(context, fontSize: 20.sp),
                           fontWeight: FontWeight.w600,
                         )
                     : Theme.of(context).textTheme.titleLarge!.copyWith(
                           fontSize:
-                              getResponsiveFontSize(context, fontSize: 25.sp),
+                              getResponsiveFontSize(context, fontSize: 20.sp),
                           fontWeight: FontWeight.w600,
                         ),
               ),
