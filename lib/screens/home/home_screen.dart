@@ -774,9 +774,7 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
             ),
           ),
         ),
-        body: SizedBox(
-          width: MediaQuery.sizeOf(context).width,
-          height: MediaQuery.sizeOf(context).height,
+        body: SingleChildScrollView(
           child: Padding(
             padding:
                 EdgeInsetsDirectional.symmetric(horizontal: 8.w, vertical: 8.h),
