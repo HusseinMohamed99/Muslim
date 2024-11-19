@@ -141,21 +141,21 @@ Future<void> checkForUpdate(BuildContext context) async {
     final latestVersion = remoteConfig.getString('latest_version');
 
     // Log the latest version to check if it's fetched correctly
-    print('Latest version fetched: $latestVersion');
+    log('Latest version fetched: $latestVersion');
 
     // Get the current app version
     final packageInfo = await PackageInfo.fromPlatform();
     final currentVersion = packageInfo.version;
 
     // Log the current version
-    print('Current app version: $currentVersion');
+    log('Current app version: $currentVersion');
 
     // Check if the app needs to be updated
     if (_isVersionOlder(currentVersion, latestVersion)) {
       await showUpdateDialog(context);
     }
   } catch (e) {
-    print('Error fetching remote config: $e');
+    log('Error fetching remote config: $e');
   }
 }
 

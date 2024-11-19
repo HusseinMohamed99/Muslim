@@ -70,6 +70,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 titleText: AppLocalizations.of(context)!.rating,
                 iconData: FontAwesomeIcons.star,
               ),
+              const Spacer(),
+              Text(
+                'Version: $appVersion',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.elMessiri(
+                  fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
+                  fontWeight: FontWeight.w400,
+                  color: settingsProvider.isDarkMode()
+                      ? Colors.white
+                      : Colors.black,
+                ),
+              ),
+              const Space(width: 0, height: 20),
             ],
           ),
         ),

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:audioplayers/audioplayers.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:muslim_app/core/helpers/constant.dart';
 import 'package:muslim_app/model/hadith_details.dart';
 import 'package:muslim_app/model/quran_details.dart';
 import 'package:muslim_app/model/sura_details.dart';
@@ -21,7 +23,6 @@ import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
-import 'package:upgrader/upgrader.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 part '../../../screens/layout/home_layout.dart';
@@ -37,6 +38,5 @@ part './../../../shared/components/language_bottom_sheet.dart';
 part './../../../shared/components/responsive_font_size.dart';
 part './../../../shared/components/size_box.dart';
 part './../../../shared/components/theme_bottom_sheet.dart';
-part './../../../shared/components/upgrade_wrapper.dart';
 part 'package:muslim_app/screens/quran/quran_screen.dart';
 part 'package:muslim_app/screens/radio/radio_screen.dart';

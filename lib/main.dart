@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:muslim_app/core/helpers/constant.dart';
 import 'package:muslim_app/core/helpers/dio_helper.dart';
 import 'package:muslim_app/core/helpers/export_manager/export_manager.dart';
 import 'package:muslim_app/firebase_options.dart';
 import 'package:muslim_app/screens/sebha/sebha_screen.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -33,7 +35,11 @@ void main() async {
       return true;
     };
   }
-
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  appName = packageInfo.appName;
+  appPackageName = packageInfo.packageName;
+  appVersion = packageInfo.version;
+  appBuildNumber = packageInfo.buildNumber;
   await ScreenUtil.ensureScreenSize();
 
   runApp(
