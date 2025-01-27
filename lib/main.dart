@@ -35,6 +35,7 @@ void main() async {
   }
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
   appVersion = packageInfo.version;
+  appPackageName = packageInfo.packageName;
 
   await ScreenUtil.ensureScreenSize();
 
