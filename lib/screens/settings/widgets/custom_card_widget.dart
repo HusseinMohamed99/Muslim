@@ -13,14 +13,14 @@ class CustomCardWidget extends StatelessWidget {
   final IconData iconData;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: settingsProvider.isDarkMode()
-          ? ThemeApp.darkPrimary
-          : ThemeApp.lightPrimary,
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
-        child: InkWell(
-          onTap: function,
+    return GestureDetector(
+      onTap: function,
+      child: Card(
+        color: settingsProvider.isDarkMode()
+            ? ThemeApp.darkPrimary
+            : ThemeApp.lightPrimary,
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 8.w),
           child: Row(
             children: [
               Container(
