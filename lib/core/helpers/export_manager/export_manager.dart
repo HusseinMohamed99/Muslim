@@ -9,6 +9,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:muslim_app/core/helpers/ads_manager/ad_manager.dart';
 import 'package:muslim_app/core/helpers/constant.dart';
 import 'package:muslim_app/model/hadith_details.dart';
 import 'package:muslim_app/model/quran_details.dart';

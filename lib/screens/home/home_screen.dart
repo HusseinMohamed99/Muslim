@@ -243,7 +243,7 @@ class CustomCardItem extends StatelessWidget {
                       color: isDarkMode ? Colors.white : Colors.black,
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),

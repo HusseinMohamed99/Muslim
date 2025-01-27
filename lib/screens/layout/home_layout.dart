@@ -16,6 +16,15 @@ class _HomeLayoutState extends State<HomeLayout> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       checkForUpdate(context);
     });
+    AdManager.loadAdBanner(setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    AdManager.disposeAdBanner();
+    AdManager.disposeInterstitialAd();
+
+    super.dispose();
   }
 
   int _currentIndex = 2;
@@ -40,6 +49,9 @@ class _HomeLayoutState extends State<HomeLayout> {
           ),
           leading: IconButton(
               onPressed: () {
+                AdManager.isShowingAd
+                    ? AdManager.loadRewardedAd(setState(() {}))
+                    : null;
                 navigateTo(context, routeName: SettingsScreen.routeName);
               },
               icon: const Icon(Icons.settings)),
@@ -49,7 +61,21 @@ class _HomeLayoutState extends State<HomeLayout> {
           currentIndex: _currentIndex,
           items: _buildBottomNavigationBarItems(context, _currentIndex),
         ),
-        body: _screens[_currentIndex],
+        body: Column(
+          children: [
+            Expanded(
+              child: _screens[_currentIndex],
+            ),
+            Visibility(
+              visible: AdManager.bannerAd != null,
+              child: SizedBox(
+                height: AdManager.bannerAd!.size.height.toDouble(),
+                width: AdManager.bannerAd!.size.width.toDouble(),
+                child: AdWidget(ad: AdManager.bannerAd!),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
