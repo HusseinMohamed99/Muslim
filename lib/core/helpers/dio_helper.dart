@@ -15,7 +15,7 @@ class DioHelper {
   static Future<Response> getData({
     required String url,
     Map<String, dynamic>? query,
-    String? lang = 'ar',
+    String? language = 'ar',
     String? token,
     Map<String, dynamic>? data,
   }) async {

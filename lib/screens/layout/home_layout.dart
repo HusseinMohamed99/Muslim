@@ -13,9 +13,8 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      checkForUpdate(context);
-    });
+    checkForUpdate(context);
+
     AdManager.loadAdBanner(setState(() {}));
   }
 
@@ -30,7 +29,8 @@ class _HomeLayoutState extends State<HomeLayout> {
   int _currentIndex = 2;
   @override
   Widget build(BuildContext context) {
-    final settingsProvider = Provider.of<SettingsProvider>(context);
+    final settingsProvider =
+        Provider.of<SettingsProvider>(context, listen: false);
 
     return Container(
       decoration: BoxDecoration(
@@ -49,9 +49,6 @@ class _HomeLayoutState extends State<HomeLayout> {
           ),
           leading: IconButton(
               onPressed: () {
-                AdManager.isShowingAd
-                    ? AdManager.loadRewardedAd(setState(() {}))
-                    : null;
                 navigateTo(context, routeName: SettingsScreen.routeName);
               },
               icon: const Icon(Icons.settings)),
@@ -203,10 +200,8 @@ bool _isVersionOlder(String remoteVersion, String currentVersion) {
 }
 
 Future<void> showUpdateDialog(BuildContext context) async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
-
-  String packageName = packageInfo.packageName;
-  final settingsProvider = Provider.of<SettingsProvider>(context);
+  final settingsProvider =
+      Provider.of<SettingsProvider>(context, listen: false);
 
   // Ensure the dialog is shown after the frame is rendered
   WidgetsBinding.instance.addPostFrameCallback(
@@ -252,7 +247,7 @@ Future<void> showUpdateDialog(BuildContext context) async {
                 ),
                 onPressed: () {
                   _launchURL(
-                      'https://play.google.com/store/apps/details?id=$packageName');
+                      'https://play.google.com/store/apps/details?id=$appPackageName');
                 },
               ),
             ],

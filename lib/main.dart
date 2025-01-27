@@ -16,10 +16,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
-  await MobileAds.instance.initialize();
-  // Initialize Dio helper and Bloc observer
+  ); // Initialize Dio helper and Bloc observer
   await DioHelper.init();
+  await MobileAds.instance.initialize();
 
   if (kReleaseMode) {
     // Pass all uncaught "fatal" errors from the framework to Crashlytics
