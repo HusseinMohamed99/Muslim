@@ -16,7 +16,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  ); // Initialize Dio helper and Bloc observer
+  );
+  // Initialize Dio helper and Bloc observer
   await DioHelper.init();
   await MobileAds.instance.initialize();
 

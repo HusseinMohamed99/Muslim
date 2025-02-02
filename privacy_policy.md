@@ -1,4 +1,4 @@
-Privacy Policy for Muslim App
+# Privacy Policy for Muslim App
 
 At Muslim App, we are committed to respecting your privacy and ensuring the security of your information. This Privacy Policy outlines how we handle your data and reaffirms our commitment to user confidentiality.
 
@@ -14,7 +14,7 @@ Device Storage:
 Any settings, preferences, or data entered into the app are stored locally on your device. Muslim App does not have access to this information.
 
 No Tracking:
-We do not track your usage, location, or behaviour within the app.
+We do not track your usage, location, or behavior within the app.
 
 Security Assurance
 We take necessary precautions to ensure that your experience with the Muslim App is safe and secure. However, we recommend using strong security measures on your device to protect your data.
@@ -25,6 +25,6 @@ Muslim App reserves the right to update this Privacy Policy. Any changes will be
 Contact Us
 If you have any questions or concerns about this Privacy Policy, feel free to contact us at:
 
-Email: husseinhtm99@gmail.com
+Email: <husseinhtm99@gmail.com>
 
 Thank you for trusting the Muslim App. Your privacy is our priority.
