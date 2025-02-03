@@ -14,12 +14,12 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.instance.initialize();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
   // Initialize Dio helper and Bloc observer
   await DioHelper.init();
-  await MobileAds.instance.initialize();
 
   if (kReleaseMode) {
     // Pass all uncaught "fatal" errors from the framework to Crashlytics

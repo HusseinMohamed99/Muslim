@@ -1,5 +1,5 @@
 class AdUnit {
-  static bool isAdTest = true;
+  static bool isAdTest = false;
   static String homeBanner = isAdTest
       ? 'ca-app-pub-3940256099942544/6300978111'
       : 'ca-app-pub-4479962845986675/2601039800';

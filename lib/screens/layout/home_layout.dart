@@ -22,7 +22,6 @@ class _HomeLayoutState extends State<HomeLayout> {
   void dispose() {
     AdManager.disposeAdBanner();
     AdManager.disposeInterstitialAd();
-
     super.dispose();
   }
 
@@ -49,6 +48,9 @@ class _HomeLayoutState extends State<HomeLayout> {
           ),
           leading: IconButton(
               onPressed: () {
+                AdManager.isShowingAd
+                    ? AdManager.loadRewardedAd(setState(() {}))
+                    : null;
                 navigateTo(context, routeName: SettingsScreen.routeName);
               },
               icon: const Icon(Icons.settings)),
