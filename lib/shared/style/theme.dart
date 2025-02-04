@@ -15,11 +15,13 @@ class ThemeApp {
   ).r;
 
   // Common system overlay style for both themes
-  static const SystemUiOverlayStyle _systemOverlayStyle = SystemUiOverlayStyle(
-    statusBarBrightness: Brightness.dark,
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark,
-  );
+  static SystemUiOverlayStyle _systemOverlayStyle(
+          {Brightness? statusBarIconBrightness}) =>
+      SystemUiOverlayStyle(
+        statusBarBrightness: Brightness.dark,
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: statusBarIconBrightness ?? Brightness.dark,
+      );
 
   // Light Theme
   static final ThemeData lightTheme = ThemeData(
@@ -41,7 +43,8 @@ class ThemeApp {
     scaffoldBackgroundColor: Colors.transparent,
     bottomSheetTheme: _bottomSheetTheme(darkPrimary),
     textTheme: _textTheme(Colors.white),
-    appBarTheme: _appBarTheme(Colors.white),
+    appBarTheme:
+        _appBarTheme(Colors.white, statusBarIconBrightness: Brightness.light),
     bottomNavigationBarTheme: _bottomNavigationBarTheme(yellow, Colors.white),
   );
 
@@ -55,7 +58,8 @@ class ThemeApp {
   }
 
   // Method to define AppBar theme across the app
-  static AppBarTheme _appBarTheme(Color color) {
+  static AppBarTheme _appBarTheme(Color color,
+      {Brightness? statusBarIconBrightness}) {
     return AppBarTheme(
       centerTitle: true,
       color: Colors.transparent,
@@ -66,7 +70,9 @@ class ThemeApp {
         fontWeight: FontWeight.w500,
       ),
       iconTheme: IconThemeData(color: color, size: 24.sp),
-      systemOverlayStyle: _systemOverlayStyle,
+      systemOverlayStyle: _systemOverlayStyle(
+        statusBarIconBrightness: statusBarIconBrightness ?? Brightness.dark,
+      ),
     );
   }
 
