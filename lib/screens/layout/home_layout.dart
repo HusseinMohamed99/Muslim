@@ -216,8 +216,7 @@ Future<void> showUpdateDialog(BuildContext context) async {
               'تحديث جديد متاح',
               style: GoogleFonts.elMessiri(
                 fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
-                color:
-                    settingsProvider.isDarkMode() ? Colors.white : Colors.black,
+                color: Colors.black,
               ),
             ),
             content: const Text(
@@ -228,9 +227,7 @@ Future<void> showUpdateDialog(BuildContext context) async {
                   'لاحقًا',
                   style: GoogleFonts.elMessiri(
                     fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
-                    color: settingsProvider.isDarkMode()
-                        ? Colors.white
-                        : Colors.black,
+                    color: Colors.black,
                   ),
                 ),
                 onPressed: () {
@@ -242,9 +239,7 @@ Future<void> showUpdateDialog(BuildContext context) async {
                   'تحديث الآن',
                   style: GoogleFonts.elMessiri(
                     fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
-                    color: settingsProvider.isDarkMode()
-                        ? Colors.white
-                        : Colors.black,
+                    color: Colors.black,
                   ),
                 ),
                 onPressed: () {
