@@ -16,9 +16,13 @@ class _HomeLayoutState extends State<HomeLayout> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       checkForUpdate(context);
     });
-    AdManager.loadAdBanner(() {
-      setState(() {});
-    });
+    try {
+      AdManager.loadAdBanner(() {
+        setState(() {});
+      });
+    } catch (e) {
+      log('Error loading banner ad: $e');
+    }
   }
 
   @override

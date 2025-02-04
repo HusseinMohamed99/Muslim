@@ -24,6 +24,10 @@ class AdManager {
           log('Banner Ad failed to load: $error');
           ad.dispose();
           bannerAd = null;
+          // Retry loading after a delay
+          Future.delayed(const Duration(seconds: 5), () {
+            loadAdBanner(setState);
+          });
         },
       ),
       request: const AdRequest(),
