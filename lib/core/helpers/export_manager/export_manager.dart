@@ -42,3 +42,5 @@ part './../../../shared/components/size_box.dart';
 part './../../../shared/components/theme_bottom_sheet.dart';
 part 'package:muslim_app/screens/quran/quran_screen.dart';
 part 'package:muslim_app/screens/radio/radio_screen.dart';
+
+part './../../functions/launch_url.dart';

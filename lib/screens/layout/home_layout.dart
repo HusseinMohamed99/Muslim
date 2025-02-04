@@ -13,9 +13,12 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   void initState() {
     super.initState();
-    checkForUpdate(context);
-
-    AdManager.loadAdBanner(setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      checkForUpdate(context);
+    });
+    AdManager.loadAdBanner(() {
+      setState(() {});
+    });
   }
 
   @override
@@ -48,9 +51,13 @@ class _HomeLayoutState extends State<HomeLayout> {
           ),
           leading: IconButton(
               onPressed: () {
-                AdManager.isShowingAd
-                    ? AdManager.loadRewardedAd(setState(() {}))
-                    : null;
+                if (AdManager.interstitialAd != null) {
+                  AdManager.interstitialAd!.show();
+                } else {
+                  log('⚠️ Interstitial ad is not ready, loading a new one...');
+                  AdManager.loadInterstitialAd();
+                }
+
                 navigateTo(context, routeName: SettingsScreen.routeName);
               },
               icon: const Icon(Icons.settings)),
@@ -202,9 +209,6 @@ bool _isVersionOlder(String remoteVersion, String currentVersion) {
 }
 
 Future<void> showUpdateDialog(BuildContext context) async {
-  final settingsProvider =
-      Provider.of<SettingsProvider>(context, listen: false);
-
   // Ensure the dialog is shown after the frame is rendered
   WidgetsBinding.instance.addPostFrameCallback(
     (_) {
@@ -253,11 +257,4 @@ Future<void> showUpdateDialog(BuildContext context) async {
       );
     },
   );
-}
-
-Future<void> _launchURL(String url) async {
-  !await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
-  {
-    throw Exception('لا يمكن فتح الرابط $url');
-  }
 }
