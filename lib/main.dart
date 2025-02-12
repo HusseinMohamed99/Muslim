@@ -15,19 +15,12 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 void main() async {
   SentryWidgetsFlutterBinding.ensureInitialized();
-  await MobileAds.instance.initialize();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await MobileAds.instance.initialize();
   await ScreenUtil.ensureScreenSize();
   await DioHelper.init();
   await dotenv.load(fileName: '.env');
 
-  await buildMuslimApp();
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  appVersion = packageInfo.version;
-  appPackageName = packageInfo.packageName;
-}
-
-Future<void> buildMuslimApp() async {
   if (kReleaseMode) {
     await SentryFlutter.init(
       (options) {
@@ -49,4 +42,7 @@ Future<void> buildMuslimApp() async {
       ),
     );
   }
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  appVersion = packageInfo.version;
+  appPackageName = packageInfo.packageName;
 }

@@ -8,9 +8,9 @@ import 'package:muslim_app/shared/style/theme.dart';
 import 'package:provider/provider.dart';
 
 class SebhaScreen extends StatefulWidget {
-  static const String routeName = 'SebhaScreen';
 
   const SebhaScreen({super.key});
+  static const String routeName = 'SebhaScreen';
 
   @override
   State<SebhaScreen> createState() => _SebhaScreenState();

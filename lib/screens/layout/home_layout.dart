@@ -1,9 +1,9 @@
 part of '../../core/helpers/export_manager/export_manager.dart';
 
 class HomeLayout extends StatefulWidget {
-  static const String routeName = 'HomeLayout';
 
   const HomeLayout({super.key});
+  static const String routeName = 'HomeLayout';
 
   @override
   State<HomeLayout> createState() => _HomeLayoutState();

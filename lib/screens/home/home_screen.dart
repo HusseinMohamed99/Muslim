@@ -713,10 +713,10 @@ class CustomCard extends StatelessWidget {
 }
 
 class AzkarModel {
-  final String content;
-  final String number;
 
   AzkarModel({required this.content, required this.number});
+  final String content;
+  final String number;
 }
 
 class CustomZakatScreenDetails extends StatefulWidget {

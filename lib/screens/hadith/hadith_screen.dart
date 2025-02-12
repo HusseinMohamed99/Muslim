@@ -1,8 +1,8 @@
 part of './../../core/helpers/export_manager/export_manager.dart';
 
 class HadithScreen extends StatefulWidget {
-  static const String routeName = 'HadithScreen';
   const HadithScreen({super.key});
+  static const String routeName = 'HadithScreen';
 
   @override
   State<HadithScreen> createState() => _HadithScreenState();
@@ -80,9 +80,9 @@ class _HadithScreenState extends State<HadithScreen> {
 }
 
 class HadithTitle extends StatelessWidget {
-  final HadithDetailsArg hadith;
 
   const HadithTitle({required this.hadith, super.key});
+  final HadithDetailsArg hadith;
 
   @override
   Widget build(BuildContext context) {

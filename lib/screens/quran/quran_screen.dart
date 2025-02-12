@@ -1,9 +1,9 @@
 part of './../../core/helpers/export_manager/export_manager.dart';
 
 class QuranScreen extends StatelessWidget {
-  static const String routeName = 'QuranScreen';
 
   const QuranScreen({super.key});
+  static const String routeName = 'QuranScreen';
 
   @override
   Widget build(BuildContext context) {
@@ -110,8 +110,6 @@ class QuranScreen extends StatelessWidget {
 }
 
 class SuraTitle extends StatelessWidget {
-  final String names, numbers;
-  final int index;
 
   const SuraTitle({
     required this.names,
@@ -119,6 +117,8 @@ class SuraTitle extends StatelessWidget {
     required this.index,
     super.key,
   });
+  final String names, numbers;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
