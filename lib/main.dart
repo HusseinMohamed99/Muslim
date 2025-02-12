@@ -28,7 +28,7 @@ void main() async {
 }
 
 Future<void> buildMuslimApp() async {
-   if (kReleaseMode) {
+  if (kReleaseMode) {
     await SentryFlutter.init(
       (options) {
         options.dsn = dotenv.env['sentryKey'];
