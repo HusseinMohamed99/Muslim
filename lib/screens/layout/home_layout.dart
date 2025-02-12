@@ -49,7 +49,8 @@ class _HomeLayoutState extends State<HomeLayout> {
         appBar: AppBar(
           title: Text(
             _appTitles(context)[_currentIndex],
-            style: GoogleFonts.elMessiri(
+            style:TextStyle(
+              fontFamily: 'Elgharib',
               fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
             ),
           ),
@@ -222,7 +223,7 @@ Future<void> showUpdateDialog(BuildContext context) async {
           return AlertDialog(
             title: Text(
               'تحديث جديد متاح',
-              style: GoogleFonts.elMessiri(
+              style:TextStyle(
                 fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
                 color: Colors.black,
               ),
@@ -233,7 +234,7 @@ Future<void> showUpdateDialog(BuildContext context) async {
               TextButton(
                 child: Text(
                   'لاحقًا',
-                  style: GoogleFonts.elMessiri(
+                  style:TextStyle(
                     fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
                     color: Colors.black,
                   ),
@@ -245,7 +246,7 @@ Future<void> showUpdateDialog(BuildContext context) async {
               TextButton(
                 child: Text(
                   'تحديث الآن',
-                  style: GoogleFonts.elMessiri(
+                  style:TextStyle(
                     fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
                     color: Colors.black,
                   ),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:muslim_app/core/helpers/export_manager/export_manager.dart';
 import 'package:muslim_app/shared/image_path/image_path.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
@@ -50,7 +49,8 @@ class _SebhaScreenState extends State<SebhaScreen> {
             onPressed: _onAzkarButtonPressed,
             child: Text(
               AppLocalizations.of(context)!.reset,
-              style: GoogleFonts.elMessiri(
+              style: TextStyle(
+                fontFamily: 'Elgharib',
                 fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                 fontWeight: FontWeight.w500,
                 color: isDarkMode ? Colors.white : Colors.black,
@@ -108,7 +108,8 @@ class _SebhaScreenState extends State<SebhaScreen> {
       ),
       child: Text(
         _indexCounter.toString(),
-        style: GoogleFonts.elMessiri(
+        style: TextStyle(
+          fontFamily: 'Elgharib',
           fontSize: getResponsiveFontSize(context, fontSize: 32.sp),
           fontWeight: FontWeight.bold,
           color: appProvider.isDarkMode() ? Colors.white : Colors.black,
@@ -137,7 +138,8 @@ class _SebhaScreenState extends State<SebhaScreen> {
         ),
         child: Text(
           _azkar[_currentIndex],
-          style: GoogleFonts.elMessiri(
+          style: TextStyle(
+            fontFamily: 'Elgharib',
             fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
             fontWeight: FontWeight.bold,
             color: appProvider.isDarkMode() ? Colors.white : Colors.black,

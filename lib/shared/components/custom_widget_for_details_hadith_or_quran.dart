@@ -33,7 +33,8 @@ class CustomWidgetForDetailsHadithOrQuran extends StatelessWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style: GoogleFonts.elMessiri(
+            style:TextStyle(
+              fontFamily: 'Elgharib',
               fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
               color:
                   backgroundColor == Colors.white ? Colors.white : Colors.black,

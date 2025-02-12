@@ -36,7 +36,8 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           automaticallyImplyLeading: false,
           title: Text(
             AppLocalizations.of(context)!.app_title,
-            style: GoogleFonts.elMessiri(
+            style: TextStyle (
+               fontFamily: 'Elgharib',
               fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
             ),
           ),
@@ -117,9 +118,10 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         '$content ${getVerseEndSymbol(index + 1)}',
         textAlign: TextAlign.center,
         textDirection: TextDirection.rtl,
-        style: GoogleFonts.amiriQuran(
+        style: TextStyle(
           fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
           color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
+          fontFamily: 'Elgharib',
         ),
       ),
     );

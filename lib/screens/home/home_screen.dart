@@ -537,7 +537,8 @@ class CustomHomeScreenDetails extends StatelessWidget {
           automaticallyImplyLeading: false,
           title: Text(
             AppLocalizations.of(context)!.app_title,
-            style: GoogleFonts.elMessiri(
+            style: TextStyle(
+              fontFamily: 'Elgharib',
               fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
             ),
           ),
@@ -769,7 +770,8 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
         appBar: AppBar(
           title: Text(
             'حساب الزكاة',
-            style: GoogleFonts.elMessiri(
+            style: TextStyle(
+              fontFamily: 'Elgharib',
               fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
             ),
           ),
@@ -783,7 +785,8 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
                 Text(
                   zakatBody,
                   textDirection: TextDirection.rtl,
-                  style: GoogleFonts.elMessiri(
+                  style: TextStyle(
+                    fontFamily: 'Elgharib',
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                     color: isDark ? Colors.white : Colors.black,
                   ),
@@ -791,7 +794,8 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
                 const Space(width: 0, height: 10),
                 TextFormField(
                   textDirection: TextDirection.rtl,
-                  style: GoogleFonts.elMessiri(
+                  style: TextStyle(
+                    fontFamily: 'Elgharib',
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                     color: isDark ? Colors.white : Colors.black,
                   ),
@@ -800,7 +804,8 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
                   decoration: InputDecoration(
                     labelText: 'ادخل قيمة المال',
                     hintTextDirection: TextDirection.rtl,
-                    labelStyle: GoogleFonts.elMessiri(
+                    labelStyle: TextStyle(
+                      fontFamily: 'Elgharib',
                       fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                       color: isDark ? Colors.white : Colors.black,
                     ),
@@ -825,7 +830,8 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
                 const Space(width: 0, height: 20),
                 Text(
                   'الزكاة المستحقة',
-                  style: GoogleFonts.elMessiri(
+                  style: TextStyle(
+                    fontFamily: 'Elgharib',
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                     color: isDark ? Colors.white : Colors.black,
                   ),
@@ -833,7 +839,8 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
                 const Space(width: 0, height: 20),
                 Text(
                   zakat?.toString() ?? '0.0',
-                  style: GoogleFonts.elMessiri(
+                  style: TextStyle(
+                    fontFamily: 'Elgharib',
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                     color: isDark ? Colors.white : Colors.black,
                   ),

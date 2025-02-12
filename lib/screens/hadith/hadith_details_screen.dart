@@ -27,7 +27,8 @@ class HadithDetailsScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
           title: Text(
             AppLocalizations.of(context)!.app_title,
-            style: GoogleFonts.elMessiri(
+            style:TextStyle(
+               fontFamily: 'Elgharib',
               fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
             ),
           ),

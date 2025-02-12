@@ -70,14 +70,16 @@ class QuranScreen extends StatelessWidget {
               children: [
                 Text(
                   AppLocalizations.of(context)!.sura_name,
-                  style: GoogleFonts.elMessiri(
+                  style:TextStyle(
+                    fontFamily: 'Elgharib',
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
                 Text(
                   AppLocalizations.of(context)!.sura_number,
-                  style: GoogleFonts.elMessiri(
+                  style:TextStyle(
+                    fontFamily: 'Elgharib',
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
@@ -155,7 +157,7 @@ class SuraTitle extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.center,
-      style: GoogleFonts.elMessiri(
+      style:TextStyle(
         fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
         color: isDarkMode ? Colors.white : Colors.black,
       ),

@@ -24,7 +24,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
         appBar: AppBar(
           title: Text(
             AppLocalizations.of(context)!.settings,
-            style: GoogleFonts.elMessiri(
+            style:TextStyle(
+              fontFamily: 'Elgharib',
               fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
             ),
           ),
@@ -74,7 +75,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Text(
                 'Version: $appVersion',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
+                style: TextStyle(
+                   fontFamily: 'Elgharib',
                   fontSize: getResponsiveFontSize(context, fontSize: 14.sp),
                   fontWeight: FontWeight.w400,
                   color: settingsProvider.isDarkMode()
