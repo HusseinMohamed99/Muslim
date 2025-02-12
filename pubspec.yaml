@@ -51,3 +51,5 @@ flutter_assets:
   output_path: 'lib/shared/image_path/'
   filename: 'image_path.dart'
   classname: AssetsPath
+flutter_intl:
+  enabled: true

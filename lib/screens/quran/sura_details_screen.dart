@@ -35,9 +35,9 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text(
-            AppLocalizations.of(context)!.app_title,
-            style: TextStyle (
-               fontFamily: 'Elgharib',
+            S.of(context).app_title,
+            style: TextStyle(
+              fontFamily: 'Elgharib',
               fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
             ),
           ),

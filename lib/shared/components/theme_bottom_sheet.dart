@@ -29,13 +29,13 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _buildThemeOption(
-            title: AppLocalizations.of(context)!.light,
+            title: S.of(context).light,
             isSelected: !isDarkMode,
             onTap: () => settingsProvider.changeTheme(ThemeMode.light),
           ),
           const Space(width: 0, height: 12),
           _buildThemeOption(
-            title: AppLocalizations.of(context)!.dark,
+            title: S.of(context).dark,
             isSelected: isDarkMode,
             onTap: () => settingsProvider.changeTheme(ThemeMode.dark),
           ),

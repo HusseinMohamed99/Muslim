@@ -14,20 +14,22 @@ analyzer:
   plugins:
     - custom_lint
 linter:
-  # The lint rules applied to this project can be customized in the
-  # section below to disable rules from the `package:flutter_lints/flutter.yaml`
-  # included above or to enable additional rules. A list of all available lints
-  # and their documentation is published at
-  # https://dart-lang.github.io/linter/lints/index.html.
-  #
-  # Instead of disabling a lint rule for the entire project in the
-  # section below, it can also be suppressed for a single line of code
-  # or a specific dart file by using the `// ignore: name_of_lint` and
-  # `// ignore_for_file: name_of_lint` syntax on the line or in the file
-  # producing the lint.
   rules:
-    # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    avoid_empty_else: true
+    camel_case_types: true
+    empty_catches: true
+    constant_identifier_names: true
+    control_flow_in_finally: true
+    directives_ordering: true
+    file_names: true
+    implementation_imports: true
+    library_prefixes: true
+    lines_longer_than_80_chars: true
+    non_constant_identifier_names: true
+    prefer_typing_uninitialized_variables: true
+    sort_constructors_first: true
+    unnecessary_brace_in_string_interps: true
+    unnecessary_getters_setters: true
     avoid_print: true
     prefer_single_quotes: true
     sort_child_properties_last: true
@@ -42,5 +44,13 @@ linter:
     annotate_overrides: true
     sort_pub_dependencies: true
     avoid_single_cascade_in_expression_statements: true
-# Additional information about this file can be found at
-# https://dart.dev/guides/language/analysis-options
+    prefer_const_declarations: true
+
+dart_code_metrics:
+  metrics-exclude:
+    - test/**
+
+  rules:
+    - avoid-unnecessary-setstate
+    - avoid-wrapping-in-padding
+    - always-remove-listener

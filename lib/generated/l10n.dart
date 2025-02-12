@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:muslim_app/generated/intl/messages_all.dart';
+import 'intl/messages_all.dart';
 
 // **************************************************************************
 // Generator: Flutter Intl IDE plugin
@@ -49,6 +49,216 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Muslim`
+  String get app_title {
+    return Intl.message(
+      'Muslim',
+      name: 'app_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sura Name`
+  String get sura_name {
+    return Intl.message(
+      'Sura Name',
+      name: 'sura_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sura Number`
+  String get sura_number {
+    return Intl.message(
+      'Sura Number',
+      name: 'sura_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quran`
+  String get quran {
+    return Intl.message(
+      'Quran',
+      name: 'quran',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quran Kareem`
+  String get quran_kareem {
+    return Intl.message(
+      'Quran Kareem',
+      name: 'quran_kareem',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hadith`
+  String get hadith {
+    return Intl.message(
+      'Hadith',
+      name: 'hadith',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hadith Name`
+  String get hadith_name {
+    return Intl.message(
+      'Hadith Name',
+      name: 'hadith_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sebha`
+  String get sebha {
+    return Intl.message(
+      'Sebha',
+      name: 'sebha',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Radio`
+  String get radio {
+    return Intl.message(
+      'Radio',
+      name: 'radio',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Theme`
+  String get theme {
+    return Intl.message(
+      'Theme',
+      name: 'theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light`
+  String get light {
+    return Intl.message(
+      'Light',
+      name: 'light',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark`
+  String get dark {
+    return Intl.message(
+      'Dark',
+      name: 'dark',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message(
+      'English',
+      name: 'english',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Arabic`
+  String get arabic {
+    return Intl.message(
+      'Arabic',
+      name: 'arabic',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reset`
+  String get reset {
+    return Intl.message(
+      'Reset',
+      name: 'reset',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sebha Numbers`
+  String get sebha_numbers {
+    return Intl.message(
+      'Sebha Numbers',
+      name: 'sebha_numbers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subhan Allah`
+  String get subhan_allah {
+    return Intl.message(
+      'Subhan Allah',
+      name: 'subhan_allah',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get home {
+    return Intl.message(
+      'Home',
+      name: 'home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rating`
+  String get rating {
+    return Intl.message(
+      'Rating',
+      name: 'rating',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -57,6 +267,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'ar'),
     ];
   }
 

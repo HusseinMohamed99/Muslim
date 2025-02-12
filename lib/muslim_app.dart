@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:muslim_app/core/helpers/export_manager/export_manager.dart';
+import 'package:muslim_app/generated/l10n.dart';
 import 'package:muslim_app/screens/sebha/sebha_screen.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
@@ -28,12 +28,12 @@ class MuslimApplication extends StatelessWidget {
           ),
           child: MaterialApp(
             localizationsDelegates: const [
-              AppLocalizations.delegate,
+              S.delegate,
               GlobalMaterialLocalizations.delegate,
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            supportedLocales: AppLocalizations.supportedLocales,
+            supportedLocales: S.delegate.supportedLocales,
             locale: Locale(settingsProvider.currentLanguage),
             theme: ThemeApp.lightTheme,
             darkTheme: ThemeApp.darkTheme,

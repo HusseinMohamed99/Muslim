@@ -69,7 +69,7 @@ class QuranScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  AppLocalizations.of(context)!.sura_name,
+                  S.of(context).sura_name,
                   style: TextStyle(
                     fontFamily: 'Elgharib',
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
@@ -77,7 +77,7 @@ class QuranScreen extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  AppLocalizations.of(context)!.sura_number,
+                  S.of(context).sura_number,
                   style: TextStyle(
                     fontFamily: 'Elgharib',
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),

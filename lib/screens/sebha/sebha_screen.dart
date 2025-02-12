@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:muslim_app/core/helpers/export_manager/export_manager.dart';
+import 'package:muslim_app/generated/l10n.dart';
 import 'package:muslim_app/shared/image_path/image_path.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:muslim_app/shared/style/theme.dart';
@@ -32,7 +32,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    final locale = AppLocalizations.of(context)!;
+    final locale = S.of(context);
     final appProvider = Provider.of<SettingsProvider>(context);
     final isDarkMode = appProvider.isDarkMode();
 
@@ -48,7 +48,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
           TextButton(
             onPressed: _onAzkarButtonPressed,
             child: Text(
-              AppLocalizations.of(context)!.reset,
+              S.of(context).reset,
               style: TextStyle(
                 fontFamily: 'Elgharib',
                 fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
@@ -118,8 +118,7 @@ class _SebhaScreenState extends State<SebhaScreen> {
     );
   }
 
-  Widget _buildAzkarButton(
-      SettingsProvider appProvider, AppLocalizations locale) {
+  Widget _buildAzkarButton(SettingsProvider appProvider, S locale) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
       child: OutlinedButton(

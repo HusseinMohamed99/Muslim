@@ -102,24 +102,24 @@ class _HomeLayoutState extends State<HomeLayout> {
     return [
       _buildBottomNavigationBarItem(
         icon: AssetsPath.assetsImagesHomeIcon,
-        label: AppLocalizations.of(context)!.home,
+        label: S.of(context).home,
       ),
       _buildBottomNavigationBarItem(
         icon: AssetsPath.assetsImagesHadithIcon,
-        label: AppLocalizations.of(context)!.hadith,
+        label: S.of(context).hadith,
       ),
       _buildBottomNavigationBarItem(
         icon: AssetsPath.assetsImagesQuranIcon,
-        label: AppLocalizations.of(context)!.quran,
+        label: S.of(context).quran,
         index: 0,
       ),
       _buildBottomNavigationBarItem(
         icon: AssetsPath.assetsImagesSebhaIcon,
-        label: AppLocalizations.of(context)!.sebha,
+        label: S.of(context).sebha,
       ),
       _buildBottomNavigationBarItem(
         icon: AssetsPath.assetsImagesRadioIcon,
-        label: AppLocalizations.of(context)!.radio,
+        label: S.of(context).radio,
       ),
     ];
   }
@@ -155,11 +155,11 @@ class _HomeLayoutState extends State<HomeLayout> {
 }
 
 List<String> _appTitles(context) => [
-      AppLocalizations.of(context)!.home,
-      AppLocalizations.of(context)!.hadith_name,
-      AppLocalizations.of(context)!.quran_kareem,
-      AppLocalizations.of(context)!.sebha,
-      AppLocalizations.of(context)!.radio,
+      S.of(context).home,
+      S.of(context).hadith_name,
+      S.of(context).quran_kareem,
+      S.of(context).sebha,
+      S.of(context).radio,
     ];
 Future<void> checkForUpdate(BuildContext context) async {
   final remoteConfig = FirebaseRemoteConfig.instance;

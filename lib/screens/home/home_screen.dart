@@ -536,7 +536,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text(
-            AppLocalizations.of(context)!.app_title,
+            S.of(context).app_title,
             style: TextStyle(
               fontFamily: 'Elgharib',
               fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
