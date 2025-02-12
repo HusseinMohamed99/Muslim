@@ -6,7 +6,6 @@ list(APPEND FLUTTER_PLUGIN_LIST
   audioplayers_windows
   firebase_core
   sentry_flutter
-  share_plus
   url_launcher_windows
 )
 
