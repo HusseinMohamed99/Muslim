@@ -15,7 +15,7 @@ class CustomWidgetForDetailsHadithOrQuran extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 2.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 8.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -33,9 +33,9 @@ class CustomWidgetForDetailsHadithOrQuran extends StatelessWidget {
           Text(
             title,
             textAlign: TextAlign.center,
-            style:TextStyle(
+            style: TextStyle(
               fontFamily: 'Elgharib',
-              fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
+              fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
               color:
                   backgroundColor == Colors.white ? Colors.white : Colors.black,
             ),

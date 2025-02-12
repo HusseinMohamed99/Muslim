@@ -101,9 +101,9 @@ class HadithTitle extends StatelessWidget {
         child: Text(
           hadith.title,
           textAlign: TextAlign.center,
-          style:TextStyle(
+          style: TextStyle(
             fontFamily: 'Elgharib',
-            fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
+            fontSize: getResponsiveFontSize(context, fontSize: 16.sp),
             color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
           ),
         ),

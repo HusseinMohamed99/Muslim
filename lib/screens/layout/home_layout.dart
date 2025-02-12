@@ -49,9 +49,9 @@ class _HomeLayoutState extends State<HomeLayout> {
         appBar: AppBar(
           title: Text(
             _appTitles(context)[_currentIndex],
-            style:TextStyle(
+            style: TextStyle(
               fontFamily: 'Elgharib',
-              fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
+              fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
             ),
           ),
           leading: IconButton(
@@ -223,7 +223,7 @@ Future<void> showUpdateDialog(BuildContext context) async {
           return AlertDialog(
             title: Text(
               'تحديث جديد متاح',
-              style:TextStyle(
+              style: TextStyle(
                 fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
                 color: Colors.black,
               ),
@@ -234,8 +234,8 @@ Future<void> showUpdateDialog(BuildContext context) async {
               TextButton(
                 child: Text(
                   'لاحقًا',
-                  style:TextStyle(
-                    fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
+                  style: TextStyle(
+                    fontSize: getResponsiveFontSize(context, fontSize: 16.sp),
                     color: Colors.black,
                   ),
                 ),
@@ -246,8 +246,8 @@ Future<void> showUpdateDialog(BuildContext context) async {
               TextButton(
                 child: Text(
                   'تحديث الآن',
-                  style:TextStyle(
-                    fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
+                  style: TextStyle(
+                    fontSize: getResponsiveFontSize(context, fontSize: 16.sp),
                     color: Colors.black,
                   ),
                 ),
