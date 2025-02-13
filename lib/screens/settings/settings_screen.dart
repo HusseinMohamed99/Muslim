@@ -23,8 +23,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            AppLocalizations.of(context)!.settings,
-            style: GoogleFonts.elMessiri(
+            S.of(context).settings,
+            style: TextStyle(
+              fontFamily: 'Elgharib',
               fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
             ),
           ),
@@ -35,46 +36,47 @@ class _SettingsScreenState extends State<SettingsScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TitleWidget(
-                titleText: AppLocalizations.of(context)!.theme,
+                titleText: S.of(context).theme,
               ),
               const Space(width: 0, height: 8),
               CustomCardWidget(
                 settingsProvider: settingsProvider,
                 function: showThemeBottomSheet,
                 titleText: settingsProvider.isDarkMode()
-                    ? AppLocalizations.of(context)!.dark
-                    : AppLocalizations.of(context)!.light,
+                    ? S.of(context).dark
+                    : S.of(context).light,
                 iconData: FontAwesomeIcons.solidMoon,
               ),
               const Space(width: 0, height: 24),
               TitleWidget(
-                titleText: AppLocalizations.of(context)!.language,
+                titleText: S.of(context).language,
               ),
               const Space(width: 0, height: 8),
               CustomCardWidget(
                 settingsProvider: settingsProvider,
                 function: showLanguageBottomSheet,
                 titleText: settingsProvider.currentLanguage == 'en'
-                    ? AppLocalizations.of(context)!.english
-                    : AppLocalizations.of(context)!.arabic,
+                    ? S.of(context).english
+                    : S.of(context).arabic,
                 iconData: FontAwesomeIcons.globe,
               ),
               const Space(width: 0, height: 24),
               TitleWidget(
-                titleText: AppLocalizations.of(context)!.rating,
+                titleText: S.of(context).rating,
               ),
               const Space(width: 0, height: 8),
               CustomCardWidget(
                 settingsProvider: settingsProvider,
                 function: goToApplicationOnPlayStore,
-                titleText: AppLocalizations.of(context)!.rating,
+                titleText: S.of(context).rating,
                 iconData: FontAwesomeIcons.star,
               ),
               const Spacer(),
               Text(
                 'Version: $appVersion',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
+                style: TextStyle(
+                  fontFamily: 'Elgharib',
                   fontSize: getResponsiveFontSize(context, fontSize: 14.sp),
                   fontWeight: FontWeight.w400,
                   color: settingsProvider.isDarkMode()

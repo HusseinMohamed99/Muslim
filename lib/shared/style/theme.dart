@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ThemeApp {
   static const Color lightPrimary = Color(0xffB7935F);
@@ -25,7 +24,7 @@ class ThemeApp {
 
   // Light Theme
   static final ThemeData lightTheme = ThemeData(
-    fontFamily: GoogleFonts.elMessiri().fontFamily,
+    fontFamily: 'Elgharib',
     primaryColor: lightPrimary,
     scaffoldBackgroundColor: Colors.transparent,
     bottomSheetTheme: _bottomSheetTheme(Colors.white),
@@ -38,7 +37,7 @@ class ThemeApp {
 
   // Dark Theme
   static final ThemeData darkTheme = ThemeData(
-    fontFamily: GoogleFonts.elMessiri().fontFamily,
+    fontFamily: 'Elgharib',
     primaryColor: darkPrimary,
     scaffoldBackgroundColor: Colors.transparent,
     bottomSheetTheme: _bottomSheetTheme(darkPrimary),

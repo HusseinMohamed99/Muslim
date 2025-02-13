@@ -1,5 +1,4 @@
 class RadioModel {
-  List<Radios>? radios;
 
   RadioModel({this.radios});
 
@@ -11,6 +10,7 @@ class RadioModel {
       });
     }
   }
+  List<Radios>? radios;
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
@@ -22,9 +22,6 @@ class RadioModel {
 }
 
 class Radios {
-  int? id;
-  String? name;
-  String? url;
 
   Radios({this.id, this.name, this.url});
 
@@ -33,6 +30,9 @@ class Radios {
     name = json['name'];
     url = json['url'];
   }
+  int? id;
+  String? name;
+  String? url;
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};

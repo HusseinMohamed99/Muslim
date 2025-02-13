@@ -54,7 +54,8 @@ class _RadioItemState extends State<RadioItem> {
     return Text(
       settingsProvider.currentRadio?.name ?? '',
       textAlign: TextAlign.center,
-      style: GoogleFonts.elMessiri(
+      style:TextStyle(
+        fontFamily: 'Elgharib',
         fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
         color: settingsProvider.isDarkMode() ? Colors.white : Colors.black,
       ),

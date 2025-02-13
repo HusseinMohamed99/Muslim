@@ -1,9 +1,9 @@
 part of './../../core/helpers/export_manager/export_manager.dart';
 
 class QuranScreen extends StatelessWidget {
-  static const String routeName = 'QuranScreen';
 
   const QuranScreen({super.key});
+  static const String routeName = 'QuranScreen';
 
   @override
   Widget build(BuildContext context) {
@@ -69,15 +69,17 @@ class QuranScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  AppLocalizations.of(context)!.sura_name,
-                  style: GoogleFonts.elMessiri(
+                  S.of(context).sura_name,
+                  style: TextStyle(
+                    fontFamily: 'Elgharib',
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
                 ),
                 Text(
-                  AppLocalizations.of(context)!.sura_number,
-                  style: GoogleFonts.elMessiri(
+                  S.of(context).sura_number,
+                  style: TextStyle(
+                    fontFamily: 'Elgharib',
                     fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
                     color: isDarkMode ? Colors.white : Colors.black,
                   ),
@@ -108,8 +110,6 @@ class QuranScreen extends StatelessWidget {
 }
 
 class SuraTitle extends StatelessWidget {
-  final String names, numbers;
-  final int index;
 
   const SuraTitle({
     required this.names,
@@ -117,6 +117,8 @@ class SuraTitle extends StatelessWidget {
     required this.index,
     super.key,
   });
+  final String names, numbers;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -155,8 +157,8 @@ class SuraTitle extends StatelessWidget {
     return Text(
       text,
       textAlign: TextAlign.center,
-      style: GoogleFonts.elMessiri(
-        fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
+      style: TextStyle(
+        fontSize: getResponsiveFontSize(context, fontSize: 15.sp),
         color: isDarkMode ? Colors.white : Colors.black,
       ),
     );

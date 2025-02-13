@@ -25,7 +25,7 @@ class LanguageBottomSheet extends StatelessWidget {
           _buildLanguageOption(
             context,
             languageCode: 'en',
-            title: AppLocalizations.of(context)!.english,
+            title: S.of(context).english,
             isSelected: settingsProvider.currentLanguage == 'en',
             onTap: () => settingsProvider.changeLanguage('en'),
           ),
@@ -33,7 +33,7 @@ class LanguageBottomSheet extends StatelessWidget {
           _buildLanguageOption(
             context,
             languageCode: 'ar',
-            title: AppLocalizations.of(context)!.arabic,
+            title: S.of(context).arabic,
             isSelected: settingsProvider.currentLanguage == 'ar',
             onTap: () => settingsProvider.changeLanguage('ar'),
           ),

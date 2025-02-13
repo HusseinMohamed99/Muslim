@@ -26,9 +26,10 @@ class HadithDetailsScreen extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           title: Text(
-            AppLocalizations.of(context)!.app_title,
-            style: GoogleFonts.elMessiri(
-              fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
+            S.of(context).app_title,
+            style: TextStyle(
+              fontFamily: 'Elgharib',
+              fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
             ),
           ),
         ),
@@ -98,7 +99,7 @@ class HadithDetailsScreen extends StatelessWidget {
         textAlign: TextAlign.center,
         textDirection: TextDirection.rtl,
         style: TextStyle(
-          fontSize: getResponsiveFontSize(context, fontSize: 25.sp),
+          fontSize: getResponsiveFontSize(context, fontSize: 20.sp),
           color: isDarkMode ? Colors.white : Colors.black,
         ),
       ),

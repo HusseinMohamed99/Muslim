@@ -1,7 +1,6 @@
 class HadithDetailsArg
 {
+  HadithDetailsArg(this.title, this.content);
   String title;
   String content;
-
-  HadithDetailsArg(this.title, this.content);
 }

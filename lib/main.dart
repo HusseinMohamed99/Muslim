@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:muslim_app/core/helpers/constant.dart';
@@ -11,38 +11,38 @@ import 'package:muslim_app/muslim_app.dart';
 import 'package:muslim_app/shared/providers/settings_provider.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  SentryWidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await MobileAds.instance.initialize();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  // Initialize Dio helper and Bloc observer
+  await ScreenUtil.ensureScreenSize();
   await DioHelper.init();
+  await dotenv.load(fileName: '.env');
 
   if (kReleaseMode) {
-    // Pass all uncaught "fatal" errors from the framework to Crashlytics
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-
-    // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
-    PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-      return true;
-    };
+    await SentryFlutter.init(
+      (options) {
+        options.dsn = dotenv.env['sentryKey'];
+        options.tracesSampleRate = 0.01;
+      },
+      appRunner: () => runApp(
+        ChangeNotifierProvider(
+          create: (_) => SettingsProvider(),
+          child: const MuslimApplication(),
+        ),
+      ),
+    );
+  } else {
+    runApp(
+      ChangeNotifierProvider(
+        create: (_) => SettingsProvider(),
+        child: const MuslimApplication(),
+      ),
+    );
   }
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
   appVersion = packageInfo.version;
   appPackageName = packageInfo.packageName;
-
-  await ScreenUtil.ensureScreenSize();
-
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => SettingsProvider(),
-      child: const MuslimApplication(),
-    ),
-  );
 }
