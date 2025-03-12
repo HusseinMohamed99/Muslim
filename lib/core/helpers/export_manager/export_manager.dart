@@ -7,8 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:muslim_app/core/helpers/ads_manager/ad_manager.dart';
 import 'package:muslim_app/core/helpers/constant.dart';
 import 'package:muslim_app/generated/l10n.dart';
 import 'package:muslim_app/model/hadith_details.dart';

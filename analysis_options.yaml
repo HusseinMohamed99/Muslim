@@ -1,24 +1,17 @@
-# This file configures the analyzer, which statically analyzes Dart code to
-# check for errors, warnings, and lints.
-#
-# The issues identified by the analyzer are surfaced in the UI of Dart-enabled
-# IDEs (https://dart.dev/tools#ides-and-editors). The analyzer can also be
-# invoked from the command line by running `flutter analyze`.
-
-# The following line activates a set of recommended lints for Flutter apps,
-# packages, and plugins designed to encourage good coding practices.
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
   errors:
     unrelated_type_equality_checks: ignore
+    unused_import: ignore
   plugins:
     - custom_lint
+
 linter:
   rules:
+    # Style and readability rules
     avoid_empty_else: true
     camel_case_types: true
-    empty_catches: true
     constant_identifier_names: true
     control_flow_in_finally: true
     directives_ordering: true
@@ -35,7 +28,7 @@ linter:
     prefer_single_quotes: true
     sort_child_properties_last: true
     unawaited_futures: true
-    no_self_assignments: true 
+    no_self_assignments: true
     use_enums: true
     avoid_unused_constructor_parameters: true
     unnecessary_lambdas: true
@@ -46,6 +39,20 @@ linter:
     sort_pub_dependencies: true
     avoid_single_cascade_in_expression_statements: true
     prefer_const_declarations: true
+    avoid_redundant_argument_values: true
+    prefer_const_literals_to_create_immutables: true
+
+    # Additional rules for better code quality
+    empty_catches: true
+    prefer_final_locals: true
+    avoid_returning_null: true
+    avoid_renaming_method_parameters: true
+    avoid_shadowing_type_parameters: true
+    avoid_types_as_parameter_names: true
+    prefer_conditional_assignment: true
+    prefer_is_empty: true
+    prefer_is_not_empty: true
+    prefer_null_aware_operators: true
 
 dart_code_metrics:
   metrics-exclude:

@@ -18,17 +18,20 @@ class S {
   static S? _current;
 
   static S get current {
-    assert(_current != null,
-        'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.');
+    assert(
+      _current != null,
+      'No instance of S was loaded. Try to initialize the S delegate before accessing S.current.',
+    );
     return _current!;
   }
 
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false)
-        ? locale.languageCode
-        : locale.toString();
+    final name =
+        (locale.countryCode?.isEmpty ?? false)
+            ? locale.languageCode
+            : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -41,8 +44,10 @@ class S {
 
   static S of(BuildContext context) {
     final instance = S.maybeOf(context);
-    assert(instance != null,
-        'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?');
+    assert(
+      instance != null,
+      'No instance of S present in the widget tree. Did you add S.delegate in localizationsDelegates?',
+    );
     return instance!;
   }
 
@@ -52,42 +57,22 @@ class S {
 
   /// `Muslim`
   String get app_title {
-    return Intl.message(
-      'Muslim',
-      name: 'app_title',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Muslim', name: 'app_title', desc: '', args: []);
   }
 
   /// `Sura Name`
   String get sura_name {
-    return Intl.message(
-      'Sura Name',
-      name: 'sura_name',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Sura Name', name: 'sura_name', desc: '', args: []);
   }
 
   /// `Sura Number`
   String get sura_number {
-    return Intl.message(
-      'Sura Number',
-      name: 'sura_number',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Sura Number', name: 'sura_number', desc: '', args: []);
   }
 
   /// `Quran`
   String get quran {
-    return Intl.message(
-      'Quran',
-      name: 'quran',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Quran', name: 'quran', desc: '', args: []);
   }
 
   /// `Quran Kareem`
@@ -102,122 +87,62 @@ class S {
 
   /// `Hadith`
   String get hadith {
-    return Intl.message(
-      'Hadith',
-      name: 'hadith',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Hadith', name: 'hadith', desc: '', args: []);
   }
 
   /// `Hadith Name`
   String get hadith_name {
-    return Intl.message(
-      'Hadith Name',
-      name: 'hadith_name',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Hadith Name', name: 'hadith_name', desc: '', args: []);
   }
 
   /// `Sebha`
   String get sebha {
-    return Intl.message(
-      'Sebha',
-      name: 'sebha',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Sebha', name: 'sebha', desc: '', args: []);
   }
 
   /// `Radio`
   String get radio {
-    return Intl.message(
-      'Radio',
-      name: 'radio',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Radio', name: 'radio', desc: '', args: []);
   }
 
   /// `Settings`
   String get settings {
-    return Intl.message(
-      'Settings',
-      name: 'settings',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
   }
 
   /// `Language`
   String get language {
-    return Intl.message(
-      'Language',
-      name: 'language',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Language', name: 'language', desc: '', args: []);
   }
 
   /// `Theme`
   String get theme {
-    return Intl.message(
-      'Theme',
-      name: 'theme',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Theme', name: 'theme', desc: '', args: []);
   }
 
   /// `Light`
   String get light {
-    return Intl.message(
-      'Light',
-      name: 'light',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Light', name: 'light', desc: '', args: []);
   }
 
   /// `Dark`
   String get dark {
-    return Intl.message(
-      'Dark',
-      name: 'dark',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Dark', name: 'dark', desc: '', args: []);
   }
 
   /// `English`
   String get english {
-    return Intl.message(
-      'English',
-      name: 'english',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('English', name: 'english', desc: '', args: []);
   }
 
   /// `Arabic`
   String get arabic {
-    return Intl.message(
-      'Arabic',
-      name: 'arabic',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Arabic', name: 'arabic', desc: '', args: []);
   }
 
   /// `Reset`
   String get reset {
-    return Intl.message(
-      'Reset',
-      name: 'reset',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Reset', name: 'reset', desc: '', args: []);
   }
 
   /// `Sebha Numbers`
@@ -242,22 +167,12 @@ class S {
 
   /// `Home`
   String get home {
-    return Intl.message(
-      'Home',
-      name: 'home',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Home', name: 'home', desc: '', args: []);
   }
 
   /// `Rating`
   String get rating {
-    return Intl.message(
-      'Rating',
-      name: 'rating',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('Rating', name: 'rating', desc: '', args: []);
   }
 }
 

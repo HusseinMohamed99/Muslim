@@ -16,21 +16,9 @@ class _HomeLayoutState extends State<HomeLayout> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       checkForUpdate(context);
     });
-    try {
-      AdManager.loadAdBanner(() {
-        setState(() {});
-      });
-    } catch (e) {
-      log('Error loading banner ad: $e');
-    }
+   
   }
 
-  @override
-  void dispose() {
-    AdManager.disposeAdBanner();
-    AdManager.disposeInterstitialAd();
-    super.dispose();
-  }
 
   int _currentIndex = 2;
   @override
@@ -56,12 +44,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           ),
           leading: IconButton(
               onPressed: () {
-                if (AdManager.interstitialAd != null) {
-                  AdManager.interstitialAd!.show();
-                } else {
-                  log('⚠️ Interstitial ad is not ready, loading a new one...');
-                  AdManager.loadInterstitialAd();
-                }
+              
 
                 navigateTo(context, routeName: SettingsScreen.routeName);
               },
@@ -77,14 +60,7 @@ class _HomeLayoutState extends State<HomeLayout> {
             Expanded(
               child: _screens[_currentIndex],
             ),
-            Visibility(
-              visible: AdManager.bannerAd != null,
-              child: SizedBox(
-                height: AdManager.bannerAd!.size.height.toDouble(),
-                width: AdManager.bannerAd!.size.width.toDouble(),
-                child: AdWidget(ad: AdManager.bannerAd!),
-              ),
-            ),
+            
           ],
         ),
       ),
