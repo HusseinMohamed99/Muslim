@@ -53,7 +53,7 @@ class SettingsProvider extends ChangeNotifier {
     await DioHelper.getData(
       url: radio,
     ).then((value) {
-      var data = RadioModel.fromJson(value.data);
+      final data = RadioModel.fromJson(value.data);
       radios = data.radios;
       currentRadio = radios![currentIndex];
       notifyListeners();

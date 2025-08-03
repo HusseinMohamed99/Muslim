@@ -70,7 +70,6 @@ class CustomCardListView extends StatelessWidget {
     return ListView.separated(
       physics: const BouncingScrollPhysics(),
       padding: EdgeInsetsDirectional.symmetric(horizontal: 12.w, vertical: 4.h),
-      scrollDirection: Axis.vertical,
       itemBuilder: (context, index) {
         return Column(
           children: [
@@ -263,7 +262,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
     final bool isDarkMode = settingsProvider.isDarkMode();
     final Color cardColor =
         isDarkMode ? Theme.of(context).primaryColor : Colors.white;
-    List<String> morningAzkar = [
+    final List<String> morningAzkar = [
       'أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ \nاللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ.  [آية الكرسى - البقرة 255].',
       'بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم \nقُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ.',
       'بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم \nقُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ، مِن شَرِّ مَا خَلَقَ، وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ، وَمِن شَرِّ حَاسِد إِذَا حَسَدَ.',
@@ -296,7 +295,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
       'سبحـان الله وبحمـده.',
       'أستغفر الله وأتوب إليه',
     ];
-    List<String> morningAzkarNumber = [
+    final List<String> morningAzkarNumber = [
       '1',
       '3',
       '3',
@@ -329,7 +328,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
       '100',
       '100',
     ];
-    List<String> moonAzkar = [
+    final List<String> moonAzkar = [
       'أَعُوذُ بِاللهِ مِنْ الشَّيْطَانِ الرَّجِيمِ \nاللّهُ لاَ إِلَـهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ لَّهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الأَرْضِ مَن ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلاَ يُحِيطُونَ بِشَيْءٍ مِّنْ عِلْمِهِ إِلاَّ بِمَا شَاء وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالأَرْضَ وَلاَ يَؤُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ.  [آية الكرسى - البقرة 255].',
       'أعوذ بالله من الشيطان الرجيم \nآمن الرسول بما أنزل إليه من ربه والمؤمنون ۚ كل آمن بالله وملائكته وكتبه ورسله لا نفرق بين أحد من رسله ۚ وقالوا سمعنا وأطعنا ۖ غفرانك ربنا وإليك المصير. لا يكلف الله نفسا إلا وسعها لها ما كسبت وعليها ما اكتسبت ربنا لا تؤاخذنا إن نسينآ أو أخطأنا ربنا ولا تحمل علينا إصرا كما حملته على الذين من قبلنا ربنا ولا تحملنا ما لا طاقة لنا به واعف عنا واغفر لنا وارحمنا أنت مولانا فانصرنا على القوم الكافرين.',
       'بِسْمِ اللهِ الرَّحْمنِ الرَّحِيم \nقُلْ هُوَ ٱللَّهُ أَحَدٌ، ٱللَّهُ ٱلصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ.',
@@ -361,7 +360,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
       'اللهم أنت ربي لا إله إلا أنت ، عليك توكلت ، وأنت رب العرش العظيم , ما شاء الله كان ، وما لم يشأ لم يكن ، ولا حول ولا قوة إلا بالله العلي العظيم , أعلم أن الله على كل شيء قدير ، وأن الله قد أحاط بكل شيء علما , اللهم إني أعوذ بك من شر نفسي ، ومن شر كل دابة أنت آخذ بناصيتها ، إن ربي على صراط مستقيم.',
       'سبحـان الله وبحمـده.',
     ];
-    List<String> moonAzkarNumber = [
+    final List<String> moonAzkarNumber = [
       '1',
       '1',
       '3',
@@ -393,17 +392,17 @@ class CustomHomeScreenDetails extends StatelessWidget {
       '1',
       '100',
     ];
-    List<String> wakeUpAzkar = [
+    final List<String> wakeUpAzkar = [
       'الحمـد لله الذي أحـيانا بعـد ما أماتـنا وإليه النـشور.',
       'الحمد لله الذي عافاني في جسدي ورد علي روحي وأذن لي بذكره.',
       'لا إله إلا الله وحـده لا شـريك له، له الملـك وله الحمـد، وهو على كل شيء قدير، سـبحان الله، والحمـد لله ، ولا إله إلا الله والله أكبر، ولا حول ولا قوة إلا بالله العلي العظيم. رب اغفر لي.',
     ];
-    List<String> wakeUpAzkarNumber = [
+    final List<String> wakeUpAzkarNumber = [
       '1',
       '1',
       '1',
     ];
-    List<String> sleepingAzkar = [
+    final List<String> sleepingAzkar = [
       'باسمك ربـي وضعـت جنـبي ، وبك أرفعـه، فإن أمسـكت نفسـي فارحـمها ، وإن أرسلتـها فاحفظـها بمـا تحفـظ به عبـادك الصـالحـين.',
       'اللهـم إنـك خلـقت نفسـي وأنـت توفـاهـا لك ممـاتـها ومحـياها ، إن أحييـتها فاحفظـها ، وإن أمتـها فاغفـر لـها . اللهـم إنـي أسـألـك العـافـية. ',
       'اللهـم قنـي عذابـك يـوم تبـعث عبـادك.',
@@ -420,7 +419,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
       'أذكار من قلق في فراشه ولم ينم \nعن بريدة رضي الله عنه، قال‏:‏ شكا خالد بن الوليد رضي الله عنه إلى النبي صلى الله عليه وسلم فقال‏:‏ يا رسول الله‏!‏ ما أنام الليل من الأرق، فقال النبي صلى الله عليه وسلم‏:‏ ‏"‏إذا أويت إلى فراشك فقل‏:‏ اللهم رب السموات السبع وما أظلت، ورب الأرضين وما أقلت، ورب الشياطين وما أضلت، كن لي جارا من خلقك كلهم جميعا أن يفرط علي أحد منهم أو أن يبغي علي، عز جارك، وجل ثناؤك ولا إله غيرك، ولا إله إلا أنت‏"عن عمرو بن شعيب، عن أبيه، عن جده: أن رسول الله صلى الله عليه وسلم كان يعلمهم من الفزع كلمات‏:‏ ‏"‏أعوذ بكلمات الله التامة من غضبه وشر عباده، ومن همزات الشياطين وأن يحضرون‏"',
       'أذكار الأحلام \nعن أبي قتادة رضي الله عنه قال‏:‏ قال رسول الله صلى الله عليه وسلم‏:‏ ‏"‏الرؤيا الصالحة‏"‏ وفي رواية ‏"‏الرؤيا الحسنة من الله، والحلم من الشيطان، فمن رأى شيئا يكرهه فلينفث عن شماله ثلاثا وليتعوذ من الشيطان، فإنها لا تضره‏".',
     ];
-    List<String> sleepingAzkarNumber = [
+    final List<String> sleepingAzkarNumber = [
       '1',
       '1',
       '3',
@@ -437,7 +436,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
       '1',
       '1',
     ];
-    List<String> adeia = [
+    final List<String> adeia = [
       '"ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار". [البقرة - 201].',
       '"ربنا أفرغ علينا صبرا وثبت أقدامنا وانصرنا على القوم الكافرين". [البقرة - 250].',
       '"ربنا لا تؤاخذنا إن نسينا أو أخطأنا ربنا ولا تحمل علينا إصرا كما حملته على الذين من قبلنا ربنا ولا تحملنا ما لا طاقة لنا به واعف عنا واغفر لنا وارحمنا أنت مولانا فانصرنا على القوم الكافرين". [البقرة - 286].',
@@ -465,7 +464,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
       '"ربنا آمنا فاغفر لنا وارحمنا وأنت خير الراحمين". [المؤمنون - 109].',
       '"رب اغفر وارحم وأنت خير الراحمين". [المؤمنون - 118].',
     ];
-    List<String> adeiaNumber = [
+    final List<String> adeiaNumber = [
       '1',
       '1',
       '1',
@@ -495,7 +494,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
       '1',
       '1',
     ];
-    List<String> prayAzkar = [
+    final List<String> prayAzkar = [
       'أسـتغفر الله، أسـتغفر الله، أسـتغفر الله.اللهـم أنـت السلام ، ومـنك السلام ، تباركت يا ذا الجـلال والإكـرام .',
       'لا إله إلا الله وحده لا شريك له، له المـلك وله الحمد، وهو على كل شيء قدير، اللهـم لا مانع لما أعطـيت، ولا معطـي لما منـعت، ولا ينفـع ذا الجـد منـك الجـد.',
       'لا إله إلا الله, وحده لا شريك له، له الملك وله الحمد، وهو على كل شيء قدير، لا حـول ولا قـوة إلا بالله، لا إله إلا اللـه، ولا نعـبـد إلا إيـاه, له النعـمة وله الفضل وله الثـناء الحـسن، لا إله إلا الله مخلصـين لـه الدين ولو كـره الكـافرون. ',
@@ -510,7 +509,7 @@ class CustomHomeScreenDetails extends StatelessWidget {
       'اللهم أجرني من النار. ',
       'اللهم أعني على ذكرك وشكرك وحسن عبادتك. ',
     ];
-    List<String> prayAzkarNumber = [
+    final List<String> prayAzkarNumber = [
       '1',
       '1',
       '1',
@@ -547,7 +546,6 @@ class CustomHomeScreenDetails extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           padding:
               EdgeInsetsDirectional.symmetric(horizontal: 12.w, vertical: 4.h),
-          scrollDirection: Axis.vertical,
           itemBuilder: (context, index) {
             if (currentIndex == 0) {
               return CustomCard(
@@ -674,7 +672,6 @@ class CustomCard extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               morningAzkar.number,
@@ -732,7 +729,7 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
   double? zakat;
   void calculateZakat() {
     setState(() {
-      double? amount = double.tryParse(controller.text);
+      final double? amount = double.tryParse(controller.text);
       if (amount != null && amount > 0) {
         zakat = amount * 0.025;
       } else {
@@ -814,7 +811,6 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
                         color: !isDark
                             ? ThemeApp.darkPrimary
                             : ThemeApp.lightPrimary,
-                        width: 1.0,
                       ),
                     ),
                     enabledBorder: OutlineInputBorder(
@@ -822,7 +818,6 @@ class _CustomZakatScreenDetailsState extends State<CustomZakatScreenDetails> {
                         color: !isDark
                             ? ThemeApp.darkPrimary
                             : ThemeApp.lightPrimary,
-                        width: 1.0,
                       ),
                     ),
                   ),

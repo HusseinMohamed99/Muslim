@@ -19,7 +19,6 @@ class RadioScreen extends StatelessWidget {
 
   Widget _buildImage() {
     return Expanded(
-      flex: 1,
       child: Image.asset('assets/images/radio.png'),
     );
   }
@@ -40,7 +39,6 @@ class _RadioItemState extends State<RadioItem> {
     return SizedBox(
       width: MediaQuery.sizeOf(context).width,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildRadioName(settingsProvider),
           const Space(width: 0, height: 50),
@@ -111,7 +109,7 @@ class _RadioItemState extends State<RadioItem> {
     });
   }
 
-  previousRadio(SettingsProvider settingsProvider) {
+  void previousRadio(SettingsProvider settingsProvider) {
     if (settingsProvider.currentIndex == 0) {
       return;
     } else {
@@ -123,7 +121,7 @@ class _RadioItemState extends State<RadioItem> {
     }
   }
 
-  nextRadio(SettingsProvider settingsProvider) {
+  void nextRadio(SettingsProvider settingsProvider) {
     if (settingsProvider.currentIndex == settingsProvider.radios!.length - 1) {
       return;
     } else {

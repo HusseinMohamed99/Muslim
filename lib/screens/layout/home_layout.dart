@@ -174,9 +174,9 @@ Future<void> checkForUpdate(BuildContext context) async {
 
 bool _isVersionOlder(String remoteVersion, String currentVersion) {
   // Split the versions and parse each part as an integer
-  List<int> remoteParts =
+  final List<int> remoteParts =
       remoteVersion.split('.').map((part) => int.tryParse(part) ?? 0).toList();
-  List<int> currentParts =
+  final List<int> currentParts =
       currentVersion.split('.').map((part) => int.tryParse(part) ?? 0).toList();
 
   for (int i = 0; i < remoteParts.length; i++) {

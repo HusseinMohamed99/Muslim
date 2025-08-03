@@ -12,7 +12,7 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
+    final settingsProvider = Provider.of<SettingsProvider>(context);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -112,10 +112,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
 }
 
 void goToApplicationOnPlayStore() async {
-  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  final PackageInfo packageInfo = await PackageInfo.fromPlatform();
 
   String url = '';
-  String packageName = packageInfo.packageName;
+  final String packageName = packageInfo.packageName;
   if (Platform.isAndroid) {
     url = 'https://play.google.com/store/apps/details?id=$packageName';
     if (!await launchUrl(Uri.parse(url),

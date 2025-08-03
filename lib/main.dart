@@ -13,7 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await ScreenUtil.ensureScreenSize();
-  await DioHelper.init();
+  DioHelper.init();
 
   runApp(
     ChangeNotifierProvider(

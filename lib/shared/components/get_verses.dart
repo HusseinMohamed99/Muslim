@@ -1,6 +1,6 @@
 String getVerseEndSymbol(int verseNumber, {bool arabicNumeral = true}) {
   var arabicNumeric = '';
-  var digits = verseNumber.toString().split('').toList();
+  final digits = verseNumber.toString().split('').toList();
 
   if (!arabicNumeral) return '\uFD3F$verseNumber\uFD3E';
 

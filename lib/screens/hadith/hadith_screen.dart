@@ -19,12 +19,9 @@ class _HadithScreenState extends State<HadithScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
+    final settingsProvider = Provider.of<SettingsProvider>(context);
     return Column(
-      children: [
-        _buildHeaderImage(),
-        _buildHadithList(settingsProvider),
-      ],
+      children: [_buildHeaderImage(), _buildHadithList(settingsProvider)],
     );
   }
 
@@ -59,18 +56,24 @@ class _HadithScreenState extends State<HadithScreen> {
 
   Future<void> loadHadithFile() async {
     if (!mounted) return; // Ensure widget is mounted before accessing context
-    var settingsProvider =
-        Provider.of<SettingsProvider>(context, listen: false);
+    final settingsProvider = Provider.of<SettingsProvider>(
+      context,
+      listen: false,
+    );
 
-    String filePath = settingsProvider.currentLanguage == 'en'
+    final String filePath = settingsProvider.currentLanguage == 'en'
         ? 'assets/hadith_files/hadith_en.txt'
         : 'assets/hadith_files/hadith_ar.txt';
-    String content = await rootBundle.loadString(filePath);
+    final String content = await rootBundle.loadString(filePath);
 
-    List<HadithDetailsArg> hadithList = content.split('#').map((hadithText) {
+    final List<HadithDetailsArg> hadithList = content.split('#').map((
+      hadithText,
+    ) {
       final hadithLines = hadithText.trim().split('\n');
       return HadithDetailsArg(
-          hadithLines.first, hadithLines.skip(1).join('\n'));
+        hadithLines.first,
+        hadithLines.skip(1).join('\n'),
+      );
     }).toList();
 
     setState(() {
@@ -80,13 +83,12 @@ class _HadithScreenState extends State<HadithScreen> {
 }
 
 class HadithTitle extends StatelessWidget {
-
   const HadithTitle({required this.hadith, super.key});
   final HadithDetailsArg hadith;
 
   @override
   Widget build(BuildContext context) {
-    var settingsProvider = Provider.of<SettingsProvider>(context);
+    final settingsProvider = Provider.of<SettingsProvider>(context);
     return InkWell(
       onTap: () {
         navigateTo(

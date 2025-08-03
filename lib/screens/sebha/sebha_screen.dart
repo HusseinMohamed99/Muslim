@@ -38,7 +38,6 @@ class _SebhaScreenState extends State<SebhaScreen> {
 
     return Center(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildHeaderImage(appProvider, mediaQuery),
           SizedBox(height: mediaQuery.height / 20.23),

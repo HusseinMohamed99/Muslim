@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 class DioHelper {
   static late Dio dio;
 
-  static init() {
+  static void init() {
     dio = Dio(
       BaseOptions(
         baseUrl: 'https://mp3quran.net/api/v3/',

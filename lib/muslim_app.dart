@@ -18,7 +18,6 @@ class MuslimApplication extends StatelessWidget {
     _initializePreferences(settingsProvider);
 
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
