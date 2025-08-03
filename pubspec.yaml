@@ -1,5 +1,5 @@
 name: 'muslim_app'
-version: '1.2.2+24'
+version: '1.2.3+25'
 publish_to: none
 environment:
   sdk: '^3.8.0'
